@@ -27,27 +27,27 @@ const Testimonials = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Healing Stories</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Hear from other professional mothers who have transformed their relationship with stress and trauma.
+            Hear from other professional mothers who have transformed their relationship with stress and trauma through Asli's healing practice.
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <TestimonialCard 
-            quote="After just a few sessions, I finally felt like I could breathe again. The tools I've learned have been invaluable for managing my executive role while being present for my children."
+            quote="After just a few sessions with Asli, I finally felt like I could breathe again. The tools I've learned have been invaluable for managing my executive role while being present for my children."
             name="Sarah J."
             role="Marketing Director & Mother of Two"
             bgColor="bg-white/80"
           />
           
           <TestimonialCard 
-            quote="The past trauma work we did together has completely transformed how I show up in both my career and my family life. I'm no longer triggered by workplace stress in the same way."
+            quote="The past trauma work we did together has completely transformed how I show up in both my career and my family life. Asli's guidance helped me overcome triggers that used to impact my workplace performance."
             name="Michelle T."
             role="Legal Counsel & Mother of Three"
             bgColor="bg-white/80"
           />
           
           <TestimonialCard 
-            quote="I was skeptical at first, but the energy healing sessions have given me a sense of peace I hadn't experienced in years. I'm more productive at work and more patient with my kids."
+            quote="I was skeptical at first, but Asli's energy healing sessions have given me a sense of peace I hadn't experienced in years. I'm more productive at work and more patient with my kids."
             name="Lisa R."
             role="Financial Analyst & Single Mom"
             bgColor="bg-white/80"

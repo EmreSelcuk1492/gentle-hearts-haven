@@ -8,7 +8,10 @@ const Navbar = () => {
     <nav className="py-4 px-6 md:px-12 flex items-center justify-between bg-white/50 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
       <div className="flex items-center gap-2">
         <Heart className="text-healing-violet h-6 w-6" />
-        <span className="font-semibold text-xl">Gentle Hearts Haven</span>
+        <div className="flex flex-col">
+          <span className="font-semibold text-xl">Gentle Hearts Haven</span>
+          <span className="text-xs text-foreground/70">by Asli Selcuk</span>
+        </div>
       </div>
       
       <div className="hidden md:flex items-center gap-8">
