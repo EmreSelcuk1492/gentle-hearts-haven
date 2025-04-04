@@ -20,6 +20,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80, // Offset to account for navbar height
+        behavior: 'smooth'
+      });
+      setIsMobileMenuOpen(false);
+    }
+  };
+  
   return (
     <nav className={`py-4 px-6 md:px-12 flex items-center justify-between fixed w-full top-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
@@ -46,28 +58,28 @@ const Navbar = () => {
           <a 
             href="#about" 
             className="text-foreground/80 hover:text-primary transition-colors py-2"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={(e) => handleNavClick(e, 'about')}
           >
             About
           </a>
           <a 
             href="#services" 
             className="text-foreground/80 hover:text-primary transition-colors py-2"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={(e) => handleNavClick(e, 'services')}
           >
             Services
           </a>
           <a 
             href="#testimonials" 
             className="text-foreground/80 hover:text-primary transition-colors py-2"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={(e) => handleNavClick(e, 'testimonials')}
           >
             Testimonials
           </a>
           <a 
             href="#contact" 
             className="text-foreground/80 hover:text-primary transition-colors py-2"
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={(e) => handleNavClick(e, 'contact')}
           >
             Contact
           </a>
@@ -82,10 +94,34 @@ const Navbar = () => {
       
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-8">
-        <a href="#about" className="text-foreground/80 hover:text-primary transition-colors">About</a>
-        <a href="#services" className="text-foreground/80 hover:text-primary transition-colors">Services</a>
-        <a href="#testimonials" className="text-foreground/80 hover:text-primary transition-colors">Testimonials</a>
-        <a href="#contact" className="text-foreground/80 hover:text-primary transition-colors">Contact</a>
+        <a 
+          href="#about" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+          onClick={(e) => handleNavClick(e, 'about')}
+        >
+          About
+        </a>
+        <a 
+          href="#services" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+          onClick={(e) => handleNavClick(e, 'services')}
+        >
+          Services
+        </a>
+        <a 
+          href="#testimonials" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+          onClick={(e) => handleNavClick(e, 'testimonials')}
+        >
+          Testimonials
+        </a>
+        <a 
+          href="#contact" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+          onClick={(e) => handleNavClick(e, 'contact')}
+        >
+          Contact
+        </a>
       </div>
       
       <Button className="hidden md:flex bg-healing-green text-foreground hover:bg-healing-green/90">
