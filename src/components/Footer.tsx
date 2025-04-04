@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center gap-2 mb-6 md:mb-0">
             <Heart className="text-healing-violet h-6 w-6" />
-            <span className="font-semibold text-xl">Gentle Hearts Haven</span>
+            <span className="font-semibold text-xl">Attain Energy Healing Services</span>
           </div>
           
           <div className="flex flex-wrap justify-center gap-8 mb-6 md:mb-0">
@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           
           <div className="text-foreground/70 text-sm">
-            &copy; {new Date().getFullYear()} Gentle Hearts Haven. All rights reserved.
+            &copy; {new Date().getFullYear()} Attain Energy Healing Services. All rights reserved.
           </div>
         </div>
       </div>

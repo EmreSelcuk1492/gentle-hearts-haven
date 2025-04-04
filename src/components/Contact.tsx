@@ -16,7 +16,7 @@ const Contact = () => {
                 Take the first step toward reclaiming your balance and peace. Schedule a consultation or reach out with any questions.
               </p>
               <div className="space-y-4 text-foreground/80">
-                <p>Email: contact@gentleheartsheaven.com</p>
+                <p>Email: contact@attainenergyhealing.com</p>
                 <p>Phone: (555) 123-4567</p>
                 <p>Hours: Mon-Fri, 9am-5pm</p>
               </div>

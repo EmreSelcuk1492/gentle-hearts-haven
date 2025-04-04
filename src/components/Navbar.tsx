@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="flex items-center gap-2">
         <Heart className="text-healing-violet h-6 w-6" />
         <div className="flex flex-col">
-          <span className="font-semibold text-xl">Gentle Hearts Haven</span>
+          <span className="font-semibold text-xl">Attain Energy Healing Services</span>
           <span className="text-xs text-foreground/70">by Asli Selcuk</span>
         </div>
       </div>
