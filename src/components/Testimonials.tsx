@@ -33,7 +33,7 @@ const Testimonials = () => {
     <section id="testimonials" className="py-20 healing-gradient">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <span className="text-healing-orange font-medium mb-2 block">Client Experiences</span>
+          <span className="text-primary font-medium mb-2 block">Client Experiences</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Healing Stories</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             Hear from other professional mothers who have transformed their relationship with stress and trauma through Asli's healing practice.

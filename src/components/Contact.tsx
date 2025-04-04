@@ -10,7 +10,7 @@ const Contact = () => {
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <span className="text-healing-yellow font-medium mb-2 block">Ready to Transform Your Life?</span>
+          <span className="text-primary font-medium mb-2 block">Ready to Transform Your Life?</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Begin Your Healing Journey Today</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             Take the first step toward reclaiming your balance, peace, and joy. Reach out to schedule your free consultation.

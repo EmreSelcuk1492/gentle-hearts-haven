@@ -15,7 +15,7 @@ const Hero = () => {
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-3xl">
-          <span className="text-healing-green font-medium mb-2 block">Attain Energy Healing Services</span>
+          <span className="text-primary font-medium mb-2 block">Attain Energy Healing Services</span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Embark on Your Journey to <span className="text-gradient">Holistic Well-being</span>
           </h1>

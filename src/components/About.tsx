@@ -9,7 +9,7 @@ const About = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-healing-violet font-medium mb-2 block">About the Practitioner</span>
+            <span className="text-primary font-medium mb-2 block">About the Practitioner</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Asli Selcuk</h2>
             <p className="text-lg text-foreground/80 mb-6">
               A licensed energy medicine practitioner with over 15 years of experience in holistic healing, 
@@ -48,7 +48,7 @@ const About = () => {
       {/* Core Values Section */}
       <div className="container mx-auto px-6 md:px-12 mt-20">
         <div className="text-center mb-12">
-          <span className="text-healing-green font-medium mb-2 block">Our Approach</span>
+          <span className="text-primary font-medium mb-2 block">Our Approach</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Values</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             Our healing practice is built on fundamental principles that ensure every client 
