@@ -6,12 +6,12 @@ import { ArrowRight } from 'lucide-react';
 const Hero = () => {
   return (
     <section className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-[#f9f9f0]">
-      {/* Floating Background Elements with Random Animations */}
-      <div className="floating-shape w-72 h-72 bg-healing-green/70 rounded-full -top-20 -left-20 animate-float-1"></div>
-      <div className="floating-shape w-60 h-60 bg-healing-orange/70 rounded-full top-1/4 -right-10 animate-float-2"></div>
-      <div className="floating-shape w-40 h-40 bg-healing-blue/70 rounded-full bottom-40 left-1/4 animate-float-3"></div>
-      <div className="floating-shape w-64 h-64 bg-healing-violet/70 rounded-full -bottom-10 right-10 animate-float-4"></div>
-      <div className="floating-shape w-48 h-48 bg-healing-yellow/70 rounded-full -bottom-10 -left-10 animate-float-5"></div>
+      {/* Floating Background Elements with Enhanced Random Animations */}
+      <div className="floating-shape w-80 h-80 bg-healing-green/60 rounded-full -top-24 -left-24 animate-float-1"></div>
+      <div className="floating-shape w-72 h-72 bg-healing-orange/60 rounded-full top-10 -right-20 animate-float-2"></div>
+      <div className="floating-shape w-64 h-64 bg-healing-blue/60 rounded-full bottom-20 left-1/3 animate-float-3"></div>
+      <div className="floating-shape w-96 h-96 bg-healing-violet/60 rounded-full -bottom-32 right-1/4 animate-float-4"></div>
+      <div className="floating-shape w-80 h-80 bg-healing-yellow/60 rounded-full bottom-0 -left-20 animate-float-5"></div>
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-3xl">
