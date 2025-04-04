@@ -13,15 +13,13 @@ const Hero = () => {
     speedY: number;
     size: number;
     color: string;
+    opacity: number;
+    growing: boolean;
   }>>([]);
   
   useEffect(() => {
-    const createOrbs = () => {
+    const createOrb = (isInitial = false) => {
       if (!orbsContainer.current) return;
-      
-      // Clear any existing orbs
-      orbsContainer.current.innerHTML = '';
-      orbsArray.current = [];
       
       const containerWidth = orbsContainer.current.offsetWidth;
       const containerHeight = orbsContainer.current.offsetHeight;
@@ -35,58 +33,81 @@ const Hero = () => {
         '#B3E5FC'  // healing-blue
       ];
       
-      // Create multiple orbs with different sizes and colors
-      for (let i = 0; i < 8; i++) {
-        const orb = document.createElement('div');
-        
-        // Random size between 4rem and 10rem
-        const sizeInRem = 4 + Math.random() * 6;
-        const size = sizeInRem * 16; // Convert rem to px
-        
-        // Random position within container
-        const x = Math.random() * (containerWidth - size);
-        const y = Math.random() * (containerHeight - size);
-        
-        // Random speed between -0.3 and 0.3
-        const speedX = (Math.random() - 0.5) * 0.6;
-        const speedY = (Math.random() - 0.5) * 0.6;
-        
-        // Random color from our palette
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        
-        // Random opacity between 0.4 and 0.7
-        const opacity = 0.4 + Math.random() * 0.3;
-        
-        // Apply styles
-        Object.assign(orb.style, {
-          position: 'absolute',
-          width: `${sizeInRem}rem`,
-          height: `${sizeInRem}rem`,
-          left: `${x}px`,
-          top: `${y}px`,
-          backgroundColor: color,
-          borderRadius: '50%',
-          filter: 'blur(10px)',
-          opacity: opacity.toString(),
-          zIndex: '1'
-        });
-        
-        orbsContainer.current.appendChild(orb);
-        
-        // Store the orb data for animation
-        orbsArray.current.push({
-          element: orb,
-          x,
-          y,
-          speedX,
-          speedY,
-          size,
-          color
-        });
+      // Create a new orb
+      const orb = document.createElement('div');
+      
+      // Random size between 2rem and 8rem
+      const sizeInRem = 2 + Math.random() * 6;
+      const size = sizeInRem * 16; // Convert rem to px
+      
+      // Random position within container
+      const x = Math.random() * (containerWidth - size);
+      const y = Math.random() * (containerHeight - size);
+      
+      // Random speed between -0.2 and 0.2
+      const speedX = (Math.random() - 0.5) * 0.4;
+      const speedY = (Math.random() - 0.5) * 0.4;
+      
+      // Random color from our palette
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      // Initial opacity
+      const initialOpacity = isInitial ? (0.4 + Math.random() * 0.3) : 0;
+      
+      // Apply styles
+      Object.assign(orb.style, {
+        position: 'absolute',
+        width: `${sizeInRem}rem`,
+        height: `${sizeInRem}rem`,
+        left: `${x}px`,
+        top: `${y}px`,
+        backgroundColor: color,
+        borderRadius: '50%',
+        filter: 'blur(10px)',
+        opacity: initialOpacity.toString(),
+        zIndex: '1',
+        transform: 'scale(0.8)',
+        transition: 'opacity 1.5s ease-out, transform 1.5s ease-out'
+      });
+      
+      orbsContainer.current.appendChild(orb);
+      
+      // Start with a ripple effect if not initial
+      if (!isInitial) {
+        setTimeout(() => {
+          orb.style.opacity = (0.4 + Math.random() * 0.3).toString();
+          orb.style.transform = 'scale(1)';
+        }, 10);
+      }
+      
+      // Store the orb data for animation
+      orbsArray.current.push({
+        element: orb,
+        x,
+        y,
+        speedX,
+        speedY,
+        size,
+        color,
+        opacity: initialOpacity,
+        growing: !isInitial
+      });
+    };
+    
+    const createInitialOrbs = () => {
+      if (!orbsContainer.current) return;
+      
+      // Clear any existing orbs
+      orbsContainer.current.innerHTML = '';
+      orbsArray.current = [];
+      
+      // Create initial set of orbs
+      for (let i = 0; i < 6; i++) {
+        createOrb(true);
       }
     };
     
-    createOrbs();
+    createInitialOrbs();
     
     // Animate orbs
     let animationFrameId: number;
@@ -97,7 +118,7 @@ const Hero = () => {
       const containerWidth = orbsContainer.current.offsetWidth;
       const containerHeight = orbsContainer.current.offsetHeight;
       
-      orbsArray.current.forEach((orb) => {
+      orbsArray.current.forEach((orb, index) => {
         // Update position
         orb.x += orb.speedX;
         orb.y += orb.speedY;
@@ -125,6 +146,12 @@ const Hero = () => {
         // Update DOM element position
         orb.element.style.left = `${orb.x}px`;
         orb.element.style.top = `${orb.y}px`;
+        
+        // If orb is growing (new), update its opacity and size
+        if (orb.growing && orb.opacity < 0.7) {
+          orb.opacity = Math.min(orb.opacity + 0.01, 0.7);
+          orb.element.style.opacity = orb.opacity.toString();
+        }
       });
       
       animationFrameId = requestAnimationFrame(animateOrbs);
@@ -133,10 +160,34 @@ const Hero = () => {
     // Start animation
     animateOrbs();
     
+    // Add new orbs periodically
+    const addOrbInterval = setInterval(() => {
+      // Remove an old orb if we have too many
+      if (orbsArray.current.length >= 12) {
+        const oldOrbIndex = Math.floor(Math.random() * orbsArray.current.length);
+        const oldOrb = orbsArray.current[oldOrbIndex];
+        
+        // Fade out the orb
+        oldOrb.element.style.opacity = '0';
+        oldOrb.element.style.transform = 'scale(0.5)';
+        
+        // Remove from DOM and array after transition
+        setTimeout(() => {
+          if (orbsContainer.current && oldOrb.element.parentNode === orbsContainer.current) {
+            orbsContainer.current.removeChild(oldOrb.element);
+          }
+          orbsArray.current = orbsArray.current.filter(o => o !== oldOrb);
+        }, 1500);
+      }
+      
+      // Create a new orb with ripple effect
+      createOrb(false);
+    }, 3000); // Add a new orb every 3 seconds
+    
     // Handle window resize
     const handleResize = () => {
       cancelAnimationFrame(animationFrameId);
-      createOrbs();
+      createInitialOrbs();
       animateOrbs();
     };
     
@@ -145,6 +196,7 @@ const Hero = () => {
     // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
+      clearInterval(addOrbInterval);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
@@ -185,3 +237,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
