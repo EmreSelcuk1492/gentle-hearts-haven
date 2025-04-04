@@ -55,6 +55,10 @@
     @apply bg-gradient-to-r from-healing-green via-healing-violet to-healing-orange bg-clip-text text-transparent;
   }
   
+  .text-gradient-pastel {
+    @apply bg-gradient-to-r from-healing-green via-healing-violet to-healing-orange bg-clip-text text-transparent;
+  }
+  
   .floating-shape {
     @apply absolute opacity-70 blur-md;
   }
