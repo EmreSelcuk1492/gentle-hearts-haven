@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -59,7 +60,8 @@
   }
   
   .floating-shape {
-    @apply absolute opacity-70 blur-md transition-all duration-[10000ms] ease-in-out;
+    @apply absolute opacity-70 blur-md transition-all ease-in-out;
+    transition-duration: 10000ms;
   }
 }
 
