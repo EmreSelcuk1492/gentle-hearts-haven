@@ -1,3 +1,4 @@
+
 import { Check, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState, useRef } from "react";
@@ -27,12 +28,15 @@ export const SuccessAnimation = ({
     opacity: number;
   }>>([]);
 
+  // Generate colorful orbs in the background
   useEffect(() => {
     if (!orbsContainer.current) return;
 
+    // Clear any existing orbs
     orbsContainer.current.innerHTML = '';
     orbsArray.current = [];
 
+    // Colors from your theme
     const colors = [
       '#C5E1A5', // healing-green
       '#FFCC80', // healing-orange
@@ -41,59 +45,71 @@ export const SuccessAnimation = ({
       '#B3E5FC'  // healing-blue
     ];
 
-    const totalOrbs = 24;
-
+    // Create initial set of orbs
+    const totalOrbs = 24; // Increased to 24 for better coverage
+    
     for (let i = 0; i < totalOrbs; i++) {
       const containerWidth = orbsContainer.current.offsetWidth;
       const containerHeight = orbsContainer.current.offsetHeight;
 
+      // Create a new orb
       const orb = document.createElement('div');
       
+      // Size varies between 2rem and 7rem (slightly adjusted)
       const sizeInRem = 2 + Math.random() * 5;
-      const size = sizeInRem * 16;
-
+      const size = sizeInRem * 16; // Convert rem to px
+      
+      // Distribute orbs more evenly across the container
+      // Divide the container into a grid and place orbs systematically
       const gridCols = 4;
       const gridRows = 6;
       const colWidth = containerWidth / gridCols;
       const rowHeight = containerHeight / gridRows;
       
+      // Get grid position based on index
       const colIndex = i % gridCols;
       const rowIndex = Math.floor(i / gridCols) % gridRows;
       
+      // Base position in the grid cell with some randomness
       const baseX = colIndex * colWidth;
       const baseY = rowIndex * rowHeight;
       const x = baseX + (Math.random() * 0.7 * colWidth);
       const y = baseY + (Math.random() * 0.7 * rowHeight);
       
+      // Random speed between -0.05 and 0.05 (slower for larger orbs)
       const speedX = (Math.random() - 0.5) * 0.1;
       const speedY = (Math.random() - 0.5) * 0.1;
       
+      // Random color from our palette
       const color = colors[Math.floor(Math.random() * colors.length)];
       
-      const entrySide = i % 4;
+      // Determine animation direction (alternative entries from different sides)
+      const entrySide = i % 4; // 0: left, 1: right, 2: top, 3: bottom
       let initialX = x;
       let initialY = y;
       
       switch (entrySide) {
-        case 0:
+        case 0: // from left
           initialX = -size;
           break;
-        case 1:
+        case 1: // from right
           initialX = containerWidth;
           break;
-        case 2:
+        case 2: // from top
           initialY = -size;
           break;
-        case 3:
+        case 3: // from bottom
           initialY = containerHeight;
           break;
       }
       
+      // Create gradient for "wet paint" effect
       const gradientStyles = `
         background: radial-gradient(circle at center, ${color} 30%, transparent 80%);
         box-shadow: 0 0 20px ${color}50;
       `;
       
+      // Apply styles
       Object.assign(orb.style, {
         position: 'absolute',
         width: `${sizeInRem}rem`,
@@ -107,17 +123,21 @@ export const SuccessAnimation = ({
         transition: 'opacity 1.5s ease-out, left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
       });
       
+      // Apply the gradient
       orb.style.cssText += gradientStyles;
       
       orbsContainer.current.appendChild(orb);
       
+      // Staggered animation based on index
       setTimeout(() => {
+        // Higher opacity between 0.4 and 0.8
         const orbOpacity = 0.4 + Math.random() * 0.4;
         orb.style.opacity = orbOpacity.toString();
         orb.style.left = `${x}px`;
         orb.style.top = `${y}px`;
-      }, i * 110);
+      }, i * 110); // Stagger each orb
       
+      // Store the orb data for animation
       orbsArray.current.push({
         element: orb,
         x,
@@ -130,6 +150,7 @@ export const SuccessAnimation = ({
       });
     }
 
+    // Animate orbs
     let animationFrameId: number;
     
     const animateOrbs = () => {
@@ -139,10 +160,13 @@ export const SuccessAnimation = ({
       const containerHeight = orbsContainer.current.offsetHeight;
       
       orbsArray.current.forEach((orb) => {
+        // Only start floating animation after the initial entrance animation is complete
         setTimeout(() => {
+          // Update position
           orb.x += orb.speedX;
           orb.y += orb.speedY;
           
+          // Bounce off edges
           if (orb.x <= 0 || orb.x + orb.size >= containerWidth) {
             orb.speedX = -orb.speedX;
             orb.x = Math.max(0, Math.min(containerWidth - orb.size, orb.x));
@@ -153,18 +177,21 @@ export const SuccessAnimation = ({
             orb.y = Math.max(0, Math.min(containerHeight - orb.size, orb.y));
           }
           
+          // Update DOM element position
           orb.element.style.left = `${orb.x}px`;
           orb.element.style.top = `${orb.y}px`;
-        }, totalOrbs * 110 + 600);
+        }, totalOrbs * 110 + 600); // Start floating animation after all orbs have appeared
       });
       
       animationFrameId = requestAnimationFrame(animateOrbs);
     };
     
+    // Start animation after a delay to let the entrance animation complete
     setTimeout(() => {
       animateOrbs();
     }, totalOrbs * 110 + 600);
     
+    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
       if (orbsContainer.current) {
@@ -173,9 +200,11 @@ export const SuccessAnimation = ({
     };
   }, []);
 
+  // Only run animation once when component mounts
   useEffect(() => {
     if (stage !== "initial") return;
     
+    // Start the animation sequence
     const circleTimer = setTimeout(() => setStage("circle"), 100);
     const checkTimer = setTimeout(() => setStage("check"), 600);
     const completeTimer = setTimeout(() => {
@@ -188,7 +217,7 @@ export const SuccessAnimation = ({
       clearTimeout(checkTimer);
       clearTimeout(completeTimer);
     };
-  }, []);
+  }, []); // Only run on mount, not when onComplete changes
 
   const handleReset = () => {
     if (onReset) onReset();
@@ -197,11 +226,9 @@ export const SuccessAnimation = ({
   return (
     <div className={cn(
       "flex flex-col items-center justify-center transition-all duration-500 relative",
-      "bg-healing-green/20",
       className
     )}>
-      <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-healing-green/40 to-transparent" />
-      
+      {/* Orbs container */}
       <div 
         ref={orbsContainer}
         className="absolute inset-0 pointer-events-none overflow-hidden z-0 rounded-2xl"
@@ -256,8 +283,6 @@ export const SuccessAnimation = ({
           </Button>
         )}
       </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-healing-green/40 to-transparent" />
     </div>
   );
 };
