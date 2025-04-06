@@ -28,6 +28,15 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Define a type for the contact_submissions table
+type ContactSubmission = {
+  name: string;
+  email: string;
+  phone: string;
+  country_code: string;
+  message: string;
+};
+
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,7 +55,7 @@ const Contact = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      // Submit the form data to Supabase
+      // Use type assertion to tell TypeScript about the table structure
       const { error } = await supabase
         .from('contact_submissions')
         .insert({
@@ -55,7 +64,7 @@ const Contact = () => {
           phone: data.phone,
           country_code: '+1', // Default country code, could be made dynamic
           message: data.message,
-        });
+        } as ContactSubmission);
 
       if (error) throw error;
 
