@@ -46,15 +46,17 @@ export const SuccessAnimation = ({
     ];
 
     // Create initial set of orbs
-    for (let i = 0; i < 12; i++) {
+    const totalOrbs = 25; // Increased from 12 to 25
+    
+    for (let i = 0; i < totalOrbs; i++) {
       const containerWidth = orbsContainer.current.offsetWidth;
       const containerHeight = orbsContainer.current.offsetHeight;
 
       // Create a new orb
       const orb = document.createElement('div');
       
-      // Random size between 1.5rem and 5rem
-      const sizeInRem = 1.5 + Math.random() * 3.5;
+      // Random size between 0.8rem and 4rem - more varied sizes
+      const sizeInRem = 0.8 + Math.random() * 3.2;
       const size = sizeInRem * 16; // Convert rem to px
       
       // Random position within container
@@ -68,32 +70,38 @@ export const SuccessAnimation = ({
       // Random color from our palette
       const color = colors[Math.floor(Math.random() * colors.length)];
       
+      // Determine animation direction (left-to-right or right-to-left)
+      const fromLeft = i % 2 === 0;
+      const initialX = fromLeft ? -size : containerWidth;
+      const targetX = x;
+      
       // Apply styles
       Object.assign(orb.style, {
         position: 'absolute',
         width: `${sizeInRem}rem`,
         height: `${sizeInRem}rem`,
-        left: `${x}px`,
+        left: `${initialX}px`, // Start off-screen
         top: `${y}px`,
         backgroundColor: color,
         borderRadius: '50%',
         filter: 'blur(10px)',
         opacity: '0',
         zIndex: '-1',
-        transition: 'opacity 1.5s ease-out'
+        transition: 'opacity 1.5s ease-out, left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
       });
       
       orbsContainer.current.appendChild(orb);
       
-      // Fade in the orb
+      // Staggered animation based on index
       setTimeout(() => {
         orb.style.opacity = (0.1 + Math.random() * 0.4).toString();
-      }, i * 100);
+        orb.style.left = `${targetX}px`;
+      }, i * 100); // Stagger each orb by 100ms
       
       // Store the orb data for animation
       orbsArray.current.push({
         element: orb,
-        x,
+        x: targetX,
         y,
         speedX,
         speedY,
@@ -113,31 +121,36 @@ export const SuccessAnimation = ({
       const containerHeight = orbsContainer.current.offsetHeight;
       
       orbsArray.current.forEach((orb) => {
-        // Update position
-        orb.x += orb.speedX;
-        orb.y += orb.speedY;
-        
-        // Bounce off edges
-        if (orb.x <= 0 || orb.x + orb.size >= containerWidth) {
-          orb.speedX = -orb.speedX;
-          orb.x = Math.max(0, Math.min(containerWidth - orb.size, orb.x));
-        }
-        
-        if (orb.y <= 0 || orb.y + orb.size >= containerHeight) {
-          orb.speedY = -orb.speedY;
-          orb.y = Math.max(0, Math.min(containerHeight - orb.size, orb.y));
-        }
-        
-        // Update DOM element position
-        orb.element.style.left = `${orb.x}px`;
-        orb.element.style.top = `${orb.y}px`;
+        // Only start floating animation after the initial entrance animation is complete
+        setTimeout(() => {
+          // Update position
+          orb.x += orb.speedX;
+          orb.y += orb.speedY;
+          
+          // Bounce off edges
+          if (orb.x <= 0 || orb.x + orb.size >= containerWidth) {
+            orb.speedX = -orb.speedX;
+            orb.x = Math.max(0, Math.min(containerWidth - orb.size, orb.x));
+          }
+          
+          if (orb.y <= 0 || orb.y + orb.size >= containerHeight) {
+            orb.speedY = -orb.speedY;
+            orb.y = Math.max(0, Math.min(containerHeight - orb.size, orb.y));
+          }
+          
+          // Update DOM element position
+          orb.element.style.left = `${orb.x}px`;
+          orb.element.style.top = `${orb.y}px`;
+        }, totalOrbs * 100 + 500); // Start floating animation after all orbs have appeared
       });
       
       animationFrameId = requestAnimationFrame(animateOrbs);
     };
     
-    // Start animation
-    animateOrbs();
+    // Start animation after a delay to let the entrance animation complete
+    setTimeout(() => {
+      animateOrbs();
+    }, totalOrbs * 100 + 500);
     
     // Cleanup
     return () => {
@@ -179,7 +192,7 @@ export const SuccessAnimation = ({
       {/* Orbs container */}
       <div 
         ref={orbsContainer}
-        className="absolute inset-0 pointer-events-none overflow-hidden z-0"
+        className="absolute inset-0 pointer-events-none overflow-hidden z-0 rounded-2xl"
         aria-hidden="true"
       />
 
