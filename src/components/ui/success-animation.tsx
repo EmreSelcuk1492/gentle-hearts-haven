@@ -46,7 +46,7 @@ export const SuccessAnimation = ({
     ];
 
     // Create initial set of orbs
-    const totalOrbs = 25; // Increased from 12 to 25
+    const totalOrbs = 20; // Slightly reduced from 25 to accommodate larger size
     
     for (let i = 0; i < totalOrbs; i++) {
       const containerWidth = orbsContainer.current.offsetWidth;
@@ -55,17 +55,17 @@ export const SuccessAnimation = ({
       // Create a new orb
       const orb = document.createElement('div');
       
-      // Random size between 0.8rem and 4rem - more varied sizes
-      const sizeInRem = 0.8 + Math.random() * 3.2;
+      // Much larger size between 3rem and 8rem
+      const sizeInRem = 3 + Math.random() * 5;
       const size = sizeInRem * 16; // Convert rem to px
       
       // Random position within container
       const x = Math.random() * (containerWidth - size);
       const y = Math.random() * (containerHeight - size);
       
-      // Random speed between -0.1 and 0.1
-      const speedX = (Math.random() - 0.5) * 0.2;
-      const speedY = (Math.random() - 0.5) * 0.2;
+      // Random speed between -0.05 and 0.05 (slower for larger orbs)
+      const speedX = (Math.random() - 0.5) * 0.1;
+      const speedY = (Math.random() - 0.5) * 0.1;
       
       // Random color from our palette
       const color = colors[Math.floor(Math.random() * colors.length)];
@@ -75,6 +75,12 @@ export const SuccessAnimation = ({
       const initialX = fromLeft ? -size : containerWidth;
       const targetX = x;
       
+      // Create gradient for "wet paint" effect
+      const gradientStyles = `
+        background: radial-gradient(circle at center, ${color} 30%, transparent 80%);
+        box-shadow: 0 0 20px ${color}50;
+      `;
+      
       // Apply styles
       Object.assign(orb.style, {
         position: 'absolute',
@@ -82,21 +88,25 @@ export const SuccessAnimation = ({
         height: `${sizeInRem}rem`,
         left: `${initialX}px`, // Start off-screen
         top: `${y}px`,
-        backgroundColor: color,
         borderRadius: '50%',
-        filter: 'blur(10px)',
+        filter: 'blur(15px)',
         opacity: '0',
         zIndex: '-1',
         transition: 'opacity 1.5s ease-out, left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
       });
       
+      // Apply the gradient
+      orb.style.cssText += gradientStyles;
+      
       orbsContainer.current.appendChild(orb);
       
       // Staggered animation based on index
       setTimeout(() => {
-        orb.style.opacity = (0.1 + Math.random() * 0.4).toString();
+        // Higher opacity between 0.4 and 0.8
+        const orbOpacity = 0.4 + Math.random() * 0.4;
+        orb.style.opacity = orbOpacity.toString();
         orb.style.left = `${targetX}px`;
-      }, i * 100); // Stagger each orb by 100ms
+      }, i * 120); // Slightly longer stagger for visual effect
       
       // Store the orb data for animation
       orbsArray.current.push({
@@ -107,7 +117,7 @@ export const SuccessAnimation = ({
         speedY,
         size,
         color,
-        opacity: 0.1 + Math.random() * 0.4,
+        opacity: 0.4 + Math.random() * 0.4,
       });
     }
 
@@ -141,7 +151,7 @@ export const SuccessAnimation = ({
           // Update DOM element position
           orb.element.style.left = `${orb.x}px`;
           orb.element.style.top = `${orb.y}px`;
-        }, totalOrbs * 100 + 500); // Start floating animation after all orbs have appeared
+        }, totalOrbs * 120 + 600); // Start floating animation after all orbs have appeared
       });
       
       animationFrameId = requestAnimationFrame(animateOrbs);
@@ -150,7 +160,7 @@ export const SuccessAnimation = ({
     // Start animation after a delay to let the entrance animation complete
     setTimeout(() => {
       animateOrbs();
-    }, totalOrbs * 100 + 500);
+    }, totalOrbs * 120 + 600);
     
     // Cleanup
     return () => {
