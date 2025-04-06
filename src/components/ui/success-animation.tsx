@@ -1,7 +1,7 @@
 
 import { Check, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
 interface SuccessAnimationProps {
@@ -16,6 +16,137 @@ export const SuccessAnimation = ({
   onReset,
 }: SuccessAnimationProps) => {
   const [stage, setStage] = useState<"initial" | "circle" | "check" | "complete">("initial");
+  const orbsContainer = useRef<HTMLDivElement>(null);
+  const orbsArray = useRef<Array<{
+    element: HTMLDivElement;
+    x: number;
+    y: number;
+    speedX: number;
+    speedY: number;
+    size: number;
+    color: string;
+    opacity: number;
+  }>>([]);
+
+  // Generate colorful orbs in the background
+  useEffect(() => {
+    if (!orbsContainer.current) return;
+
+    // Clear any existing orbs
+    orbsContainer.current.innerHTML = '';
+    orbsArray.current = [];
+
+    // Colors from your theme
+    const colors = [
+      '#C5E1A5', // healing-green
+      '#FFCC80', // healing-orange
+      '#D1C4E9', // healing-violet
+      '#FFF59D', // healing-yellow
+      '#B3E5FC'  // healing-blue
+    ];
+
+    // Create initial set of orbs
+    for (let i = 0; i < 12; i++) {
+      const containerWidth = orbsContainer.current.offsetWidth;
+      const containerHeight = orbsContainer.current.offsetHeight;
+
+      // Create a new orb
+      const orb = document.createElement('div');
+      
+      // Random size between 1.5rem and 5rem
+      const sizeInRem = 1.5 + Math.random() * 3.5;
+      const size = sizeInRem * 16; // Convert rem to px
+      
+      // Random position within container
+      const x = Math.random() * (containerWidth - size);
+      const y = Math.random() * (containerHeight - size);
+      
+      // Random speed between -0.1 and 0.1
+      const speedX = (Math.random() - 0.5) * 0.2;
+      const speedY = (Math.random() - 0.5) * 0.2;
+      
+      // Random color from our palette
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      // Apply styles
+      Object.assign(orb.style, {
+        position: 'absolute',
+        width: `${sizeInRem}rem`,
+        height: `${sizeInRem}rem`,
+        left: `${x}px`,
+        top: `${y}px`,
+        backgroundColor: color,
+        borderRadius: '50%',
+        filter: 'blur(10px)',
+        opacity: '0',
+        zIndex: '-1',
+        transition: 'opacity 1.5s ease-out'
+      });
+      
+      orbsContainer.current.appendChild(orb);
+      
+      // Fade in the orb
+      setTimeout(() => {
+        orb.style.opacity = (0.1 + Math.random() * 0.4).toString();
+      }, i * 100);
+      
+      // Store the orb data for animation
+      orbsArray.current.push({
+        element: orb,
+        x,
+        y,
+        speedX,
+        speedY,
+        size,
+        color,
+        opacity: 0.1 + Math.random() * 0.4,
+      });
+    }
+
+    // Animate orbs
+    let animationFrameId: number;
+    
+    const animateOrbs = () => {
+      if (!orbsContainer.current) return;
+      
+      const containerWidth = orbsContainer.current.offsetWidth;
+      const containerHeight = orbsContainer.current.offsetHeight;
+      
+      orbsArray.current.forEach((orb) => {
+        // Update position
+        orb.x += orb.speedX;
+        orb.y += orb.speedY;
+        
+        // Bounce off edges
+        if (orb.x <= 0 || orb.x + orb.size >= containerWidth) {
+          orb.speedX = -orb.speedX;
+          orb.x = Math.max(0, Math.min(containerWidth - orb.size, orb.x));
+        }
+        
+        if (orb.y <= 0 || orb.y + orb.size >= containerHeight) {
+          orb.speedY = -orb.speedY;
+          orb.y = Math.max(0, Math.min(containerHeight - orb.size, orb.y));
+        }
+        
+        // Update DOM element position
+        orb.element.style.left = `${orb.x}px`;
+        orb.element.style.top = `${orb.y}px`;
+      });
+      
+      animationFrameId = requestAnimationFrame(animateOrbs);
+    };
+    
+    // Start animation
+    animateOrbs();
+    
+    // Cleanup
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      if (orbsContainer.current) {
+        orbsContainer.current.innerHTML = '';
+      }
+    };
+  }, []);
 
   // Only run animation once when component mounts
   useEffect(() => {
@@ -42,10 +173,17 @@ export const SuccessAnimation = ({
 
   return (
     <div className={cn(
-      "flex flex-col items-center justify-center transition-all duration-500",
+      "flex flex-col items-center justify-center transition-all duration-500 relative",
       className
     )}>
-      <div className="relative flex items-center justify-center">
+      {/* Orbs container */}
+      <div 
+        ref={orbsContainer}
+        className="absolute inset-0 pointer-events-none overflow-hidden z-0"
+        aria-hidden="true"
+      />
+
+      <div className="relative flex items-center justify-center z-10">
         <div
           className={cn(
             "absolute rounded-full bg-healing-green/20 transition-all duration-500",
@@ -76,7 +214,7 @@ export const SuccessAnimation = ({
       </div>
       
       <div className={cn(
-        "mt-4 text-center transition-all duration-300",
+        "mt-4 text-center transition-all duration-300 z-10",
         stage === "check" || stage === "complete" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
       )}>
         <h4 className="text-xl font-semibold text-healing-green">Thank you!</h4>

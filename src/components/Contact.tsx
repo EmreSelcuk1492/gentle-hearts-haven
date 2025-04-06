@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -103,9 +104,9 @@ const Contact = () => {
         
         <div className="max-w-5xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-md overflow-hidden">
           {showSuccess ? (
-            <div className="flex items-center justify-center min-h-[500px]">
+            <div className="flex items-center justify-center min-h-[500px] relative">
               <SuccessAnimation 
-                className="py-12"
+                className="py-12 w-full h-full"
                 onComplete={handleAnimationComplete}
                 onReset={handleReset}
               />
