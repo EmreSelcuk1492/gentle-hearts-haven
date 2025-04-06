@@ -46,7 +46,7 @@ export const SuccessAnimation = ({
     ];
 
     // Create initial set of orbs
-    const totalOrbs = 20; // Slightly reduced from 25 to accommodate larger size
+    const totalOrbs = 24; // Increased to 24 for better coverage
     
     for (let i = 0; i < totalOrbs; i++) {
       const containerWidth = orbsContainer.current.offsetWidth;
@@ -55,13 +55,26 @@ export const SuccessAnimation = ({
       // Create a new orb
       const orb = document.createElement('div');
       
-      // Much larger size between 3rem and 8rem
-      const sizeInRem = 3 + Math.random() * 5;
+      // Size varies between 2rem and 7rem (slightly adjusted)
+      const sizeInRem = 2 + Math.random() * 5;
       const size = sizeInRem * 16; // Convert rem to px
       
-      // Random position within container
-      const x = Math.random() * (containerWidth - size);
-      const y = Math.random() * (containerHeight - size);
+      // Distribute orbs more evenly across the container
+      // Divide the container into a grid and place orbs systematically
+      const gridCols = 4;
+      const gridRows = 6;
+      const colWidth = containerWidth / gridCols;
+      const rowHeight = containerHeight / gridRows;
+      
+      // Get grid position based on index
+      const colIndex = i % gridCols;
+      const rowIndex = Math.floor(i / gridCols) % gridRows;
+      
+      // Base position in the grid cell with some randomness
+      const baseX = colIndex * colWidth;
+      const baseY = rowIndex * rowHeight;
+      const x = baseX + (Math.random() * 0.7 * colWidth);
+      const y = baseY + (Math.random() * 0.7 * rowHeight);
       
       // Random speed between -0.05 and 0.05 (slower for larger orbs)
       const speedX = (Math.random() - 0.5) * 0.1;
@@ -70,10 +83,25 @@ export const SuccessAnimation = ({
       // Random color from our palette
       const color = colors[Math.floor(Math.random() * colors.length)];
       
-      // Determine animation direction (left-to-right or right-to-left)
-      const fromLeft = i % 2 === 0;
-      const initialX = fromLeft ? -size : containerWidth;
-      const targetX = x;
+      // Determine animation direction (alternative entries from different sides)
+      const entrySide = i % 4; // 0: left, 1: right, 2: top, 3: bottom
+      let initialX = x;
+      let initialY = y;
+      
+      switch (entrySide) {
+        case 0: // from left
+          initialX = -size;
+          break;
+        case 1: // from right
+          initialX = containerWidth;
+          break;
+        case 2: // from top
+          initialY = -size;
+          break;
+        case 3: // from bottom
+          initialY = containerHeight;
+          break;
+      }
       
       // Create gradient for "wet paint" effect
       const gradientStyles = `
@@ -86,13 +114,13 @@ export const SuccessAnimation = ({
         position: 'absolute',
         width: `${sizeInRem}rem`,
         height: `${sizeInRem}rem`,
-        left: `${initialX}px`, // Start off-screen
-        top: `${y}px`,
+        left: `${initialX}px`, 
+        top: `${initialY}px`,
         borderRadius: '50%',
         filter: 'blur(15px)',
         opacity: '0',
         zIndex: '-1',
-        transition: 'opacity 1.5s ease-out, left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+        transition: 'opacity 1.5s ease-out, left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
       });
       
       // Apply the gradient
@@ -105,13 +133,14 @@ export const SuccessAnimation = ({
         // Higher opacity between 0.4 and 0.8
         const orbOpacity = 0.4 + Math.random() * 0.4;
         orb.style.opacity = orbOpacity.toString();
-        orb.style.left = `${targetX}px`;
-      }, i * 120); // Slightly longer stagger for visual effect
+        orb.style.left = `${x}px`;
+        orb.style.top = `${y}px`;
+      }, i * 110); // Stagger each orb
       
       // Store the orb data for animation
       orbsArray.current.push({
         element: orb,
-        x: targetX,
+        x,
         y,
         speedX,
         speedY,
@@ -151,7 +180,7 @@ export const SuccessAnimation = ({
           // Update DOM element position
           orb.element.style.left = `${orb.x}px`;
           orb.element.style.top = `${orb.y}px`;
-        }, totalOrbs * 120 + 600); // Start floating animation after all orbs have appeared
+        }, totalOrbs * 110 + 600); // Start floating animation after all orbs have appeared
       });
       
       animationFrameId = requestAnimationFrame(animateOrbs);
@@ -160,7 +189,7 @@ export const SuccessAnimation = ({
     // Start animation after a delay to let the entrance animation complete
     setTimeout(() => {
       animateOrbs();
-    }, totalOrbs * 120 + 600);
+    }, totalOrbs * 110 + 600);
     
     // Cleanup
     return () => {
