@@ -15,7 +15,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 
@@ -88,12 +87,18 @@ const Contact = () => {
   };
 
   const handleAnimationComplete = () => {
-    // Hide the animation after it completes and show a toast
-    setShowSuccess(false);
+    // No automatic hiding of the animation
+    // Just show toast if needed
     toast({
       title: "Message sent successfully!",
       description: "We'll get back to you as soon as possible.",
     });
+  };
+  
+  // Add new reset function
+  const handleReset = () => {
+    setShowSuccess(false);
+    form.reset();
   };
 
   return (
@@ -112,7 +117,8 @@ const Contact = () => {
             <div className="flex items-center justify-center min-h-[500px]">
               <SuccessAnimation 
                 className="py-12"
-                onComplete={handleAnimationComplete} 
+                onComplete={handleAnimationComplete}
+                onReset={handleReset}
               />
             </div>
           ) : (

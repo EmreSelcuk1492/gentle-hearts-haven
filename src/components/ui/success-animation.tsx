@@ -1,16 +1,19 @@
 
-import { Check } from "lucide-react";
+import { Check, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface SuccessAnimationProps {
   className?: string;
   onComplete?: () => void;
+  onReset?: () => void;
 }
 
 export const SuccessAnimation = ({
   className,
   onComplete,
+  onReset,
 }: SuccessAnimationProps) => {
   const [stage, setStage] = useState<"initial" | "circle" | "check" | "complete">("initial");
 
@@ -29,6 +32,10 @@ export const SuccessAnimation = ({
       clearTimeout(completeTimer);
     };
   }, [onComplete]);
+
+  const handleReset = () => {
+    if (onReset) onReset();
+  };
 
   return (
     <div className={cn(
@@ -71,6 +78,17 @@ export const SuccessAnimation = ({
       )}>
         <h4 className="text-xl font-semibold text-healing-green">Thank you!</h4>
         <p className="text-foreground/80">We'll be in touch soon</p>
+        
+        {stage === "complete" && (
+          <Button 
+            variant="outline" 
+            className="mt-6 bg-white border-healing-green text-healing-green hover:bg-healing-green/10"
+            onClick={handleReset}
+          >
+            <RefreshCw className="mr-2 h-4 w-4" />
+            Send another message
+          </Button>
+        )}
       </div>
     </div>
   );
