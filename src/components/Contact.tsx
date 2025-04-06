@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,7 +17,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-// Define form validation schema
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -28,7 +26,6 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-// Define a type for the contact_submissions table
 type ContactSubmission = {
   name: string;
   email: string;
@@ -42,7 +39,6 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   
-  // Initialize form with react-hook-form and zod validation
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,23 +52,20 @@ const Contact = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      // Use type assertion to tell TypeScript about the table structure
       const { error } = await supabase
         .from('contact_submissions')
         .insert({
           name: data.name,
           email: data.email,
           phone: data.phone,
-          country_code: '+1', // Default country code, could be made dynamic
+          country_code: '+1',
           message: data.message,
         } as ContactSubmission);
 
       if (error) throw error;
 
-      // Show success animation instead of toast
       setShowSuccess(true);
       
-      // Reset the form
       form.reset();
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -86,20 +79,16 @@ const Contact = () => {
     }
   };
 
-  const handleAnimationComplete = () => {
-    // No automatic hiding of the animation
-    // Just show toast if needed
+  const handleAnimationComplete = useCallback(() => {
     toast({
       title: "Message sent successfully!",
       description: "We'll get back to you as soon as possible.",
     });
-  };
+  }, [toast]);
   
-  // Add new reset function
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setShowSuccess(false);
-    form.reset();
-  };
+  }, []);
 
   return (
     <section id="contact" className="py-20">

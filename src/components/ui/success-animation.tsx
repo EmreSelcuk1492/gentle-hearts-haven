@@ -17,7 +17,10 @@ export const SuccessAnimation = ({
 }: SuccessAnimationProps) => {
   const [stage, setStage] = useState<"initial" | "circle" | "check" | "complete">("initial");
 
+  // Only run animation once when component mounts
   useEffect(() => {
+    if (stage !== "initial") return;
+    
     // Start the animation sequence
     const circleTimer = setTimeout(() => setStage("circle"), 100);
     const checkTimer = setTimeout(() => setStage("check"), 600);
@@ -31,7 +34,7 @@ export const SuccessAnimation = ({
       clearTimeout(checkTimer);
       clearTimeout(completeTimer);
     };
-  }, [onComplete]);
+  }, []); // Only run on mount, not when onComplete changes
 
   const handleReset = () => {
     if (onReset) onReset();
