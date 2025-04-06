@@ -1,11 +1,84 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Clock, MapPin } from 'lucide-react';
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+// Define form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  phone: z.string().min(5, { message: "Please enter a valid phone number." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Initialize form with react-hook-form and zod validation
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    try {
+      // Submit the form data to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          country_code: '+1', // Default country code, could be made dynamic
+          message: data.message,
+        });
+
+      if (error) throw error;
+
+      // Show success message
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+      });
+
+      // Reset the form
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Your message couldn't be sent. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6 md:px-12">
@@ -67,29 +140,91 @@ const Contact = () => {
             
             <div className="p-8 md:p-12">
               <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-              <form className="space-y-4">
-                <div>
-                  <Input placeholder="Your Name" className="border-healing-green/50 focus-visible:ring-healing-green" />
-                </div>
-                <div>
-                  <Input type="email" placeholder="Your Email" className="border-healing-green/50 focus-visible:ring-healing-green" />
-                </div>
-                <div>
-                  <Input type="tel" placeholder="Your Phone (optional)" className="border-healing-green/50 focus-visible:ring-healing-green" />
-                </div>
-                <div>
-                  <Textarea 
-                    placeholder="How can Asli help you? Tell us about your needs." 
-                    className="min-h-[120px] border-healing-green/50 focus-visible:ring-healing-green" 
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input 
+                            placeholder="Your Name" 
+                            className="border-healing-green/50 focus-visible:ring-healing-green" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-                <Button type="submit" className="w-full bg-healing-green text-foreground hover:bg-healing-green/90">
-                  Request Free Consultation
-                </Button>
-                <p className="text-sm text-center text-foreground/60 mt-4">
-                  Your information will be kept confidential and will never be shared with third parties.
-                </p>
-              </form>
+                  
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input 
+                            type="email" 
+                            placeholder="Your Email" 
+                            className="border-healing-green/50 focus-visible:ring-healing-green" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input 
+                            type="tel" 
+                            placeholder="Your Phone" 
+                            className="border-healing-green/50 focus-visible:ring-healing-green" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Textarea 
+                            placeholder="How can Asli help you? Tell us about your needs." 
+                            className="min-h-[120px] border-healing-green/50 focus-visible:ring-healing-green" 
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-healing-green text-foreground hover:bg-healing-green/90"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Request Free Consultation"}
+                  </Button>
+                  
+                  <p className="text-sm text-center text-foreground/60 mt-4">
+                    Your information will be kept confidential and will never be shared with third parties.
+                  </p>
+                </form>
+              </Form>
             </div>
           </div>
         </div>
