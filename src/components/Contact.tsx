@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { SuccessAnimation } from "@/components/ui/success-animation";
 import {
   Form,
   FormControl,
@@ -40,6 +41,7 @@ type ContactSubmission = {
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   
   // Initialize form with react-hook-form and zod validation
   const form = useForm<FormValues>({
@@ -68,12 +70,9 @@ const Contact = () => {
 
       if (error) throw error;
 
-      // Show success message
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you as soon as possible.",
-      });
-
+      // Show success animation instead of toast
+      setShowSuccess(true);
+      
       // Reset the form
       form.reset();
     } catch (error) {
@@ -88,6 +87,15 @@ const Contact = () => {
     }
   };
 
+  const handleAnimationComplete = () => {
+    // Hide the animation after it completes and show a toast
+    setShowSuccess(false);
+    toast({
+      title: "Message sent successfully!",
+      description: "We'll get back to you as soon as possible.",
+    });
+  };
+
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6 md:px-12">
@@ -100,142 +108,151 @@ const Contact = () => {
         </div>
         
         <div className="max-w-5xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-md overflow-hidden">
-          <div className="grid md:grid-cols-2">
-            <div className="p-8 md:p-12 healing-gradient rounded-l-2xl flex flex-col justify-center">
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              
-              <div className="space-y-6 text-foreground/80 mb-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-healing-green/30 flex items-center justify-center">
-                    <Mail className="h-5 w-5 text-healing-green" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p>contact@attainenergyhealing.com</p>
-                  </div>
-                </div>
+          {showSuccess ? (
+            <div className="flex items-center justify-center min-h-[500px]">
+              <SuccessAnimation 
+                className="py-12"
+                onComplete={handleAnimationComplete} 
+              />
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 md:p-12 healing-gradient rounded-l-2xl flex flex-col justify-center">
+                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
                 
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-healing-blue/30 flex items-center justify-center">
-                    <Phone className="h-5 w-5 text-healing-blue" />
+                <div className="space-y-6 text-foreground/80 mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-healing-green/30 flex items-center justify-center">
+                      <Mail className="h-5 w-5 text-healing-green" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Email</p>
+                      <p>contact@attainenergyhealing.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    <p>(555) 123-4567</p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-healing-blue/30 flex items-center justify-center">
+                      <Phone className="h-5 w-5 text-healing-blue" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Phone</p>
+                      <p>(555) 123-4567</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-healing-orange/30 flex items-center justify-center">
-                    <Clock className="h-5 w-5 text-healing-orange" />
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-healing-orange/30 flex items-center justify-center">
+                      <Clock className="h-5 w-5 text-healing-orange" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Hours</p>
+                      <p>Mon-Fri, 9am-5pm</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium">Hours</p>
-                    <p>Mon-Fri, 9am-5pm</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-healing-violet/30 flex items-center justify-center">
-                    <MapPin className="h-5 w-5 text-healing-violet" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Location</p>
-                    <p>Virtual & In-person sessions available</p>
+                  
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-healing-violet/30 flex items-center justify-center">
+                      <MapPin className="h-5 w-5 text-healing-violet" />
+                    </div>
+                    <div>
+                      <p className="font-medium">Location</p>
+                      <p>Virtual & In-person sessions available</p>
+                    </div>
                   </div>
                 </div>
               </div>
+              
+              <div className="p-8 md:p-12">
+                <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              placeholder="Your Name" 
+                              className="border-healing-green/50 focus-visible:ring-healing-green" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              type="email" 
+                              placeholder="Your Email" 
+                              className="border-healing-green/50 focus-visible:ring-healing-green" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input 
+                              type="tel" 
+                              placeholder="Your Phone" 
+                              className="border-healing-green/50 focus-visible:ring-healing-green" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Textarea 
+                              placeholder="How can Asli help you? Tell us about your needs." 
+                              className="min-h-[120px] border-healing-green/50 focus-visible:ring-healing-green" 
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-healing-green text-foreground hover:bg-healing-green/90"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Request Free Consultation"}
+                    </Button>
+                    
+                    <p className="text-sm text-center text-foreground/60 mt-4">
+                      Your information will be kept confidential and will never be shared with third parties.
+                    </p>
+                  </form>
+                </Form>
+              </div>
             </div>
-            
-            <div className="p-8 md:p-12">
-              <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input 
-                            placeholder="Your Name" 
-                            className="border-healing-green/50 focus-visible:ring-healing-green" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input 
-                            type="email" 
-                            placeholder="Your Email" 
-                            className="border-healing-green/50 focus-visible:ring-healing-green" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input 
-                            type="tel" 
-                            placeholder="Your Phone" 
-                            className="border-healing-green/50 focus-visible:ring-healing-green" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="How can Asli help you? Tell us about your needs." 
-                            className="min-h-[120px] border-healing-green/50 focus-visible:ring-healing-green" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-healing-green text-foreground hover:bg-healing-green/90"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Sending..." : "Request Free Consultation"}
-                  </Button>
-                  
-                  <p className="text-sm text-center text-foreground/60 mt-4">
-                    Your information will be kept confidential and will never be shared with third parties.
-                  </p>
-                </form>
-              </Form>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
