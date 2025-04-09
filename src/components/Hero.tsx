@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, Globe, Instagram } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   const orbsContainer = useRef<HTMLDivElement>(null);
@@ -211,62 +211,24 @@ const Hero = () => {
       />
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
-          <div className="max-w-3xl">
-            <span className="text-primary font-medium mb-3 block">Attain Energy Healing Services</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Embark on Your Journey to <br />
-              <span className="text-gradient-pastel">Holistic Well-being</span>
-            </h1>
-            <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl">
-              Experience personalized energy healing and life coaching tailored to rejuvenate your mind, body, and spirit. 
-              Specialized services for professional career mothers dealing with stress, anxiety, and trauma.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-healing-green hover:bg-healing-green/90 text-foreground px-8 py-6 text-lg group rounded-md">
-                Schedule Your Free Consultation
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" className="border-healing-violet text-foreground hover:bg-healing-violet/10 px-8 py-6 text-lg rounded-md">
-                Learn About Our Services
-              </Button>
-            </div>
-          </div>
-
-          {/* New: Credentials Section inspired by the image */}
-          <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-gray-100 max-w-md">
-            <div className="mb-6">
-              <h2 className="text-3xl font-medium text-gray-700">Asli Selcuk</h2>
-              <div className="flex items-center mt-2">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-green-300 to-green-500 flex items-center justify-center text-white mr-3">
-                  <span className="text-xs font-bold">WIID</span>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-700">energy medicine specialist</p>
-                  <p className="text-sm text-red-500">certified with WORLD INSTITUTE FOR INCURABLE DISEASES</p>
-                  <p className="text-xs text-gray-500">Where Wisdom and Miracles Prolong Life</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-3 mt-6">
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-gray-500" />
-                <span className="text-gray-700">+1(425)241-2947</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Globe className="h-5 w-5 text-gray-500" />
-                <a href="https://attainenergyhealing.com" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary">
-                  attainenergyhealing.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Instagram className="h-5 w-5 text-gray-500" />
-                <a href="https://instagram.com/attainyourbestlife" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary">
-                  @attainyourbestlife
-                </a>
-              </div>
-            </div>
+        <div className="max-w-3xl">
+          <span className="text-primary font-medium mb-3 block">Attain Energy Healing Services</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Embark on Your Journey to <br />
+            <span className="text-gradient-pastel">Holistic Well-being</span>
+          </h1>
+          <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl">
+            Experience personalized energy healing and life coaching tailored to rejuvenate your mind, body, and spirit. 
+            Specialized services for professional career mothers dealing with stress, anxiety, and trauma.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button className="bg-healing-green hover:bg-healing-green/90 text-foreground px-8 py-6 text-lg group rounded-md">
+              Schedule Your Free Consultation
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button variant="outline" className="border-healing-violet text-foreground hover:bg-healing-violet/10 px-8 py-6 text-lg rounded-md">
+              Learn About Our Services
+            </Button>
           </div>
         </div>
       </div>
@@ -275,3 +237,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
