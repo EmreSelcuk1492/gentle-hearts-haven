@@ -220,7 +220,7 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl">
             We are all in an ocean of energy, constantly interacting with each other and the world. 
             I help you explore beyond the physically observable to address the root causes of your 
-            challenges - physical, energetic, emotional, mental, and spiritual.
+            challenges - <strong className="font-bold">physical, energetic, emotional, mental, and spiritual</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button className="bg-healing-green hover:bg-healing-green/90 text-foreground px-8 py-6 text-lg group rounded-md">
