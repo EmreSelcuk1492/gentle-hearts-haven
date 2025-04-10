@@ -40,7 +40,7 @@ const Navbar = () => {
         <img 
           src="/lovable-uploads/43ef3823-8e8b-4c03-980a-3943dd150fd2.png" 
           alt="Attain Energy Healing logo" 
-          className="h-10 w-auto" 
+          className="h-10 w-auto rounded-md" 
         />
         <div className="flex flex-col">
           <span className="font-semibold text-xl">Attain Energy Healing Services</span>
