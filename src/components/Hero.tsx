@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
@@ -24,7 +23,6 @@ const Hero = () => {
       const containerWidth = orbsContainer.current.offsetWidth;
       const containerHeight = orbsContainer.current.offsetHeight;
       
-      // Colors from your theme
       const colors = [
         '#C5E1A5', // healing-green
         '#FFCC80', // healing-orange
@@ -33,28 +31,21 @@ const Hero = () => {
         '#B3E5FC'  // healing-blue
       ];
       
-      // Create a new orb
       const orb = document.createElement('div');
       
-      // Random size between 2rem and 8rem
       const sizeInRem = 2 + Math.random() * 6;
-      const size = sizeInRem * 16; // Convert rem to px
+      const size = sizeInRem * 16;
       
-      // Random position within container
       const x = Math.random() * (containerWidth - size);
       const y = Math.random() * (containerHeight - size);
       
-      // Random speed between -0.2 and 0.2
       const speedX = (Math.random() - 0.5) * 0.4;
       const speedY = (Math.random() - 0.5) * 0.4;
       
-      // Random color from our palette
       const color = colors[Math.floor(Math.random() * colors.length)];
       
-      // Initial opacity
       const initialOpacity = isInitial ? (0.4 + Math.random() * 0.3) : 0;
       
-      // Apply styles
       Object.assign(orb.style, {
         position: 'absolute',
         width: `${sizeInRem}rem`,
@@ -72,7 +63,6 @@ const Hero = () => {
       
       orbsContainer.current.appendChild(orb);
       
-      // Start with a ripple effect if not initial
       if (!isInitial) {
         setTimeout(() => {
           orb.style.opacity = (0.4 + Math.random() * 0.3).toString();
@@ -80,7 +70,6 @@ const Hero = () => {
         }, 10);
       }
       
-      // Store the orb data for animation
       orbsArray.current.push({
         element: orb,
         x,
@@ -97,11 +86,9 @@ const Hero = () => {
     const createInitialOrbs = () => {
       if (!orbsContainer.current) return;
       
-      // Clear any existing orbs
       orbsContainer.current.innerHTML = '';
       orbsArray.current = [];
       
-      // Create initial set of orbs
       for (let i = 0; i < 6; i++) {
         createOrb(true);
       }
@@ -109,7 +96,6 @@ const Hero = () => {
     
     createInitialOrbs();
     
-    // Animate orbs
     let animationFrameId: number;
     
     const animateOrbs = () => {
@@ -119,11 +105,9 @@ const Hero = () => {
       const containerHeight = orbsContainer.current.offsetHeight;
       
       orbsArray.current.forEach((orb, index) => {
-        // Update position
         orb.x += orb.speedX;
         orb.y += orb.speedY;
         
-        // Bounce off edges
         if (orb.x <= 0 || orb.x + orb.size >= containerWidth) {
           orb.speedX = -orb.speedX;
           orb.x = Math.max(0, Math.min(containerWidth - orb.size, orb.x));
@@ -134,20 +118,16 @@ const Hero = () => {
           orb.y = Math.max(0, Math.min(containerHeight - orb.size, orb.y));
         }
         
-        // Add slight randomness to speed
         orb.speedX += (Math.random() - 0.5) * 0.02;
         orb.speedY += (Math.random() - 0.5) * 0.02;
         
-        // Limit max speed
         const maxSpeed = 0.8;
         orb.speedX = Math.max(-maxSpeed, Math.min(maxSpeed, orb.speedX));
         orb.speedY = Math.max(-maxSpeed, Math.min(maxSpeed, orb.speedY));
         
-        // Update DOM element position
         orb.element.style.left = `${orb.x}px`;
         orb.element.style.top = `${orb.y}px`;
         
-        // If orb is growing (new), update its opacity and size
         if (orb.growing && orb.opacity < 0.7) {
           orb.opacity = Math.min(orb.opacity + 0.01, 0.7);
           orb.element.style.opacity = orb.opacity.toString();
@@ -157,21 +137,16 @@ const Hero = () => {
       animationFrameId = requestAnimationFrame(animateOrbs);
     };
     
-    // Start animation
     animateOrbs();
     
-    // Add new orbs periodically
     const addOrbInterval = setInterval(() => {
-      // Remove an old orb if we have too many
       if (orbsArray.current.length >= 12) {
         const oldOrbIndex = Math.floor(Math.random() * orbsArray.current.length);
         const oldOrb = orbsArray.current[oldOrbIndex];
         
-        // Fade out the orb
         oldOrb.element.style.opacity = '0';
         oldOrb.element.style.transform = 'scale(0.5)';
         
-        // Remove from DOM and array after transition
         setTimeout(() => {
           if (orbsContainer.current && oldOrb.element.parentNode === orbsContainer.current) {
             orbsContainer.current.removeChild(oldOrb.element);
@@ -180,11 +155,9 @@ const Hero = () => {
         }, 1500);
       }
       
-      // Create a new orb with ripple effect
       createOrb(false);
-    }, 3000); // Add a new orb every 3 seconds
+    }, 3000);
     
-    // Handle window resize
     const handleResize = () => {
       cancelAnimationFrame(animationFrameId);
       createInitialOrbs();
@@ -193,7 +166,6 @@ const Hero = () => {
     
     window.addEventListener('resize', handleResize);
     
-    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId);
       clearInterval(addOrbInterval);
@@ -201,9 +173,15 @@ const Hero = () => {
     };
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-[#f9f9f0]">
-      {/* Dynamic Animated Orbs Container */}
       <div 
         ref={orbsContainer} 
         className="absolute inset-0 pointer-events-none overflow-hidden" 
@@ -223,11 +201,18 @@ const Hero = () => {
             challenges - <strong className="font-bold">physical, energetic, emotional, mental, and spiritual</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="bg-healing-green hover:bg-healing-green/90 text-foreground px-8 py-6 text-lg group rounded-md">
+            <Button 
+              className="bg-healing-green hover:bg-healing-green/90 text-foreground px-8 py-6 text-lg group rounded-md"
+              onClick={() => scrollToSection('contact')}
+            >
               Begin Your Healing Journey
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" className="border-healing-violet text-foreground hover:bg-healing-violet/10 px-8 py-6 text-lg rounded-md">
+            <Button 
+              variant="outline" 
+              className="border-healing-violet text-foreground hover:bg-healing-violet/10 px-8 py-6 text-lg rounded-md"
+              onClick={() => scrollToSection('my-journey')}
+            >
               Read My Story
             </Button>
           </div>

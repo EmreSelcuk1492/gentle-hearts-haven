@@ -7,7 +7,7 @@ const About = () => {
     <section id="about" className="py-20 healing-gradient">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div id="my-journey">
             <span className="text-primary font-medium mb-2 block">My Journey</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Asli Selcuk</h2>
             <p className="text-lg text-foreground/80 mb-6">
