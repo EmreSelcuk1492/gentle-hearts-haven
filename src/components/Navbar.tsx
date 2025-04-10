@@ -38,9 +38,9 @@ const Navbar = () => {
     }`}>
       <div className="flex items-center gap-2">
         <img 
-          src="/lovable-uploads/737d3562-5e6c-4668-bdb7-fc6b822ef598.png" 
-          alt="WIID logo" 
-          className="h-6 w-auto" 
+          src="/lovable-uploads/43ef3823-8e8b-4c03-980a-3943dd150fd2.png" 
+          alt="Attain Energy Healing logo" 
+          className="h-10 w-auto" 
         />
         <div className="flex flex-col">
           <span className="font-semibold text-xl">Attain Energy Healing Services</span>
