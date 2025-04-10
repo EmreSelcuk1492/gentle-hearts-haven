@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Heart, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +37,11 @@ const Navbar = () => {
       isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
     }`}>
       <div className="flex items-center gap-2">
-        <Heart className="text-healing-violet h-6 w-6" />
+        <img 
+          src="/lovable-uploads/737d3562-5e6c-4668-bdb7-fc6b822ef598.png" 
+          alt="WIID logo" 
+          className="h-6 w-auto" 
+        />
         <div className="flex flex-col">
           <span className="font-semibold text-xl">Attain Energy Healing Services</span>
           <span className="text-xs text-foreground/70">by Asli Selcuk</span>
