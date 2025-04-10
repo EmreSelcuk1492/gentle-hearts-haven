@@ -28,39 +28,39 @@ const ServiceCard = ({ title, description, icon: Icon, color }: { title: string;
 const Services = () => {
   const serviceItems = [
     {
-      title: "Energy Healing Sessions",
-      description: "Address physical, emotional, and mental imbalances through tailored energy healing techniques customized for your unique needs.",
+      title: "Be Well Science® Healing",
+      description: "Experience the methodical energy medicine modality that addresses root causes of physical, emotional, and mental challenges.",
       icon: Sparkles,
       color: "#C5E1A5" // healing-green
     },
     {
-      title: "Stress & Anxiety Relief",
-      description: "Learn practical techniques to calm your nervous system and develop resilience to workplace and family stressors.",
+      title: "Mental & Emotional Balance",
+      description: "Find relief from persistent anxiety, OCD, ADHD, and emotional patterns that haven't responded to conventional approaches.",
       icon: Brain,
       color: "#D1C4E9" // healing-violet
     },
     {
-      title: "Trauma Resolution",
-      description: "Gentle approaches to process and release past traumas that may be affecting your present well-being and relationships.",
+      title: "Physical Wellbeing Support",
+      description: "Address musculoskeletal issues, heart health concerns, eye health, women's health, and post-surgery recovery support.",
       icon: Heart,
       color: "#FFCC80" // healing-orange
     },
     {
-      title: "Life Balance Coaching",
-      description: "Create sustainable strategies for maintaining harmony between your career ambitions and personal wellbeing.",
-      icon: Compass,
+      title: "Relationship Harmony",
+      description: "Discover why relationship patterns repeat and learn how to transform them through energy-based interventions.",
+      icon: Users,
       color: "#B3E5FC" // healing-blue
     },
     {
-      title: "Mindfulness Training",
-      description: "Learn practical mindfulness techniques to stay centered amidst your busy professional and family life.",
+      title: "Spiritual Connection",
+      description: "Reconnect with your higher self, inner peace, and purpose through guided meditations and energy practices.",
       icon: Leaf,
       color: "#FFF59D" // healing-yellow
     },
     {
-      title: "Workshops & Group Sessions",
-      description: "Join specialized group programs designed specifically for professional mothers seeking community healing.",
-      icon: Users,
+      title: "Personalized HealPlan",
+      description: "Receive a comprehensive plan addressing all aspects of your being for meaningful, long-lasting transformation.",
+      icon: Compass,
       color: "#C5E1A5" // healing-green
     },
   ];
@@ -69,10 +69,10 @@ const Services = () => {
     <section id="services" className="py-20">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <span className="text-primary font-medium mb-2 block">Our Offerings</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Healing Services</h2>
+          <span className="text-primary font-medium mb-2 block">My Offerings</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Beyond Conventional Approaches</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Specialized techniques and programs to address the unique challenges faced by career mothers.
+            When conventional methods haven't provided relief, explore healing techniques that address the energy behind your challenges.
           </p>
         </div>
         
@@ -90,7 +90,7 @@ const Services = () => {
         
         <div className="mt-16 text-center">
           <Button className="bg-healing-green text-foreground hover:bg-healing-green/90 px-8 py-6 text-lg">
-            View All Services
+            Explore My Approach
           </Button>
         </div>
       </div>

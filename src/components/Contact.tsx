@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -95,10 +94,11 @@ const Contact = () => {
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <span className="text-primary font-medium mb-2 block">Ready to Transform Your Life?</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Begin Your Healing Journey Today</h2>
+          <span className="text-primary font-medium mb-2 block">Let's Connect</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">It Would Be My Privilege to Serve You</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Take the first step toward reclaiming your balance, peace, and joy. Reach out to schedule your free consultation.
+            Whether you're struggling with physical ailments that won't resolve, emotional patterns that repeat, 
+            or simply seeking greater balance in your life, I'm here to help you explore beyond the visible.
           </p>
         </div>
         
@@ -114,7 +114,7 @@ const Contact = () => {
           ) : (
             <div className="grid md:grid-cols-2">
               <div className="p-8 md:p-12 healing-gradient rounded-l-2xl flex flex-col justify-center">
-                <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-bold mb-6">A Personal Connection</h3>
                 
                 <div className="space-y-6 text-foreground/80 mb-8">
                   <div className="flex items-center gap-4">
@@ -123,7 +123,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Email</p>
-                      <p>contact@attainenergyhealing.com</p>
+                      <p>asli@bewellscience.com</p>
                     </div>
                   </div>
                   
@@ -142,8 +142,8 @@ const Contact = () => {
                       <Clock className="h-5 w-5 text-healing-orange" />
                     </div>
                     <div>
-                      <p className="font-medium">Hours</p>
-                      <p>Mon-Fri, 9am-5pm</p>
+                      <p className="font-medium">Session Times</p>
+                      <p>Flexible scheduling to meet your needs</p>
                     </div>
                   </div>
                   
@@ -153,14 +153,21 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium">Location</p>
-                      <p>Virtual & In-person sessions available</p>
+                      <p>Virtual & In-person options available</p>
                     </div>
                   </div>
+                </div>
+
+                <div className="mt-6">
+                  <p className="text-foreground/80 italic">
+                    "Step by step, intention by intention we build our future, and it can either be more of 
+                    the historical patterns or brand new horizons that we could not even fathom interacting with."
+                  </p>
                 </div>
               </div>
               
               <div className="p-8 md:p-12">
-                <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+                <h3 className="text-2xl font-bold mb-6">Start Your Journey</h3>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField
@@ -223,7 +230,7 @@ const Contact = () => {
                         <FormItem>
                           <FormControl>
                             <Textarea 
-                              placeholder="How can Asli help you? Tell us about your needs." 
+                              placeholder="What challenges have you been facing? How can I help you in your journey?" 
                               className="min-h-[120px] border-healing-green/50 focus-visible:ring-healing-green" 
                               {...field} 
                             />
@@ -238,11 +245,11 @@ const Contact = () => {
                       className="w-full bg-healing-green text-foreground hover:bg-healing-green/90"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Sending..." : "Request Free Consultation"}
+                      {isSubmitting ? "Sending..." : "Connect With Me"}
                     </Button>
                     
                     <p className="text-sm text-center text-foreground/60 mt-4">
-                      Your information will be kept confidential and will never be shared with third parties.
+                      I honor your privacy and will keep all information confidential.
                     </p>
                   </form>
                 </Form>

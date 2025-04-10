@@ -9,26 +9,33 @@ const About = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-primary font-medium mb-2 block">About the Practitioner</span>
+            <span className="text-primary font-medium mb-2 block">My Journey</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Asli Selcuk</h2>
             <p className="text-lg text-foreground/80 mb-6">
-              A licensed energy medicine practitioner with over 15 years of experience in holistic healing, 
-              dedicated to guiding individuals toward balance and self-empowerment through compassionate 
-              and personalized care.
+              I am an observer of life, of humans, of relationships, of families, of patterns, and challenges. 
+              With backgrounds as a CPA and MSc in Finance, I've supported multinational corporations before 
+              discovering my passion for energy healing through my own personal health journey.
+            </p>
+            
+            <p className="text-lg text-foreground/80 mb-6">
+              After struggling with hormonal challenges, disturbed sleep, and emotional obstacles that wouldn't 
+              resolve through conventional means, I discovered the Be Well Science® Energy Medicine Modality. 
+              The transformation in my own life led me to become a certified practitioner, dedicated to helping 
+              others find similar breakthroughs.
             </p>
             
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3">
                 <Award className="h-5 w-5 text-healing-orange" />
-                <span>Certified by International Association of Energy Healers</span>
+                <span>Certified Be Well Science® Energy Medicine Practitioner</span>
               </div>
               <div className="flex items-center gap-3">
                 <Users className="h-5 w-5 text-healing-blue" />
-                <span>Trained under renowned experts in the field</span>
+                <span>Backed by the World Institute For Incurable Diseases team</span>
               </div>
               <div className="flex items-center gap-3">
                 <Star className="h-5 w-5 text-healing-yellow" />
-                <span>Specialized in trauma healing for professional mothers</span>
+                <span>Experience with heart health, ADD, OCD, PTSD, and more</span>
               </div>
             </div>
           </div>
@@ -48,11 +55,11 @@ const About = () => {
       {/* Core Values Section */}
       <div className="container mx-auto px-6 md:px-12 mt-20">
         <div className="text-center mb-12">
-          <span className="text-primary font-medium mb-2 block">Our Approach</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Values</h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Our healing practice is built on fundamental principles that ensure every client 
-            receives the highest quality care and support.
+          <span className="text-primary font-medium mb-2 block">My Philosophy</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Understanding Energy</h2>
+          <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
+            We are energetic beings that have a physical form. What we do, what we think, and who we engage with 
+            day in and day out determines our future. I believe that healing involves addressing all aspects of your being.
           </p>
         </div>
         
@@ -61,9 +68,9 @@ const About = () => {
             <div className="w-14 h-14 rounded-full bg-healing-green/30 flex items-center justify-center mb-4">
               <div className="h-7 w-7 text-healing-green flex items-center justify-center">❤️</div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Compassionate Care</h3>
+            <h3 className="text-xl font-semibold mb-2">Beyond Physical</h3>
             <p className="text-foreground/70">
-              Judgment-free space where you can express your challenges and find gentle guidance.
+              Addressing what lies beyond our five senses to reach the root causes of persistent challenges.
             </p>
           </div>
           
@@ -71,9 +78,9 @@ const About = () => {
             <div className="w-14 h-14 rounded-full bg-healing-orange/30 flex items-center justify-center mb-4">
               <div className="h-7 w-7 text-healing-orange flex items-center justify-center">🌿</div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Holistic Methods</h3>
+            <h3 className="text-xl font-semibold mb-2">Whole Being Approach</h3>
             <p className="text-foreground/70">
-              Techniques addressing the mind, body, and spirit connection for complete balance.
+              Treating you as a physical, energetic, emotional, mental, and spiritual being for complete healing.
             </p>
           </div>
           
@@ -81,9 +88,9 @@ const About = () => {
             <div className="w-14 h-14 rounded-full bg-healing-blue/30 flex items-center justify-center mb-4">
               <div className="h-7 w-7 text-healing-blue flex items-center justify-center">✨</div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Lasting Results</h3>
+            <h3 className="text-xl font-semibold mb-2">Gentle Transformation</h3>
             <p className="text-foreground/70">
-              Not just temporary relief but profound healing that transforms your relationship with stress.
+              Providing methodical, tested protocols while connecting you to inner peace and your higher self.
             </p>
           </div>
           
@@ -91,9 +98,9 @@ const About = () => {
             <div className="w-14 h-14 rounded-full bg-healing-violet/30 flex items-center justify-center mb-4">
               <div className="h-7 w-7 text-healing-violet flex items-center justify-center">🌱</div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Personal Growth</h3>
+            <h3 className="text-xl font-semibold mb-2">Team Collaboration</h3>
             <p className="text-foreground/70">
-              Empower yourself with tools and techniques for continued wellness beyond sessions.
+              For complex cases, I work with the Institute's specialized team to deliver optimal results.
             </p>
           </div>
         </div>
