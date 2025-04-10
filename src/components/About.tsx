@@ -26,11 +26,11 @@ const About = () => {
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3">
                 <Award className="h-5 w-5 text-healing-orange" />
-                <span>Certified by <span className="text-[#65bd1e] font-bold">World</span> <span className="text-[#ea384c] font-bold">Institute</span> <span className="text-[#000000e6] font-bold">for Incurable Diseases</span></span>
+                <span>Certified by <span className="text-[#65bd1e] font-bold">World Institute For</span> <span className="text-[#ea384c] font-bold">Incurable Diseases</span><sup>™</sup> <img src="/lovable-uploads/737d3562-5e6c-4668-bdb7-fc6b822ef598.png" alt="WIID logo" className="inline-block h-5 w-5 ml-1" /></span>
               </div>
               <div className="flex items-center gap-3">
                 <Users className="h-5 w-5 text-healing-blue" />
-                <span>Backed by the World Institute For Incurable Diseases team</span>
+                <span>Backed by the <span className="text-[#65bd1e] font-bold">World Institute For</span> <span className="text-[#ea384c] font-bold">Incurable Diseases</span><sup>™</sup> team</span>
               </div>
               <div className="flex items-center gap-3">
                 <Star className="h-5 w-5 text-healing-yellow" />

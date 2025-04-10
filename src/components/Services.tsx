@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,12 +5,10 @@ import { ArrowRight, Heart, Brain, Leaf, Sparkles, Compass, Users } from 'lucide
 
 const ServiceCard = ({ title, description, icon: Icon, color }: { title: string; description: string; icon: React.ElementType; color: string }) => {
   // Add special styling for BeWell Science
-  const formattedTitle = title.includes("Be Well Science") ? (
+  const formattedTitle = title.includes("BeWell Science") ? (
     <>
-      <span className="text-[#65bd1e] font-bold">Be</span>
-      <span className="text-[#ea384c] font-bold">Well</span>
-      <span className="text-[#000000e6] font-bold"> Science®</span>
-      {title.replace("Be Well Science®", "")}
+      <span className="text-black font-bold">BeWell Science®</span>
+      {title.replace("BeWell Science®", "")}
     </>
   ) : (
     title
@@ -27,16 +24,14 @@ const ServiceCard = ({ title, description, icon: Icon, color }: { title: string;
       </CardHeader>
       <CardContent>
         <p className="text-foreground/70">
-          {description.includes("Be Well Science") ? (
+          {description.includes("BeWell Science") ? (
             <>
-              {description.split("Be Well Science").map((part, index) => {
+              {description.split("BeWell Science").map((part, index) => {
                 return index === 0 ? (
                   <React.Fragment key={index}>{part}</React.Fragment>
                 ) : (
                   <React.Fragment key={index}>
-                    <span className="text-[#65bd1e] font-bold">Be</span>
-                    <span className="text-[#ea384c] font-bold">Well</span>
-                    <span className="text-[#000000e6] font-bold"> Science</span>
+                    <span className="text-black font-bold">BeWell Science</span>
                     {part}
                   </React.Fragment>
                 );
