@@ -4,6 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Heart, Brain, Leaf, Sparkles, Compass, Users } from 'lucide-react';
 
+const FloatingWord = ({ word, color, delay = 0 }: { word: string; color: string; delay?: number }) => {
+  return (
+    <span 
+      className="relative inline-block font-semibold mx-1"
+      style={{ 
+        color, 
+        animation: `float-${Math.floor(Math.random() * 5) + 1} ${30 + Math.random() * 15}s ease-in-out infinite`,
+        animationDelay: `${delay}s`,
+        textShadow: `0 2px 4px ${color}40`
+      }}
+    >
+      {word}
+    </span>
+  );
+};
+
 const ServiceCard = ({ title, description, icon: Icon, color }: { title: string; description: string; icon: React.ElementType; color: string }) => {
   return (
     <Card className="border-t-4 h-full transition-all hover:shadow-md" style={{ borderTopColor: color }}>
@@ -74,6 +90,13 @@ const Services = () => {
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             When conventional methods haven't provided relief, explore healing techniques that address the energy behind your challenges.
           </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            <FloatingWord word="Physical" color="#C5E1A5" delay={0} />
+            <FloatingWord word="Energetic" color="#FFCC80" delay={0.7} />
+            <FloatingWord word="Emotional" color="#D1C4E9" delay={1.2} />
+            <FloatingWord word="Mental" color="#B3E5FC" delay={0.5} />
+            <FloatingWord word="Spiritual" color="#FFF59D" delay={1.8} />
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
