@@ -5,16 +5,47 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ArrowRight, Heart, Brain, Leaf, Sparkles, Compass, Users } from 'lucide-react';
 
 const ServiceCard = ({ title, description, icon: Icon, color }: { title: string; description: string; icon: React.ElementType; color: string }) => {
+  // Add special styling for BeWell Science
+  const formattedTitle = title.includes("Be Well Science") ? (
+    <>
+      <span className="text-[#65bd1e] font-bold">Be</span>
+      <span className="text-[#ea384c] font-bold">Well</span>
+      <span className="text-[#000000e6] font-bold"> Science®</span>
+      {title.replace("Be Well Science®", "")}
+    </>
+  ) : (
+    title
+  );
+
   return (
     <Card className="border-t-4 h-full transition-all hover:shadow-md" style={{ borderTopColor: color }}>
       <CardHeader className="pb-2">
         <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
           <Icon className="w-6 h-6" style={{ color: color }} />
         </div>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl">{formattedTitle}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-foreground/70">{description}</p>
+        <p className="text-foreground/70">
+          {description.includes("Be Well Science") ? (
+            <>
+              {description.split("Be Well Science").map((part, index) => {
+                return index === 0 ? (
+                  <React.Fragment key={index}>{part}</React.Fragment>
+                ) : (
+                  <React.Fragment key={index}>
+                    <span className="text-[#65bd1e] font-bold">Be</span>
+                    <span className="text-[#ea384c] font-bold">Well</span>
+                    <span className="text-[#000000e6] font-bold"> Science</span>
+                    {part}
+                  </React.Fragment>
+                );
+              })}
+            </>
+          ) : (
+            description
+          )}
+        </p>
       </CardContent>
       <CardFooter>
         <Button variant="ghost" className="group p-0 h-auto font-medium" style={{ color }}>

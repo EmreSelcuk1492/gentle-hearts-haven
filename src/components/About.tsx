@@ -18,7 +18,7 @@ const About = () => {
             
             <p className="text-lg text-foreground/80 mb-6">
               After struggling with hormonal challenges, disturbed sleep, and emotional obstacles that wouldn't 
-              resolve through conventional means, I discovered the Be Well Science® Energy Medicine Modality. 
+              resolve through conventional means, I discovered the <span className="text-[#65bd1e] font-bold">Be</span><span className="text-[#ea384c] font-bold">Well</span><span className="text-[#000000e6] font-bold"> Science®</span> Energy Medicine Modality. 
               The transformation in my own life led me to become a certified practitioner, dedicated to helping 
               others find similar breakthroughs.
             </p>
@@ -26,7 +26,7 @@ const About = () => {
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3">
                 <Award className="h-5 w-5 text-healing-orange" />
-                <span>Certified Be Well Science® Energy Medicine Practitioner</span>
+                <span>Certified <span className="text-[#65bd1e] font-bold">Be</span><span className="text-[#ea384c] font-bold">Well</span><span className="text-[#000000e6] font-bold"> Science®</span> Energy Medicine Practitioner</span>
               </div>
               <div className="flex items-center gap-3">
                 <Users className="h-5 w-5 text-healing-blue" />
