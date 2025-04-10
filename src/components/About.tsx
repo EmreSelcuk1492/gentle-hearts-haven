@@ -2,22 +2,6 @@
 import React from 'react';
 import { Award, Users, Star } from 'lucide-react';
 
-const FloatingWord = ({ word, color, delay = 0 }: { word: string; color: string; delay?: number }) => {
-  return (
-    <span 
-      className="relative inline-block font-semibold mx-1"
-      style={{ 
-        color, 
-        animation: `float-${Math.floor(Math.random() * 5) + 1} ${30 + Math.random() * 15}s ease-in-out infinite`,
-        animationDelay: `${delay}s`,
-        textShadow: `0 2px 4px ${color}40`
-      }}
-    >
-      {word}
-    </span>
-  );
-};
-
 const About = () => {
   return (
     <section id="about" className="py-20 healing-gradient">
@@ -76,11 +60,11 @@ const About = () => {
             We are energetic beings that have a physical form. What we do, what we think, and who we engage with 
             day in and day out determines our future. I believe that healing involves addressing all aspects of your being:
             <span className="block my-6 relative min-h-[60px] px-4">
-              <FloatingWord word="Physical" color="#C5E1A5" delay={0} />
-              <FloatingWord word="Energetic" color="#FFCC80" delay={1} />
-              <FloatingWord word="Emotional" color="#D1C4E9" delay={0.5} />
-              <FloatingWord word="Mental" color="#B3E5FC" delay={1.5} />
-              <FloatingWord word="Spiritual" color="#FFF59D" delay={2} />
+              <span className="font-semibold mx-1 text-healing-green">Physical</span>
+              <span className="font-semibold mx-1 text-healing-orange">Energetic</span>
+              <span className="font-semibold mx-1 text-healing-violet">Emotional</span>
+              <span className="font-semibold mx-1 text-healing-blue">Mental</span>
+              <span className="font-semibold mx-1 text-healing-yellow">Spiritual</span>
             </span>
           </p>
         </div>
@@ -90,7 +74,7 @@ const About = () => {
             <div className="w-14 h-14 rounded-full bg-healing-green/30 flex items-center justify-center mb-4">
               <div className="h-7 w-7 text-healing-green flex items-center justify-center">❤️</div>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Beyond <FloatingWord word="Physical" color="#C5E1A5" /></h3>
+            <h3 className="text-xl font-semibold mb-2">Beyond <span className="font-semibold text-healing-green">Physical</span></h3>
             <p className="text-foreground/70">
               Addressing what lies beyond our five senses to reach the root causes of persistent challenges.
             </p>
@@ -102,7 +86,7 @@ const About = () => {
             </div>
             <h3 className="text-xl font-semibold mb-2">Whole Being Approach</h3>
             <p className="text-foreground/70">
-              Treating you as a <FloatingWord word="Physical" color="#C5E1A5" />, <FloatingWord word="Energetic" color="#FFCC80" />, <FloatingWord word="Emotional" color="#D1C4E9" />, <FloatingWord word="Mental" color="#B3E5FC" />, and <FloatingWord word="Spiritual" color="#FFF59D" /> being for complete healing.
+              Treating you as a <span className="font-semibold text-healing-green">Physical</span>, <span className="font-semibold text-healing-orange">Energetic</span>, <span className="font-semibold text-healing-violet">Emotional</span>, <span className="font-semibold text-healing-blue">Mental</span>, and <span className="font-semibold text-healing-yellow">Spiritual</span> being for complete healing.
             </p>
           </div>
           
