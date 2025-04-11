@@ -60,10 +60,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Attempting to send email to: ThreeClairs@outlook.com");
 
-    // Changed: Using ThreeClairs@outlook.com as both the sender and recipient
-    // to work within Resend's free tier restrictions
+    // Using Resend's default domain which is allowed without verification
     const emailResponse = await resend.emails.send({
-      from: "ThreeClairs@outlook.com",
+      from: "BeWell Contact Form <onboarding@resend.dev>",
       to: ["ThreeClairs@outlook.com"],
       subject: `New Contact Form Submission from ${submission.name}`,
       html: emailContent,
