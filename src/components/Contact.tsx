@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -52,7 +53,8 @@ const Contact = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
+      // Step 1: Insert the submission into the database
+      const { data: insertedData, error } = await supabase
         .from('contact_submissions')
         .insert({
           name: data.name,
@@ -60,12 +62,25 @@ const Contact = () => {
           phone: data.phone,
           country_code: '+1',
           message: data.message,
-        } as ContactSubmission);
+        } as ContactSubmission)
+        .select();
 
       if (error) throw error;
+      
+      // Step 2: Trigger notification email
+      if (insertedData && insertedData.length > 0) {
+        try {
+          await supabase.functions.invoke('notify-contact-submission', {
+            body: insertedData[0],
+          });
+          console.log('Notification sent successfully');
+        } catch (notifyError) {
+          console.error('Failed to send notification:', notifyError);
+          // We don't throw here as we still want to show success for the form submission
+        }
+      }
 
       setShowSuccess(true);
-      
       form.reset();
     } catch (error) {
       console.error("Error submitting form:", error);
