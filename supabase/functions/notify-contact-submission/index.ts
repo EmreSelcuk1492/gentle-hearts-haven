@@ -60,12 +60,14 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Attempting to send email to: ThreeClairs@outlook.com");
 
-    // Send notification email to the client
+    // Changed: Using ThreeClairs@outlook.com as both the sender and recipient
+    // to work within Resend's free tier restrictions
     const emailResponse = await resend.emails.send({
-      from: "Contact Form Notification <onboarding@resend.dev>",
+      from: "ThreeClairs@outlook.com",
       to: ["ThreeClairs@outlook.com"],
       subject: `New Contact Form Submission from ${submission.name}`,
       html: emailContent,
+      reply_to: submission.email, // Enable direct replies to the submitter
     });
 
     console.log("Email response:", JSON.stringify(emailResponse));
