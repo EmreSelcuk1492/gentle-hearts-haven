@@ -53,6 +53,8 @@ const Contact = () => {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
+      console.log("Submitting form data:", data);
+      
       // Step 1: Insert the submission into the database
       const { data: insertedData, error } = await supabase
         .from('contact_submissions')
@@ -67,13 +69,22 @@ const Contact = () => {
 
       if (error) throw error;
       
+      console.log("Database insertion successful:", insertedData);
+      
       // Step 2: Trigger notification email
       if (insertedData && insertedData.length > 0) {
         try {
-          await supabase.functions.invoke('notify-contact-submission', {
+          console.log("Invoking notification function with data:", insertedData[0]);
+          
+          const notifyResponse = await supabase.functions.invoke('notify-contact-submission', {
             body: insertedData[0],
           });
-          console.log('Notification sent successfully');
+          
+          console.log('Notification response:', notifyResponse);
+          
+          if (notifyResponse.error) {
+            console.error('Notification function returned an error:', notifyResponse.error);
+          }
         } catch (notifyError) {
           console.error('Failed to send notification:', notifyError);
           // We don't throw here as we still want to show success for the form submission
