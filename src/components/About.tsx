@@ -42,7 +42,7 @@ const About = () => {
           <div className="flex justify-center">
             <div className="relative w-72 h-72 rounded-full overflow-hidden border-4 border-healing-violet/30 shadow-xl">
               <img 
-                src="/lovable-uploads/cc0bcde2-c47e-4c59-b9bd-871977f5ec20.png" 
+                src="/lovable-uploads/f5460b47-f1b5-4610-8874-4832187d1093.png" 
                 alt="Asli Selcuk - Energy Healer" 
                 className="w-full h-full object-cover"
               />
