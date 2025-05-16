@@ -25,9 +25,13 @@ export function usePostHog(): PostHogHookResult {
         // Initialize PostHog with the API key
         posthog.init(data.apiKey, {
           api_host: 'https://app.posthog.com',
-          // Enable session recording using correct property
-          session_recording: true,
+          // Configure session recording according to PostHog's API
           capture_pageview: true,
+          persistence: 'localStorage',
+          autocapture: {
+            element_attrs_include: ['data-ph-capture'],
+            css_selector_blacklist: ['[data-ph-ignore]']
+          },
           // You can add more configuration options here
         });
 
