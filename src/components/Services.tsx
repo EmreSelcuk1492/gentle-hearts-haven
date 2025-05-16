@@ -91,10 +91,19 @@ const ServiceCard = ({
         />
       )}
       <Card 
-        className={`border-t-4 h-full transition-all ${isClicked ? 'shadow-lg opacity-90' : 'hover:shadow-lg hover:-translate-y-1'} cursor-pointer`}
-        style={{ borderTopColor: color }}
+        className={`border-t-4 h-full transition-all ${isClicked ? 'shadow-lg opacity-90 translate-y-2 bg-gradient-to-b from-white to-gray-100' : 'hover:shadow-lg hover:-translate-y-1'} cursor-pointer relative overflow-hidden`}
+        style={{ 
+          borderTopColor: color,
+          boxShadow: isClicked ? `0 4px 12px ${color}40` : ''
+        }}
         onClick={handleInterestClick}
       >
+        {isClicked && (
+          <div 
+            className="absolute inset-0 opacity-10 pointer-events-none"
+            style={{ backgroundColor: color }}
+          />
+        )}
         <CardHeader className="pb-2">
           <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
             <Icon className="w-6 h-6" style={{ color: color }} />
