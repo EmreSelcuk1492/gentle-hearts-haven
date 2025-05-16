@@ -100,7 +100,7 @@ const Contact = () => {
                             />
                             <Button 
                               type="submit" 
-                              className="bg-healing-green text-foreground hover:bg-healing-green/90 shrink-0"
+                              className="bg-[#d8ebc3] text-black hover:bg-[#c5e1a5] rounded-full px-6"
                               disabled={isSubmitting}
                             >
                               {isSubmitting ? "Subscribing..." : "Subscribe"}

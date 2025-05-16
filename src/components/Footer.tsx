@@ -58,7 +58,7 @@ const Footer = () => {
             <p className="text-foreground/70 mb-4">Stay updated with healing tips and event announcements</p>
             <div className="flex gap-2">
               <Input placeholder="Your email" className="border-healing-green/50 focus-visible:ring-healing-green" />
-              <Button className="bg-healing-green text-foreground hover:bg-healing-green/90 shrink-0">
+              <Button className="bg-[#d8ebc3] text-black hover:bg-[#c5e1a5] rounded-full px-6">
                 Subscribe
               </Button>
             </div>
