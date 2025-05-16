@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import posthog from 'posthog-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -27,8 +26,28 @@ export function usePostHog(): PostHogHookResult {
           api_host: 'https://app.posthog.com',
           capture_pageview: true,
           persistence: 'localStorage',
-          // Remove autocapture options that are causing TypeScript errors
-          // You can add more configuration options here
+          loaded: (posthog) => {
+            // Enable session recording
+            posthog.startSessionRecording();
+          },
+          // Session recording configuration
+          session_recording: {
+            maskAllInputs: true, // Mask all input fields for privacy
+            maskTextSelector: '[data-ph-mask]', // Custom selector for masking text
+          },
+          // Autocapture configuration
+          autocapture: {
+            url_allowlist: ['localhost', 'gentle-hearts-haven'], // Only capture on these domains
+          },
+          // Advanced configuration
+          advanced_disable_decide: false, // Enable feature flags
+          bootstrap: {
+            distinctID: undefined, // Will be set automatically
+            isIdentifiedID: false,
+            featureFlags: {},
+          },
+          // Debug mode in development
+          debug: process.env.NODE_ENV === 'development',
         });
 
         console.log('PostHog initialized successfully');
@@ -43,10 +62,9 @@ export function usePostHog(): PostHogHookResult {
 
     // Cleanup function
     return () => {
-      // PostHog doesn't have a specific shutdown method, but we can release resources
       if (isLoaded) {
         console.log('Cleaning up PostHog resources');
-        // Any cleanup code if needed
+        posthog.stopSessionRecording();
       }
     };
   }, []);

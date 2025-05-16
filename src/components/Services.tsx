@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sparkles, Target, Star, Droplet } from 'lucide-react';
+import { Sparkles, Target, Star } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import confetti from 'canvas-confetti';
 
 interface ServiceCardProps { 
   title: string; 
@@ -13,60 +13,61 @@ interface ServiceCardProps {
   isClicked: boolean;
 }
 
-interface WaterDropProps {
-  color: string;
-  position: { x: number, y: number };
-  onAnimationEnd: () => void;
-}
-
-const WaterDrop = ({ color, position, onAnimationEnd }: WaterDropProps) => {
-  return (
-    <div 
-      className="fixed pointer-events-none z-50 animate-float-1"
-      style={{ 
-        left: position.x,
-        top: position.y,
-        transition: 'all 2s ease-out',
-      }}
-      onAnimationEnd={onAnimationEnd}
-    >
-      <Droplet 
-        size={32} 
-        fill={color} 
-        color={color} 
-        className="animate-bounce opacity-70"
-      />
-    </div>
-  );
-};
-
 const ServiceCard = ({ 
   title, 
   description, 
   icon: Icon, 
   color,
   onInterestClick,
-  isClicked
+  isClicked 
 }: ServiceCardProps) => {
   const { toast } = useToast();
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [showDrop, setShowDrop] = useState(false);
   
   const handleInterestClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isClicked) return;
-    
     // Log interest in this service
     console.log(`User clicked on service: ${title}`);
-    
-    // Set position for the water drop animation
-    setPosition({ x: e.clientX - 16, y: e.clientY - 16 });
-    setShowDrop(true);
     
     // Show toast notification
     toast({
       title: "Thank you for your interest!",
       description: `We've noted your interest in ${title.replace("BeWell Science®", "BeWell Science")}`,
     });
+
+    // Get the card's position
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (rect.left + rect.right) / 2 / window.innerWidth;
+    const y = (rect.top + rect.bottom) / 2 / window.innerHeight;
+
+    // Trigger confetti with the service's color
+    const end = Date.now() + 1000; // 1 second duration
+    const colors = [color];
+
+    (function frame() {
+      confetti({
+        particleCount: 3,
+        angle: 60,
+        spread: 70,
+        origin: { x, y },
+        colors: colors,
+        gravity: 0.8,
+        scalar: 1.2,
+        ticks: 200
+      });
+      confetti({
+        particleCount: 3,
+        angle: 120,
+        spread: 70,
+        origin: { x, y },
+        colors: colors,
+        gravity: 0.8,
+        scalar: 1.2,
+        ticks: 200
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    }());
     
     onInterestClick(e);
   };
@@ -82,87 +83,72 @@ const ServiceCard = ({
   );
 
   return (
-    <>
-      {showDrop && (
-        <WaterDrop 
-          color={color} 
-          position={position} 
-          onAnimationEnd={() => setShowDrop(false)} 
+    <Card 
+      className={`border-t-4 h-full transition-all ${isClicked ? 'shadow-lg opacity-90 translate-y-2 bg-gradient-to-b from-white to-gray-100' : 'hover:shadow-lg hover:-translate-y-1'} cursor-pointer relative overflow-hidden`}
+      style={{ 
+        borderTopColor: color,
+        boxShadow: isClicked ? `0 4px 12px ${color}40` : ''
+      }}
+      onClick={handleInterestClick}
+    >
+      {isClicked && (
+        <div 
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{ backgroundColor: color }}
         />
       )}
-      <Card 
-        className={`border-t-4 h-full transition-all ${isClicked ? 'shadow-lg opacity-90 translate-y-2 bg-gradient-to-b from-white to-gray-100' : 'hover:shadow-lg hover:-translate-y-1'} cursor-pointer relative overflow-hidden`}
-        style={{ 
-          borderTopColor: color,
-          boxShadow: isClicked ? `0 4px 12px ${color}40` : ''
-        }}
-        onClick={handleInterestClick}
-      >
-        {isClicked && (
-          <div 
-            className="absolute inset-0 opacity-10 pointer-events-none"
-            style={{ backgroundColor: color }}
-          />
-        )}
-        <CardHeader className="pb-2">
-          <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
-            <Icon className="w-6 h-6" style={{ color: color }} />
-          </div>
-          <CardTitle className="text-xl">{formattedTitle}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-foreground/70">
-            {description.includes("BeWell Science") ? (
-              <>
-                {description.split("BeWell Science").map((part, index) => {
-                  return index === 0 ? (
-                    <React.Fragment key={index}>{part}</React.Fragment>
-                  ) : (
-                    <React.Fragment key={index}>
-                      <span className="text-black font-bold">BeWell Science</span>
-                      {part}
-                    </React.Fragment>
-                  );
-                })}
-              </>
-            ) : (
-              description
-            )}
-          </p>
-        </CardContent>
-      </Card>
-    </>
+      <CardHeader className="pb-2">
+        <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
+          <Icon className="w-6 h-6" style={{ color: color }} />
+        </div>
+        <CardTitle className="text-xl">{formattedTitle}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-foreground/70">
+          {description.includes("BeWell Science") ? (
+            <>
+              {description.split("BeWell Science").map((part, index) => {
+                return index === 0 ? (
+                  <React.Fragment key={index}>{part}</React.Fragment>
+                ) : (
+                  <React.Fragment key={index}>
+                    <span className="text-black font-bold">BeWell Science</span>
+                    {part}
+                  </React.Fragment>
+                );
+              })}
+            </>
+          ) : (
+            description
+          )}
+        </p>
+      </CardContent>
+    </Card>
   );
 };
 
 const Services = () => {
-  const [clickedServices, setClickedServices] = useState<{[key: string]: boolean}>({});
+  const [selectedService, setSelectedService] = useState<string | null>(null);
   
-  // Load clicked services from sessionStorage on component mount
+  // Load selected service from sessionStorage on component mount
   useEffect(() => {
-    const storedClicks = sessionStorage.getItem('clickedServices');
-    if (storedClicks) {
-      try {
-        setClickedServices(JSON.parse(storedClicks));
-      } catch (error) {
-        console.error("Failed to parse stored clicks:", error);
-        sessionStorage.removeItem('clickedServices');
-      }
+    const storedService = sessionStorage.getItem('selectedService');
+    if (storedService) {
+      setSelectedService(storedService);
     }
   }, []);
   
-  // Update sessionStorage when clicks change
+  // Update sessionStorage when selection changes
   useEffect(() => {
-    if (Object.keys(clickedServices).length > 0) {
-      sessionStorage.setItem('clickedServices', JSON.stringify(clickedServices));
+    if (selectedService) {
+      sessionStorage.setItem('selectedService', selectedService);
+    } else {
+      sessionStorage.removeItem('selectedService');
     }
-  }, [clickedServices]);
+  }, [selectedService]);
 
   const handleServiceClick = (title: string, e: React.MouseEvent<HTMLDivElement>) => {
-    if (!clickedServices[title]) {
-      console.log("Setting clicked service:", title);
-      setClickedServices(prev => ({ ...prev, [title]: true }));
-    }
+    setSelectedService(prev => prev === title ? null : title);
   };
 
   const serviceItems = [
@@ -206,7 +192,7 @@ const Services = () => {
               icon={service.icon}
               color={service.color}
               onInterestClick={(e) => handleServiceClick(service.title, e)}
-              isClicked={!!clickedServices[service.title]}
+              isClicked={selectedService === service.title}
             />
           ))}
         </div>
