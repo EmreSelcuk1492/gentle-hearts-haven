@@ -1,7 +1,7 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sparkles, Target, Star } from 'lucide-react';
+import { Sparkles, Target, Star, Droplet } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 interface ServiceCardProps { 
@@ -9,19 +9,58 @@ interface ServiceCardProps {
   description: string; 
   icon: React.ElementType; 
   color: string;
+  onInterestClick: () => void;
+  isClicked: boolean;
 }
+
+interface WaterDropProps {
+  color: string;
+  position: { x: number, y: number };
+  onAnimationEnd: () => void;
+}
+
+const WaterDrop = ({ color, position, onAnimationEnd }: WaterDropProps) => {
+  return (
+    <div 
+      className="fixed pointer-events-none z-50 animate-float-1"
+      style={{ 
+        left: position.x,
+        top: position.y,
+        transition: 'all 2s ease-out',
+      }}
+      onAnimationEnd={onAnimationEnd}
+    >
+      <Droplet 
+        size={32} 
+        fill={color} 
+        color={color} 
+        className="animate-bounce opacity-70"
+      />
+    </div>
+  );
+};
 
 const ServiceCard = ({ 
   title, 
   description, 
   icon: Icon, 
-  color 
+  color,
+  onInterestClick,
+  isClicked
 }: ServiceCardProps) => {
   const { toast } = useToast();
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [showDrop, setShowDrop] = useState(false);
   
-  const handleInterestClick = () => {
+  const handleInterestClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isClicked) return;
+    
     // Log interest in this service
     console.log(`User clicked on service: ${title}`);
+    
+    // Set position for the water drop animation
+    setPosition({ x: e.clientX - 16, y: e.clientY - 16 });
+    setShowDrop(true);
     
     // Show toast notification
     toast({
@@ -29,8 +68,7 @@ const ServiceCard = ({
       description: `We've noted your interest in ${title.replace("BeWell Science®", "BeWell Science")}`,
     });
     
-    // Here you could implement analytics tracking
-    // Example: track("service_interest", { service: title });
+    onInterestClick();
   };
 
   // Add special styling for BeWell Science
@@ -44,45 +82,77 @@ const ServiceCard = ({
   );
 
   return (
-    <Card 
-      className="border-t-4 h-full transition-all hover:shadow-lg cursor-pointer hover:-translate-y-1" 
-      style={{ borderTopColor: color }}
-      onClick={handleInterestClick}
-    >
-      <CardHeader className="pb-2">
-        <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
-          <Icon className="w-6 h-6" style={{ color: color }} />
-        </div>
-        <CardTitle className="text-xl">{formattedTitle}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-foreground/70">
-          {description.includes("BeWell Science") ? (
-            <>
-              {description.split("BeWell Science").map((part, index) => {
-                return index === 0 ? (
-                  <React.Fragment key={index}>{part}</React.Fragment>
-                ) : (
-                  <React.Fragment key={index}>
-                    <span className="text-black font-bold">BeWell Science</span>
-                    {part}
-                  </React.Fragment>
-                );
-              })}
-            </>
-          ) : (
-            description
-          )}
-        </p>
-      </CardContent>
-    </Card>
+    <>
+      {showDrop && (
+        <WaterDrop 
+          color={color} 
+          position={position} 
+          onAnimationEnd={() => setShowDrop(false)} 
+        />
+      )}
+      <Card 
+        className={`border-t-4 h-full transition-all ${isClicked ? 'shadow-lg opacity-90' : 'hover:shadow-lg hover:-translate-y-1'} cursor-pointer`}
+        style={{ borderTopColor: color }}
+        onClick={handleInterestClick}
+      >
+        <CardHeader className="pb-2">
+          <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
+            <Icon className="w-6 h-6" style={{ color: color }} />
+          </div>
+          <CardTitle className="text-xl">{formattedTitle}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-foreground/70">
+            {description.includes("BeWell Science") ? (
+              <>
+                {description.split("BeWell Science").map((part, index) => {
+                  return index === 0 ? (
+                    <React.Fragment key={index}>{part}</React.Fragment>
+                  ) : (
+                    <React.Fragment key={index}>
+                      <span className="text-black font-bold">BeWell Science</span>
+                      {part}
+                    </React.Fragment>
+                  );
+                })}
+              </>
+            ) : (
+              description
+            )}
+          </p>
+        </CardContent>
+      </Card>
+    </>
   );
 };
 
 const Services = () => {
+  const [clickedServices, setClickedServices] = useState<{[key: string]: boolean}>({});
+  
+  // Load clicked services from sessionStorage on component mount
+  useEffect(() => {
+    const storedClicks = sessionStorage.getItem('clickedServices');
+    if (storedClicks) {
+      setClickedServices(JSON.parse(storedClicks));
+    }
+  }, []);
+  
+  // Update sessionStorage when clicks change
+  useEffect(() => {
+    if (Object.keys(clickedServices).length > 0) {
+      sessionStorage.setItem('clickedServices', JSON.stringify(clickedServices));
+    }
+  }, [clickedServices]);
+
+  const handleServiceClick = (title: string) => {
+    if (!clickedServices[title]) {
+      setClickedServices(prev => ({ ...prev, [title]: true }));
+    }
+  };
+
   const serviceItems = [
     {
-      title: "Be Well Science® Healing Sessions",
+      title: "BeWell Science® Healing Sessions",
       description: "Root-cause energy medicine that clears physical, emotional, and mental blockages. Ideal for pain that lingers despite treatment, chronic stress, hormonal shifts, or \"mystery\" symptoms that defy conventional tests.",
       icon: Sparkles,
       color: "#C5E1A5" // healing-green
@@ -120,6 +190,8 @@ const Services = () => {
               description={service.description}
               icon={service.icon}
               color={service.color}
+              onInterestClick={() => handleServiceClick(service.title)}
+              isClicked={!!clickedServices[service.title]}
             />
           ))}
         </div>
