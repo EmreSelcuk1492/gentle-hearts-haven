@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Award, Users, Star } from 'lucide-react';
+import { Award, Users, Star, ExternalLink } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const About = () => {
   return (
@@ -28,7 +29,15 @@ const About = () => {
                 <div className="w-8 mr-3 flex justify-center">
                   <img src="/lovable-uploads/737d3562-5e6c-4668-bdb7-fc6b822ef598.png" alt="WIID logo" className="h-8 w-auto ml-1" />
                 </div>
-                <span>Certified by <a href="https://www.wiidglobal.com/" target="_blank" rel="noopener noreferrer" className="hover:underline"><span className="text-[#65bd1e] font-bold">World Institute For</span> <span className="text-[#ea384c] font-bold">Incurable Diseases</span><sup>™</sup></a></span>
+                <span>Certified by </span>
+                <Button 
+                  variant="link" 
+                  className="px-1 h-auto flex items-center gap-1" 
+                  onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}
+                >
+                  <span className="text-[#65bd1e] font-bold">World Institute For</span> <span className="text-[#ea384c] font-bold">Incurable Diseases</span><sup>™</sup>
+                  <ExternalLink className="h-3 w-3" />
+                </Button>
               </div>
             </div>
           </div>
