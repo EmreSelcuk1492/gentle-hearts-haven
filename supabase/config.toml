@@ -3,3 +3,6 @@ project_id = "ulpmsingkabsaeiglrsz"
 
 [functions.notify-contact-submission]
 verify_jwt = false
+
+[functions.get-posthog-key]
+verify_jwt = false
