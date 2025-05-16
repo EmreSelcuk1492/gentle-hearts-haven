@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Award, Users, Star } from 'lucide-react';
 
@@ -29,12 +28,6 @@ const About = () => {
                   <img src="/lovable-uploads/737d3562-5e6c-4668-bdb7-fc6b822ef598.png" alt="WIID logo" className="h-8 w-auto ml-1" />
                 </div>
                 <span>Certified by <span className="text-[#65bd1e] font-bold">World Institute For</span> <span className="text-[#ea384c] font-bold">Incurable Diseases</span><sup>™</sup></span>
-              </div>
-              <div className="flex items-center">
-                <div className="w-8 mr-3 flex justify-center">
-                  <Star className="h-5 w-5 text-healing-yellow" />
-                </div>
-                <span>Experience with heart health, ADD, OCD, PTSD, and more</span>
               </div>
             </div>
           </div>
