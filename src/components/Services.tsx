@@ -60,7 +60,7 @@ const Services = () => {
   const serviceItems = [
     {
       title: "Be Well Science® Healing Sessions",
-      description: "Root-cause energy medicine that clears physical, emotional, and mental blockages. Ideal for pain that lingers despite treatment, chronic stress, hormonal shifts, or "mystery" symptoms that defy conventional tests.",
+      description: "Root-cause energy medicine that clears physical, emotional, and mental blockages. Ideal for pain that lingers despite treatment, chronic stress, hormonal shifts, or \"mystery\" symptoms that defy conventional tests.",
       icon: Sparkles,
       color: "#C5E1A5" // healing-green
     },
