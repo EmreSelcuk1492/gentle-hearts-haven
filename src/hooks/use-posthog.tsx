@@ -25,13 +25,9 @@ export function usePostHog(): PostHogHookResult {
         // Initialize PostHog with the API key
         posthog.init(data.apiKey, {
           api_host: 'https://app.posthog.com',
-          // Configure session recording according to PostHog's API
           capture_pageview: true,
           persistence: 'localStorage',
-          autocapture: {
-            dom_event_limit: 100,
-            selector_limit: 50
-          },
+          // Remove autocapture options that are causing TypeScript errors
           // You can add more configuration options here
         });
 
