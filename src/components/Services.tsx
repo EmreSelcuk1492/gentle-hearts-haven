@@ -2,18 +2,37 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Sparkles, Target, Star } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
+
+interface ServiceCardProps { 
+  title: string; 
+  description: string; 
+  icon: React.ElementType; 
+  color: string;
+}
 
 const ServiceCard = ({ 
   title, 
   description, 
   icon: Icon, 
   color 
-}: { 
-  title: string; 
-  description: string; 
-  icon: React.ElementType; 
-  color: string 
-}) => {
+}: ServiceCardProps) => {
+  const { toast } = useToast();
+  
+  const handleInterestClick = () => {
+    // Log interest in this service
+    console.log(`User clicked on service: ${title}`);
+    
+    // Show toast notification
+    toast({
+      title: "Thank you for your interest!",
+      description: `We've noted your interest in ${title.replace("BeWell Science®", "BeWell Science")}`,
+    });
+    
+    // Here you could implement analytics tracking
+    // Example: track("service_interest", { service: title });
+  };
+
   // Add special styling for BeWell Science
   const formattedTitle = title.includes("BeWell Science") ? (
     <>
@@ -25,7 +44,11 @@ const ServiceCard = ({
   );
 
   return (
-    <Card className="border-t-4 h-full transition-all hover:shadow-md" style={{ borderTopColor: color }}>
+    <Card 
+      className="border-t-4 h-full transition-all hover:shadow-lg cursor-pointer hover:-translate-y-1" 
+      style={{ borderTopColor: color }}
+      onClick={handleInterestClick}
+    >
       <CardHeader className="pb-2">
         <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
           <Icon className="w-6 h-6" style={{ color: color }} />
@@ -99,12 +122,6 @@ const Services = () => {
               color={service.color}
             />
           ))}
-        </div>
-        
-        <div className="mt-16 text-center">
-          <button className="bg-healing-green text-foreground hover:bg-healing-green/90 px-8 py-6 text-lg rounded-md">
-            Explore My Approach
-          </button>
         </div>
       </div>
     </section>
