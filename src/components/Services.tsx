@@ -33,41 +33,46 @@ const ServiceCard = ({
       description: `We've noted your interest in ${title.replace("BeWell Science®", "BeWell Science")}`,
     });
 
-    // Get the card's position
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (rect.left + rect.right) / 2 / window.innerWidth;
-    const y = (rect.top + rect.bottom) / 2 / window.innerHeight;
+    /* Confetti effect temporarily disabled
+    // Only trigger confetti if we're selecting (not deselecting)
+    if (!isClicked) {
+      // Get the card's position
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = (rect.left + rect.right) / 2 / window.innerWidth;
+      const y = (rect.top + rect.bottom) / 2 / window.innerHeight;
 
-    // Trigger confetti with the service's color
-    const end = Date.now() + 1000; // 1 second duration
-    const colors = [color];
+      // Trigger confetti with the service's color
+      const end = Date.now() + 300; // Reduced from 1000ms to 300ms
+      const colors = [color];
 
-    (function frame() {
-      confetti({
-        particleCount: 3,
-        angle: 60,
-        spread: 70,
-        origin: { x, y },
-        colors: colors,
-        gravity: 0.8,
-        scalar: 1.2,
-        ticks: 200
-      });
-      confetti({
-        particleCount: 3,
-        angle: 120,
-        spread: 70,
-        origin: { x, y },
-        colors: colors,
-        gravity: 0.8,
-        scalar: 1.2,
-        ticks: 200
-      });
+      (function frame() {
+        confetti({
+          particleCount: 2, // Reduced from 3 to 2
+          angle: 60,
+          spread: 50, // Reduced from 70 to 50
+          origin: { x, y },
+          colors: colors,
+          gravity: 1, // Increased from 0.8 to 1 for faster fall
+          scalar: 1, // Reduced from 1.2 to 1
+          ticks: 100 // Reduced from 200 to 100
+        });
+        confetti({
+          particleCount: 2, // Reduced from 3 to 2
+          angle: 120,
+          spread: 50, // Reduced from 70 to 50
+          origin: { x, y },
+          colors: colors,
+          gravity: 1, // Increased from 0.8 to 1 for faster fall
+          scalar: 1, // Reduced from 1.2 to 1
+          ticks: 100 // Reduced from 200 to 100
+        });
 
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    }());
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+    */
     
     onInterestClick(e);
   };
