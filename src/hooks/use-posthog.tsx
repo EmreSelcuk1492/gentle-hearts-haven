@@ -29,8 +29,8 @@ export function usePostHog(): PostHogHookResult {
           capture_pageview: true,
           persistence: 'localStorage',
           autocapture: {
-            element_attrs_include: ['data-ph-capture'],
-            css_selector_blacklist: ['[data-ph-ignore]']
+            dom_event_limit: 100,
+            selector_limit: 50
           },
           // You can add more configuration options here
         });
