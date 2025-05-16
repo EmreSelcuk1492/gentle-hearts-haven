@@ -1,9 +1,19 @@
-import React from 'react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Heart, Brain, Leaf, Sparkles, Compass, Users } from 'lucide-react';
 
-const ServiceCard = ({ title, description, icon: Icon, color }: { title: string; description: string; icon: React.ElementType; color: string }) => {
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Sparkles, Target, Star } from 'lucide-react';
+
+const ServiceCard = ({ 
+  title, 
+  description, 
+  icon: Icon, 
+  color 
+}: { 
+  title: string; 
+  description: string; 
+  icon: React.ElementType; 
+  color: string 
+}) => {
   // Add special styling for BeWell Science
   const formattedTitle = title.includes("BeWell Science") ? (
     <>
@@ -42,11 +52,6 @@ const ServiceCard = ({ title, description, icon: Icon, color }: { title: string;
           )}
         </p>
       </CardContent>
-      <CardFooter>
-        <Button variant="ghost" className="group p-0 h-auto font-medium" style={{ color }}>
-          Learn more <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-        </Button>
-      </CardFooter>
     </Card>
   );
 };
@@ -54,40 +59,22 @@ const ServiceCard = ({ title, description, icon: Icon, color }: { title: string;
 const Services = () => {
   const serviceItems = [
     {
-      title: "Be Well Science® Healing",
-      description: "Experience the methodical energy medicine modality that addresses root causes of physical, emotional, and mental challenges.",
+      title: "Be Well Science® Healing Sessions",
+      description: "Root-cause energy medicine that clears physical, emotional, and mental blockages. Ideal for pain that lingers despite treatment, chronic stress, hormonal shifts, or "mystery" symptoms that defy conventional tests.",
       icon: Sparkles,
       color: "#C5E1A5" // healing-green
     },
     {
-      title: "Mental & Emotional Balance",
-      description: "Find relief from persistent anxiety, OCD, ADHD, and emotional patterns that haven't responded to conventional approaches.",
-      icon: Brain,
+      title: "Focused Recovery Tracks",
+      description: "Short, goal-oriented packages for a single challenge—e.g., post-surgery healing, anxiety & OCD relief, musculoskeletal issues, or relationship harmony. Combines breathwork, energy balancing, and simple daily practices.",
+      icon: Target,
       color: "#D1C4E9" // healing-violet
     },
     {
-      title: "Physical Wellbeing Support",
-      description: "Address musculoskeletal issues, heart health concerns, eye health, women's health, and post-surgery recovery support.",
-      icon: Heart,
+      title: "Whole-Life HealPlan",
+      description: "A comprehensive, team-supported roadmap that addresses body, energy, emotions, mind, and spirit. Includes customized protocols, guided meditations, and ongoing check-ins for deep, lasting transformation.",
+      icon: Star,
       color: "#FFCC80" // healing-orange
-    },
-    {
-      title: "Relationship Harmony",
-      description: "Discover why relationship patterns repeat and learn how to transform them through energy-based interventions.",
-      icon: Users,
-      color: "#B3E5FC" // healing-blue
-    },
-    {
-      title: "Spiritual Connection",
-      description: "Reconnect with your higher self, inner peace, and purpose through guided meditations and energy practices.",
-      icon: Leaf,
-      color: "#FFF59D" // healing-yellow
-    },
-    {
-      title: "Personalized HealPlan",
-      description: "Receive a comprehensive plan addressing all aspects of your being for meaningful, long-lasting transformation.",
-      icon: Compass,
-      color: "#C5E1A5" // healing-green
     },
   ];
   
@@ -102,7 +89,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {serviceItems.map((service) => (
             <ServiceCard 
               key={service.title}
@@ -115,9 +102,9 @@ const Services = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <Button className="bg-healing-green text-foreground hover:bg-healing-green/90 px-8 py-6 text-lg">
+          <button className="bg-healing-green text-foreground hover:bg-healing-green/90 px-8 py-6 text-lg rounded-md">
             Explore My Approach
-          </Button>
+          </button>
         </div>
       </div>
     </section>
