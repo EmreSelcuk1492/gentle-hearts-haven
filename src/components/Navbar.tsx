@@ -43,7 +43,7 @@ const Navbar = () => {
           className="h-10 w-auto rounded-md" 
         />
         <div className="flex flex-col">
-          <span className="font-semibold text-xl">Attain Energy Healing Services</span>
+          <span className="font-semibold text-xl">Attain Energy Healing</span>
           <span className="text-xs text-foreground/70">by Asli Selcuk</span>
         </div>
       </div>
