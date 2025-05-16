@@ -9,7 +9,7 @@ interface ServiceCardProps {
   description: string; 
   icon: React.ElementType; 
   color: string;
-  onInterestClick: () => void;
+  onInterestClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   isClicked: boolean;
 }
 
@@ -68,7 +68,7 @@ const ServiceCard = ({
       description: `We've noted your interest in ${title.replace("BeWell Science®", "BeWell Science")}`,
     });
     
-    onInterestClick();
+    onInterestClick(e);
   };
 
   // Add special styling for BeWell Science
@@ -142,7 +142,12 @@ const Services = () => {
   useEffect(() => {
     const storedClicks = sessionStorage.getItem('clickedServices');
     if (storedClicks) {
-      setClickedServices(JSON.parse(storedClicks));
+      try {
+        setClickedServices(JSON.parse(storedClicks));
+      } catch (error) {
+        console.error("Failed to parse stored clicks:", error);
+        sessionStorage.removeItem('clickedServices');
+      }
     }
   }, []);
   
@@ -153,8 +158,9 @@ const Services = () => {
     }
   }, [clickedServices]);
 
-  const handleServiceClick = (title: string) => {
+  const handleServiceClick = (title: string, e: React.MouseEvent<HTMLDivElement>) => {
     if (!clickedServices[title]) {
+      console.log("Setting clicked service:", title);
       setClickedServices(prev => ({ ...prev, [title]: true }));
     }
   };
@@ -199,7 +205,7 @@ const Services = () => {
               description={service.description}
               icon={service.icon}
               color={service.color}
-              onInterestClick={() => handleServiceClick(service.title)}
+              onInterestClick={(e) => handleServiceClick(service.title, e)}
               isClicked={!!clickedServices[service.title]}
             />
           ))}
