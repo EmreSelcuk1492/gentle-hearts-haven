@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield } from 'lucide-react';
+import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield, Instagram, Youtube, Twitter } from 'lucide-react';
 import { Toaster } from "@/components/ui/toaster";
 
 const Certification = () => {
@@ -66,7 +66,7 @@ const Certification = () => {
                   />
                 </div>
                 
-                {/* Social Media Circle Banners */}
+                {/* Organization Links */}
                 <div className="absolute -top-4 -left-4 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}>
                   <Globe className="h-6 w-6 text-white" />
@@ -85,6 +85,22 @@ const Certification = () => {
                 <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-healing-orange rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}>
                   <Shield className="h-6 w-6 text-white" />
+                </div>
+
+                {/* Social Media Icons */}
+                <div className="absolute top-1/2 -left-8 w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                  <Instagram className="h-5 w-5 text-white" />
+                </div>
+                
+                <div className="absolute top-1/2 -right-8 w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                  <Youtube className="h-5 w-5 text-white" />
+                </div>
+                
+                <div className="absolute bottom-1/3 -left-12 w-10 h-10 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                  <Twitter className="h-5 w-5 text-white" />
                 </div>
               </div>
               
