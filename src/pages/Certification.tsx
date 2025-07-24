@@ -66,41 +66,47 @@ const Certification = () => {
                   />
                 </div>
                 
-                {/* Organization Links */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Circle Halo of Links - evenly distributed */}
+                {/* Top */}
+                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}>
                   <Globe className="h-6 w-6 text-white" />
                 </div>
                 
+                {/* Top Right */}
                 <div className="absolute -top-4 -right-4 w-12 h-12 bg-healing-violet rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}>
                   <GraduationCap className="h-6 w-6 text-white" />
                 </div>
                 
-                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-healing-yellow rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("https://www.mdpvillage.com/", "_blank", "noopener,noreferrer")}>
-                  <Sparkles className="h-6 w-6 text-white" />
+                {/* Right */}
+                <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                  <Youtube className="h-5 w-5 text-white" />
                 </div>
                 
+                {/* Bottom Right */}
                 <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-healing-orange rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}>
                   <Shield className="h-6 w-6 text-white" />
                 </div>
 
-                {/* Social Media Icons */}
-                <div className="absolute top-1/2 -left-8 w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                  <Instagram className="h-5 w-5 text-white" />
-                </div>
-                
-                <div className="absolute top-1/2 -right-8 w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                  <Youtube className="h-5 w-5 text-white" />
-                </div>
-                
-                <div className="absolute bottom-1/3 -left-12 w-10 h-10 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Bottom */}
+                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
                   <Twitter className="h-5 w-5 text-white" />
+                </div>
+                
+                {/* Bottom Left */}
+                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-healing-yellow rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("https://www.mdpvillage.com/", "_blank", "noopener,noreferrer")}>
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                
+                {/* Left */}
+                <div className="absolute top-1/2 -left-6 transform -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                  <Instagram className="h-5 w-5 text-white" />
                 </div>
               </div>
               
