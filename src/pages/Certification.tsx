@@ -162,7 +162,7 @@ const Certification = () => {
                 </p>
               </div>
               
-              <div className="grid lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                 <InstitutionCard
                   logoSrc="/lovable-uploads/d9b3f1f3-e79c-4a3d-ba0d-ad4dc05adaba.png"
                   logoAlt="WIID Logo"
