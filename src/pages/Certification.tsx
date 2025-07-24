@@ -156,20 +156,27 @@ const Certification = () => {
                   <Building2 className="mr-3 h-7 w-7 text-healing-violet" />
                   Institutions Founded
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <div>
-                    <h4 className="font-semibold flex items-center mb-2">
-                      <Shield className="mr-2 h-5 w-5 text-healing-green" />
-                      World Institute for Incurable Diseases™ (WIID)
-                    </h4>
-                    <p className="text-sm text-foreground/80">Focused on healing chronic and complex conditions through energy-based modalities</p>
+                    <div className="flex items-center mb-2">
+                      <img src="/logos/wiid-logo.png" alt="WIID Logo" className="h-8 w-6 mr-2" />
+                      <h4 className="font-semibold">World Institute for Incurable Diseases™ (WIID)</h4>
+                    </div>
+                    <p className="text-sm text-foreground/80 mb-2">Focused on healing chronic and complex conditions through energy-based modalities</p>
+                    <Button 
+                      variant="link" 
+                      className="p-0 h-auto text-healing-blue hover:text-healing-blue/80"
+                      onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}
+                    >
+                      Visit WIID Global <ExternalLink className="ml-1 h-3 w-3" />
+                    </Button>
                   </div>
                   <div>
-                    <h4 className="font-semibold flex items-center mb-2">
-                      <Brain className="mr-2 h-5 w-5 text-healing-blue" />
-                      BElife Institute for Higher Consciousness™ (BIHC)
-                    </h4>
-                    <p className="text-sm text-foreground/80">A global school offering 200+ programs in spiritual development and energy healing</p>
+                    <div className="flex items-center mb-2">
+                      <img src="/logos/bihc-logo.png" alt="BIHC Logo" className="h-8 w-12 mr-2 object-contain" />
+                      <h4 className="font-semibold">BElife Institute for Higher Consciousness™ (BIHC)</h4>
+                    </div>
+                    <p className="text-sm text-foreground/80 mb-2">A global school offering 200+ programs in spiritual development and energy healing</p>
                     <Button 
                       variant="link" 
                       className="p-0 h-auto text-healing-blue hover:text-healing-blue/80"
@@ -179,11 +186,18 @@ const Certification = () => {
                     </Button>
                   </div>
                   <div>
-                    <h4 className="font-semibold flex items-center mb-2">
+                    <div className="flex items-center mb-2">
                       <Users className="mr-2 h-5 w-5 text-healing-violet" />
-                      Wisdom Institute for Leadership and Global Advancement™ (WILGA)
-                    </h4>
-                    <p className="text-sm text-foreground/80">Dedicated to conscious leadership and organizational transformation</p>
+                      <h4 className="font-semibold">Wisdom Institute for Leadership and Global Advancement™ (WILGA)</h4>
+                    </div>
+                    <p className="text-sm text-foreground/80 mb-2">Dedicated to conscious leadership and organizational transformation</p>
+                    <Button 
+                      variant="link" 
+                      className="p-0 h-auto text-healing-blue hover:text-healing-blue/80"
+                      onClick={() => window.open("https://www.wilgaglobal.com/", "_blank", "noopener,noreferrer")}
+                    >
+                      Visit WILGA Global <ExternalLink className="ml-1 h-3 w-3" />
+                    </Button>
                   </div>
                 </div>
               </div>
