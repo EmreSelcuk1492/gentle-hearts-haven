@@ -23,49 +23,75 @@ const Certification = () => {
               Back
             </Button>
             
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="text-center lg:text-left order-2 lg:order-1">
-                <span className="text-primary font-medium mb-4 block text-lg">My Certification</span>
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                  Energy Medicine Specialist
-                </h1>
-                <p className="text-xl text-foreground/80 mb-8 leading-relaxed">
-                  Certified by the <strong>World Institute For Incurable Diseases™</strong> in the transformative <strong>Be Well Science™</strong> method, pioneered by Master Del Pe
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <Button 
-                    variant="default" 
-                    size="lg"
-                    className="bg-healing-violet hover:bg-healing-violet/90 text-white px-8 py-3 text-lg"
-                    onClick={() => window.location.href = '/#contact'}
-                  >
-                    Book Your Session
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="lg"
-                    className="border-healing-violet text-healing-violet hover:bg-healing-violet/10 px-8 py-3 text-lg"
-                    onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}
-                  >
-                    Learn More About Master Del Pe
-                  </Button>
+            <div className="text-center max-w-4xl mx-auto">
+              <span className="text-primary font-medium mb-4 block text-lg">My Certification</span>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                Energy Medicine Specialist
+              </h1>
+              <p className="text-xl text-foreground/80 mb-8 leading-relaxed">
+                Certified by the <strong>World Institute For Incurable Diseases™</strong> in the transformative <strong>Be Well Science™</strong> method, pioneered by Master Del Pe
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  variant="default" 
+                  size="lg"
+                  className="bg-healing-violet hover:bg-healing-violet/90 text-white px-8 py-3 text-lg"
+                  onClick={() => window.location.href = '/#contact'}
+                >
+                  Book Your Session
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-healing-violet text-healing-violet hover:bg-healing-violet/10 px-8 py-3 text-lg"
+                  onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}
+                >
+                  Explore Programs
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Master Del Pe Profile */}
+        <section className="py-16">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="text-center mb-12">
+              <div className="relative inline-block">
+                <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white/50 backdrop-blur-sm mx-auto">
+                  <img 
+                    src="/lovable-uploads/Picture1.png" 
+                    alt="Master Del Pe" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Social Media Circle Banners */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}>
+                  <Globe className="h-6 w-6 text-white" />
+                </div>
+                
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-healing-violet rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}>
+                  <GraduationCap className="h-6 w-6 text-white" />
+                </div>
+                
+                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-healing-yellow rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("https://www.mdpvillage.com/", "_blank", "noopener,noreferrer")}>
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                
+                <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-healing-orange rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}>
+                  <Shield className="h-6 w-6 text-white" />
                 </div>
               </div>
               
-              <div className="flex justify-center order-1 lg:order-2">
-                <div className="relative">
-                  <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white/50 backdrop-blur-sm">
-                    <img 
-                      src="/lovable-uploads/Picture1.png" 
-                      alt="Master Del Pe" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -bottom-4 -right-4 bg-healing-violet text-white p-4 rounded-full shadow-lg">
-                    <Award className="h-8 w-8" />
-                  </div>
-                </div>
-              </div>
+              <h2 className="text-4xl font-bold mb-4 mt-8">Master Del Pe</h2>
+              <p className="text-xl text-foreground/80 max-w-4xl mx-auto">
+                A globally respected spiritual teacher, energy healer, and life mentor known for blending Eastern wisdom with Western science
+              </p>
             </div>
           </div>
         </section>
@@ -73,15 +99,6 @@ const Certification = () => {
         {/* Master Del Pe Overview */}
         <section className="py-16">
           <div className="container mx-auto px-6 md:px-12">
-            <div className="text-center mb-12">
-              <div className="w-24 h-24 bg-healing-violet/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="h-12 w-12 text-healing-violet" />
-              </div>
-              <h2 className="text-4xl font-bold mb-4">About Master Del Pe</h2>
-              <p className="text-xl text-foreground/80 max-w-4xl mx-auto">
-                A globally respected spiritual teacher, energy healer, and life mentor known for blending Eastern wisdom with Western science
-              </p>
-            </div>
 
             {/* Global Impact Summary */}
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg mb-12">
