@@ -125,24 +125,28 @@ const Certification = () => {
           </div>
         </section>
 
-        {/* Master Del Pe Overview */}
-        <section className="py-16">
+        {/* Master Del Pe Overview - Seamless Transition */}
+        <section className="py-8 pb-16 bg-gradient-to-b from-transparent via-healing-violet/5 to-healing-blue/10">
           <div className="container mx-auto px-6 md:px-12">
 
             {/* Global Impact Summary */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg mb-12">
+            <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg mb-8 animate-fade-in">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-healing-violet mb-2">Global Impact</h3>
+                <p className="text-foreground/70">Transforming lives across the world</p>
+              </div>
               <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center hover-scale">
                   <Users className="h-12 w-12 text-healing-green mb-3" />
                   <span className="text-2xl font-bold">400,000+</span>
                   <span className="text-foreground/70">students worldwide</span>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center hover-scale">
                   <Globe className="h-12 w-12 text-healing-blue mb-3" />
                   <span className="text-2xl font-bold">100+</span>
                   <span className="text-foreground/70">countries</span>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center hover-scale">
                   <Star className="h-12 w-12 text-healing-violet mb-3" />
                   <span className="text-2xl font-bold">Decades</span>
                   <span className="text-foreground/70">of healing expertise</span>
@@ -152,7 +156,7 @@ const Certification = () => {
 
             {/* Institutions Founded */}
             <div className="mb-16">
-              <div className="text-center mb-12">
+              <div className="text-center mb-12 animate-fade-in">
                 <h3 className="text-4xl font-bold mb-4 flex items-center justify-center">
                   <Building2 className="mr-4 h-10 w-10 text-healing-violet" />
                   Institutions Founded
@@ -162,7 +166,7 @@ const Certification = () => {
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 animate-fade-in">
                 <InstitutionCard
                   logoSrc="/lovable-uploads/d9b3f1f3-e79c-4a3d-ba0d-ad4dc05adaba.png"
                   logoAlt="WIID Logo"
