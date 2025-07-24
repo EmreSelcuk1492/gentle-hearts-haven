@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
+import { InstitutionCard } from '@/components/InstitutionCard';
 import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield, Instagram, Youtube, Twitter, Facebook } from 'lucide-react';
 import { Toaster } from "@/components/ui/toaster";
 
@@ -149,93 +150,41 @@ const Certification = () => {
               </div>
             </div>
 
-            {/* Institutions & Resources */}
-            <div className="grid lg:grid-cols-2 gap-8 mb-12">
-              <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-semibold mb-6 flex items-center">
-                  <Building2 className="mr-3 h-7 w-7 text-healing-violet" />
-                  Institutions Founded
-                </h3>
-                <div className="space-y-6">
-                  <div>
-                    <div className="flex items-center mb-2">
-                      <img src="/lovable-uploads/d9b3f1f3-e79c-4a3d-ba0d-ad4dc05adaba.png" alt="WIID Logo" className="h-8 w-8 mr-2 object-contain" />
-                      <Button 
-                        variant="link" 
-                        className="p-0 h-auto text-foreground hover:text-healing-blue font-semibold"
-                        onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}
-                      >
-                        World Institute for Incurable Diseases™ (WIID) <ExternalLink className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                    <p className="text-sm text-foreground/80">Focused on healing chronic and complex conditions through energy-based modalities</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center mb-2">
-                      <img src="/lovable-uploads/cce1ae9d-16e1-44d2-a4d6-4b67ce06af34.png" alt="BIHC Logo" className="h-8 w-8 mr-2 object-contain" />
-                      <Button 
-                        variant="link" 
-                        className="p-0 h-auto text-foreground hover:text-healing-blue font-semibold"
-                        onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}
-                      >
-                        BElife Institute for Higher Consciousness™ (BIHC) <ExternalLink className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                    <p className="text-sm text-foreground/80">A global school offering 200+ programs in spiritual development and energy healing</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center mb-2">
-                      <img src="/lovable-uploads/68f2eccb-c75b-455b-844f-3a2e78725031.png" alt="WILGA Logo" className="h-8 w-8 mr-2 object-contain" />
-                      <Button 
-                        variant="link" 
-                        className="p-0 h-auto text-foreground hover:text-healing-blue font-semibold"
-                        onClick={() => window.open("https://www.wilgaglobal.com/", "_blank", "noopener,noreferrer")}
-                      >
-                        Wisdom Institute for Leadership and Global Advancement™ (WILGA) <ExternalLink className="ml-1 h-3 w-3" />
-                      </Button>
-                    </div>
-                    <p className="text-sm text-foreground/80">Dedicated to conscious leadership and organizational transformation</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold mb-4 flex items-center">
-                    <Sparkles className="mr-3 h-7 w-7 text-healing-violet" />
-                    MDP Village Retreat Resort
-                  </h3>
-                  <p className="text-foreground/80 mb-4">
-                    Master Del Pe created the MDP Village Retreat Resort in the Philippines—a sanctuary for healing, longevity, and spiritual training.
-                  </p>
-                  <Button 
-                    variant="link" 
-                    className="p-0 h-auto text-healing-blue hover:text-healing-blue/80"
-                    onClick={() => window.open("https://www.mdpvillage.com/", "_blank", "noopener,noreferrer")}
-                  >
-                    Explore MDP Village <ExternalLink className="ml-1 h-3 w-3" />
-                  </Button>
-                </div>
-
-                <div className="border-t pt-6">
-                  <h4 className="font-semibold mb-4">Connect with Master Del Pe</h4>
-                  <div className="space-y-2">
-                    <Button 
-                      variant="link" 
-                      className="p-0 h-auto text-healing-blue hover:text-healing-blue/80 block"
-                      onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}
-                    >
-                      Official Website <ExternalLink className="ml-1 h-3 w-3" />
-                    </Button>
-                    <Button 
-                      variant="link" 
-                      className="p-0 h-auto text-healing-blue hover:text-healing-blue/80 block"
-                      onClick={() => window.open("https://www.masterdelpe.com/about", "_blank", "noopener,noreferrer")}
-                    >
-                      About Master <ExternalLink className="ml-1 h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
+            {/* Institutions Founded */}
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg mb-12">
+              <h3 className="text-2xl font-semibold mb-6 flex items-center">
+                <Building2 className="mr-3 h-7 w-7 text-healing-violet" />
+                Institutions Founded
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <InstitutionCard
+                  logoSrc="/lovable-uploads/d9b3f1f3-e79c-4a3d-ba0d-ad4dc05adaba.png"
+                  logoAlt="WIID Logo"
+                  title="World Institute for Incurable Diseases™ (WIID)"
+                  description="Focused on healing chronic and complex conditions through energy-based modalities"
+                  websiteUrl="https://www.wiidglobal.com/"
+                />
+                <InstitutionCard
+                  logoSrc="/lovable-uploads/cce1ae9d-16e1-44d2-a4d6-4b67ce06af34.png"
+                  logoAlt="BIHC Logo"
+                  title="BElife Institute for Higher Consciousness™ (BIHC)"
+                  description="A global school offering 200+ programs in spiritual development and energy healing"
+                  websiteUrl="https://www.bihcglobal.com/"
+                />
+                <InstitutionCard
+                  logoSrc="/lovable-uploads/68f2eccb-c75b-455b-844f-3a2e78725031.png"
+                  logoAlt="WILGA Logo"
+                  title="Wisdom Institute for Leadership and Global Advancement™ (WILGA)"
+                  description="Dedicated to conscious leadership and organizational transformation"
+                  websiteUrl="https://www.wilgaglobal.com/"
+                />
+                <InstitutionCard
+                  logoSrc="/logos/mdp-village-logo.ico"
+                  logoAlt="MDP Village Logo"
+                  title="MDP Village Retreat Resort"
+                  description="A sanctuary for healing, longevity, and spiritual training in the Philippines"
+                  websiteUrl="https://www.mdpvillage.com/"
+                />
               </div>
             </div>
           </div>
