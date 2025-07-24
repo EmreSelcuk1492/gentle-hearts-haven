@@ -151,38 +151,44 @@ const Certification = () => {
             </div>
 
             {/* Institutions Founded */}
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg mb-12">
-              <h3 className="text-2xl font-semibold mb-6 flex items-center">
-                <Building2 className="mr-3 h-7 w-7 text-healing-violet" />
-                Institutions Founded
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="mb-16">
+              <div className="text-center mb-12">
+                <h3 className="text-4xl font-bold mb-4 flex items-center justify-center">
+                  <Building2 className="mr-4 h-10 w-10 text-healing-violet" />
+                  Institutions Founded
+                </h3>
+                <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+                  Master Del Pe's vision materialized through these transformative institutions, each serving humanity's highest potential
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-8">
                 <InstitutionCard
                   logoSrc="/lovable-uploads/d9b3f1f3-e79c-4a3d-ba0d-ad4dc05adaba.png"
                   logoAlt="WIID Logo"
                   title="World Institute for Incurable Diseases™ (WIID)"
-                  description="Focused on healing chronic and complex conditions through energy-based modalities"
+                  description="A pioneering global institute focused on healing chronic and complex conditions through advanced energy-based modalities and holistic therapeutic approaches."
                   websiteUrl="https://www.wiidglobal.com/"
                 />
                 <InstitutionCard
                   logoSrc="/lovable-uploads/cce1ae9d-16e1-44d2-a4d6-4b67ce06af34.png"
                   logoAlt="BIHC Logo"
                   title="BElife Institute for Higher Consciousness™ (BIHC)"
-                  description="A global school offering 200+ programs in spiritual development and energy healing"
+                  description="A comprehensive global educational institution offering over 200 transformative programs in spiritual development, consciousness expansion, and energy healing mastery."
                   websiteUrl="https://www.bihcglobal.com/"
                 />
                 <InstitutionCard
                   logoSrc="/lovable-uploads/68f2eccb-c75b-455b-844f-3a2e78725031.png"
                   logoAlt="WILGA Logo"
                   title="Wisdom Institute for Leadership and Global Advancement™ (WILGA)"
-                  description="Dedicated to conscious leadership and organizational transformation"
+                  description="An innovative institute dedicated to developing conscious leadership capabilities and facilitating organizational transformation for a more enlightened world."
                   websiteUrl="https://www.wilgaglobal.com/"
                 />
                 <InstitutionCard
                   logoSrc="/logos/mdp-village-logo.ico"
                   logoAlt="MDP Village Logo"
                   title="MDP Village Retreat Resort"
-                  description="A sanctuary for healing, longevity, and spiritual training in the Philippines"
+                  description="An exclusive sanctuary nestled in the Philippines, designed as a comprehensive retreat center for healing, longevity practices, and intensive spiritual training experiences."
                   websiteUrl="https://www.mdpvillage.com/"
                 />
               </div>
