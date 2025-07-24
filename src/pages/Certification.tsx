@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield, Instagram, Youtube, Twitter } from 'lucide-react';
+import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield, Instagram, Youtube, Twitter, Facebook } from 'lucide-react';
 import { Toaster } from "@/components/ui/toaster";
 
 const Certification = () => {
@@ -66,47 +66,53 @@ const Certification = () => {
                   />
                 </div>
                 
-                {/* Circle Halo of Links - evenly distributed */}
-                {/* Top */}
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Circle Halo of Links - 8 icons evenly spaced around the photo circle */}
+                {/* Top (0°) */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}>
                   <Globe className="h-6 w-6 text-white" />
                 </div>
                 
-                {/* Top Right */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-healing-violet rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Top-Right (45°) */}
+                <div className="absolute top-[14%] right-[14%] transform translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-healing-violet rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}>
                   <GraduationCap className="h-6 w-6 text-white" />
                 </div>
                 
-                {/* Right */}
-                <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Right (90°) */}
+                <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
                   <Youtube className="h-5 w-5 text-white" />
                 </div>
                 
-                {/* Bottom Right */}
-                <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-healing-orange rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Bottom-Right (135°) */}
+                <div className="absolute bottom-[14%] right-[14%] transform translate-x-1/2 translate-y-1/2 w-12 h-12 bg-healing-orange rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}>
                   <Shield className="h-6 w-6 text-white" />
                 </div>
 
-                {/* Bottom */}
-                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Bottom (180°) */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-10 h-10 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
                   <Twitter className="h-5 w-5 text-white" />
                 </div>
                 
-                {/* Bottom Left */}
-                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-healing-yellow rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Bottom-Left (225°) */}
+                <div className="absolute bottom-[14%] left-[14%] transform -translate-x-1/2 translate-y-1/2 w-12 h-12 bg-healing-yellow rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("https://www.mdpvillage.com/", "_blank", "noopener,noreferrer")}>
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
                 
-                {/* Left */}
-                <div className="absolute top-1/2 -left-6 transform -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                {/* Left (270°) */}
+                <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
                      onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
                   <Instagram className="h-5 w-5 text-white" />
+                </div>
+                
+                {/* Top-Left (315°) */}
+                <div className="absolute top-[14%] left-[14%] transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-blue-700 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                  <Facebook className="h-5 w-5 text-white" />
                 </div>
               </div>
               
