@@ -129,60 +129,27 @@ const Certification = () => {
                 </p>
               </div>
 
-              {/* Global Impact Summary - Curved towards Del Pe */}
-              <div className="relative animate-fade-in">
-                {/* Social Links on Left Border */}
-                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 flex flex-col gap-3">
-                  <div className="w-10 h-10 bg-blue-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                       onClick={() => window.open("https://www.linkedin.com/in/masterdelpe", "_blank", "noopener,noreferrer")}>
-                    <Users className="h-5 w-5 text-white" />
-                  </div>
-                  <div className="w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                       onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                    <Youtube className="h-5 w-5 text-white" />
-                  </div>
-                  <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                       onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                    <Instagram className="h-5 w-5 text-white" />
-                  </div>
+              {/* Global Impact Summary */}
+              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg animate-fade-in">
+                <div className="text-center mb-6">
+                  <h3 className="text-3xl font-bold text-healing-violet mb-2">Global Impact</h3>
+                  <p className="text-foreground/70">Transforming lives across the world</p>
                 </div>
-
-                {/* Curved Impact Component */}
-                <div className="bg-white/90 backdrop-blur-sm p-8 shadow-lg animate-fade-in relative overflow-hidden"
-                     style={{
-                       borderRadius: '2rem 0.5rem 2rem 2rem',
-                       clipPath: 'polygon(15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%, 0% 15%)'
-                     }}>
-                  
-                  {/* Curved accent border */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-healing-violet/20 to-healing-blue/20" 
-                       style={{
-                         borderRadius: '2rem 0.5rem 2rem 2rem',
-                         clipPath: 'polygon(15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%, 0% 15%)'
-                       }}></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-center mb-6">
-                      <h3 className="text-3xl font-bold text-healing-violet mb-2">Global Impact</h3>
-                      <p className="text-foreground/70">Transforming lives across the world</p>
-                    </div>
-                    <div className="grid grid-cols-1 gap-6 text-center">
-                      <div className="flex flex-col items-center hover-scale">
-                        <Users className="h-12 w-12 text-healing-green mb-2" />
-                        <span className="text-2xl font-bold">400,000+</span>
-                        <span className="text-foreground/70">students worldwide</span>
-                      </div>
-                      <div className="flex flex-col items-center hover-scale">
-                        <Globe className="h-12 w-12 text-healing-blue mb-2" />
-                        <span className="text-2xl font-bold">100+</span>
-                        <span className="text-foreground/70">countries</span>
-                      </div>
-                      <div className="flex flex-col items-center hover-scale">
-                        <Star className="h-12 w-12 text-healing-violet mb-2" />
-                        <span className="text-2xl font-bold">Decades</span>
-                        <span className="text-foreground/70">of healing expertise</span>
-                      </div>
-                    </div>
+                <div className="grid grid-cols-1 gap-8 text-center">
+                  <div className="flex flex-col items-center hover-scale">
+                    <Users className="h-16 w-16 text-healing-green mb-3" />
+                    <span className="text-3xl font-bold">400,000+</span>
+                    <span className="text-foreground/70 text-lg">students worldwide</span>
+                  </div>
+                  <div className="flex flex-col items-center hover-scale">
+                    <Globe className="h-16 w-16 text-healing-blue mb-3" />
+                    <span className="text-3xl font-bold">100+</span>
+                    <span className="text-foreground/70 text-lg">countries</span>
+                  </div>
+                  <div className="flex flex-col items-center hover-scale">
+                    <Star className="h-16 w-16 text-healing-violet mb-3" />
+                    <span className="text-3xl font-bold">Decades</span>
+                    <span className="text-foreground/70 text-lg">of healing expertise</span>
                   </div>
                 </div>
               </div>
