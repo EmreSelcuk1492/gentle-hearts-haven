@@ -55,104 +55,111 @@ const Certification = () => {
         </section>
 
         {/* Master Del Pe Profile */}
-        <section className="py-16">
+        <section className="py-16 bg-gradient-to-b from-transparent via-healing-violet/5 to-healing-blue/10">
           <div className="container mx-auto px-6 md:px-12">
-            <div className="text-center mb-12">
-              <div className="relative inline-block">
-                <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white/50 backdrop-blur-sm mx-auto">
-                  <img 
-                    src="/lovable-uploads/Picture1.png" 
-                    alt="Master Del Pe" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                {/* Circle Halo of Links - 8 icons evenly spaced around the photo circle */}
-                {/* Top (0°) */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}>
-                  <Globe className="h-6 w-6 text-white" />
-                </div>
-                
-                {/* Top-Right (45°) */}
-                <div className="absolute top-[14%] right-[14%] transform translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-healing-violet rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}>
-                  <GraduationCap className="h-6 w-6 text-white" />
-                </div>
-                
-                {/* Right (90°) */}
-                <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                  <Youtube className="h-5 w-5 text-white" />
-                </div>
-                
-                {/* Bottom-Right (135°) */}
-                <div className="absolute bottom-[14%] right-[14%] transform translate-x-1/2 translate-y-1/2 w-12 h-12 bg-healing-orange rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}>
-                  <Shield className="h-6 w-6 text-white" />
-                </div>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              
+              {/* Photo and Description */}
+              <div className="text-center lg:text-left">
+                <div className="relative inline-block mb-8">
+                  <div 
+                    className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white/50 backdrop-blur-sm mx-auto lg:mx-0 cursor-pointer hover:scale-105 transition-transform duration-300"
+                    onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}
+                  >
+                    <img 
+                      src="/lovable-uploads/Picture1.png" 
+                      alt="Master Del Pe" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Circle Halo of Links - 8 icons evenly spaced around the photo circle */}
+                  {/* Top (0°) */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}>
+                    <Globe className="h-6 w-6 text-white" />
+                  </div>
+                  
+                  {/* Top-Right (45°) */}
+                  <div className="absolute top-[14%] right-[14%] transform translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-healing-violet rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}>
+                    <GraduationCap className="h-6 w-6 text-white" />
+                  </div>
+                  
+                  {/* Right (90°) */}
+                  <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-red-600 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                    <Youtube className="h-5 w-5 text-white" />
+                  </div>
+                  
+                  {/* Bottom-Right (135°) */}
+                  <div className="absolute bottom-[14%] right-[14%] transform translate-x-1/2 translate-y-1/2 w-12 h-12 bg-healing-orange rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}>
+                    <Shield className="h-6 w-6 text-white" />
+                  </div>
 
-                {/* Bottom (180°) */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-10 h-10 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                  <Twitter className="h-5 w-5 text-white" />
+                  {/* Bottom (180°) */}
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-10 h-10 bg-blue-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                    <Twitter className="h-5 w-5 text-white" />
+                  </div>
+                  
+                  {/* Bottom-Left (225°) */}
+                  <div className="absolute bottom-[14%] left-[14%] transform -translate-x-1/2 translate-y-1/2 w-12 h-12 bg-healing-yellow rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("https://www.mdpvillage.com/", "_blank", "noopener,noreferrer")}>
+                    <Sparkles className="h-6 w-6 text-white" />
+                  </div>
+                  
+                  {/* Left (270°) */}
+                  <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                    <Instagram className="h-5 w-5 text-white" />
+                  </div>
+                  
+                  {/* Top-Left (315°) */}
+                  <div className="absolute top-[14%] left-[14%] transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-blue-700 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                       onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
+                    <Facebook className="h-5 w-5 text-white" />
+                  </div>
                 </div>
                 
-                {/* Bottom-Left (225°) */}
-                <div className="absolute bottom-[14%] left-[14%] transform -translate-x-1/2 translate-y-1/2 w-12 h-12 bg-healing-yellow rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("https://www.mdpvillage.com/", "_blank", "noopener,noreferrer")}>
-                  <Sparkles className="h-6 w-6 text-white" />
+                <h2 className="text-4xl font-bold mb-4">Master Del Pe</h2>
+                <p className="text-xl text-foreground/80 leading-relaxed">
+                  A globally respected spiritual teacher, energy healer, and life mentor known for blending Eastern wisdom with Western science
+                </p>
+              </div>
+
+              {/* Global Impact Summary */}
+              <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg animate-fade-in">
+                <div className="text-center mb-6">
+                  <h3 className="text-3xl font-bold text-healing-violet mb-2">Global Impact</h3>
+                  <p className="text-foreground/70">Transforming lives across the world</p>
                 </div>
-                
-                {/* Left (270°) */}
-                <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                  <Instagram className="h-5 w-5 text-white" />
-                </div>
-                
-                {/* Top-Left (315°) */}
-                <div className="absolute top-[14%] left-[14%] transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-blue-700 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                     onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
-                  <Facebook className="h-5 w-5 text-white" />
+                <div className="grid grid-cols-1 gap-8 text-center">
+                  <div className="flex flex-col items-center hover-scale">
+                    <Users className="h-16 w-16 text-healing-green mb-3" />
+                    <span className="text-3xl font-bold">400,000+</span>
+                    <span className="text-foreground/70 text-lg">students worldwide</span>
+                  </div>
+                  <div className="flex flex-col items-center hover-scale">
+                    <Globe className="h-16 w-16 text-healing-blue mb-3" />
+                    <span className="text-3xl font-bold">100+</span>
+                    <span className="text-foreground/70 text-lg">countries</span>
+                  </div>
+                  <div className="flex flex-col items-center hover-scale">
+                    <Star className="h-16 w-16 text-healing-violet mb-3" />
+                    <span className="text-3xl font-bold">Decades</span>
+                    <span className="text-foreground/70 text-lg">of healing expertise</span>
+                  </div>
                 </div>
               </div>
-              
-              <h2 className="text-4xl font-bold mb-4 mt-8">Master Del Pe</h2>
-              <p className="text-xl text-foreground/80 max-w-4xl mx-auto">
-                A globally respected spiritual teacher, energy healer, and life mentor known for blending Eastern wisdom with Western science
-              </p>
             </div>
           </div>
         </section>
 
-        {/* Master Del Pe Overview - Seamless Transition */}
-        <section className="py-8 pb-16 bg-gradient-to-b from-transparent via-healing-violet/5 to-healing-blue/10">
+        {/* Institutions Founded */}
+        <section className="py-16 bg-gradient-to-b from-healing-blue/10 to-transparent">
           <div className="container mx-auto px-6 md:px-12">
-
-            {/* Global Impact Summary */}
-            <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg mb-8 animate-fade-in">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-healing-violet mb-2">Global Impact</h3>
-                <p className="text-foreground/70">Transforming lives across the world</p>
-              </div>
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                <div className="flex flex-col items-center hover-scale">
-                  <Users className="h-12 w-12 text-healing-green mb-3" />
-                  <span className="text-2xl font-bold">400,000+</span>
-                  <span className="text-foreground/70">students worldwide</span>
-                </div>
-                <div className="flex flex-col items-center hover-scale">
-                  <Globe className="h-12 w-12 text-healing-blue mb-3" />
-                  <span className="text-2xl font-bold">100+</span>
-                  <span className="text-foreground/70">countries</span>
-                </div>
-                <div className="flex flex-col items-center hover-scale">
-                  <Star className="h-12 w-12 text-healing-violet mb-3" />
-                  <span className="text-2xl font-bold">Decades</span>
-                  <span className="text-foreground/70">of healing expertise</span>
-                </div>
-              </div>
-            </div>
 
             {/* Institutions Founded */}
             <div className="mb-16">
