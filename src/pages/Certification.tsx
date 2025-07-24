@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap } from 'lucide-react';
+import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield } from 'lucide-react';
 import { Toaster } from "@/components/ui/toaster";
 
 const Certification = () => {
@@ -114,15 +114,15 @@ const Certification = () => {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold flex items-center mb-2">
-                      <Heart className="mr-2 h-5 w-5 text-healing-green" />
-                      World Institute for Incurable Diseases (WIID)
+                      <Shield className="mr-2 h-5 w-5 text-healing-green" />
+                      World Institute for Incurable Diseases™ (WIID)
                     </h4>
                     <p className="text-sm text-foreground/80">Focused on healing chronic and complex conditions through energy-based modalities</p>
                   </div>
                   <div>
                     <h4 className="font-semibold flex items-center mb-2">
-                      <GraduationCap className="mr-2 h-5 w-5 text-healing-blue" />
-                      BElife Institute for Higher Consciousness (BIHC)
+                      <Brain className="mr-2 h-5 w-5 text-healing-blue" />
+                      BElife Institute for Higher Consciousness™ (BIHC)
                     </h4>
                     <p className="text-sm text-foreground/80">A global school offering 200+ programs in spiritual development and energy healing</p>
                     <Button 
@@ -135,8 +135,8 @@ const Certification = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold flex items-center mb-2">
-                      <Star className="mr-2 h-5 w-5 text-healing-violet" />
-                      Wisdom Institute for Leadership and Global Advancement (WILGA)
+                      <Users className="mr-2 h-5 w-5 text-healing-violet" />
+                      Wisdom Institute for Leadership and Global Advancement™ (WILGA)
                     </h4>
                     <p className="text-sm text-foreground/80">Dedicated to conscious leadership and organizational transformation</p>
                   </div>
