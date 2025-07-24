@@ -159,45 +159,42 @@ const Certification = () => {
                 <div className="space-y-6">
                   <div>
                     <div className="flex items-center mb-2">
-                      <img src="/logos/wiid-logo.png" alt="WIID Logo" className="h-8 w-6 mr-2" />
-                      <h4 className="font-semibold">World Institute for Incurable Diseases™ (WIID)</h4>
+                      <img src="/lovable-uploads/d9b3f1f3-e79c-4a3d-ba0d-ad4dc05adaba.png" alt="WIID Logo" className="h-8 w-8 mr-2 object-contain" />
+                      <Button 
+                        variant="link" 
+                        className="p-0 h-auto text-foreground hover:text-healing-blue font-semibold"
+                        onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}
+                      >
+                        World Institute for Incurable Diseases™ (WIID) <ExternalLink className="ml-1 h-3 w-3" />
+                      </Button>
                     </div>
-                    <p className="text-sm text-foreground/80 mb-2">Focused on healing chronic and complex conditions through energy-based modalities</p>
-                    <Button 
-                      variant="link" 
-                      className="p-0 h-auto text-healing-blue hover:text-healing-blue/80"
-                      onClick={() => window.open("https://www.wiidglobal.com/", "_blank", "noopener,noreferrer")}
-                    >
-                      Visit WIID Global <ExternalLink className="ml-1 h-3 w-3" />
-                    </Button>
+                    <p className="text-sm text-foreground/80">Focused on healing chronic and complex conditions through energy-based modalities</p>
                   </div>
                   <div>
                     <div className="flex items-center mb-2">
-                      <img src="/logos/bihc-logo.png" alt="BIHC Logo" className="h-8 w-12 mr-2 object-contain" />
-                      <h4 className="font-semibold">BElife Institute for Higher Consciousness™ (BIHC)</h4>
+                      <img src="/lovable-uploads/cce1ae9d-16e1-44d2-a4d6-4b67ce06af34.png" alt="BIHC Logo" className="h-8 w-8 mr-2 object-contain" />
+                      <Button 
+                        variant="link" 
+                        className="p-0 h-auto text-foreground hover:text-healing-blue font-semibold"
+                        onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}
+                      >
+                        BElife Institute for Higher Consciousness™ (BIHC) <ExternalLink className="ml-1 h-3 w-3" />
+                      </Button>
                     </div>
-                    <p className="text-sm text-foreground/80 mb-2">A global school offering 200+ programs in spiritual development and energy healing</p>
-                    <Button 
-                      variant="link" 
-                      className="p-0 h-auto text-healing-blue hover:text-healing-blue/80"
-                      onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}
-                    >
-                      Visit BIHC Global <ExternalLink className="ml-1 h-3 w-3" />
-                    </Button>
+                    <p className="text-sm text-foreground/80">A global school offering 200+ programs in spiritual development and energy healing</p>
                   </div>
                   <div>
                     <div className="flex items-center mb-2">
-                      <Users className="mr-2 h-5 w-5 text-healing-violet" />
-                      <h4 className="font-semibold">Wisdom Institute for Leadership and Global Advancement™ (WILGA)</h4>
+                      <img src="/lovable-uploads/68f2eccb-c75b-455b-844f-3a2e78725031.png" alt="WILGA Logo" className="h-8 w-8 mr-2 object-contain" />
+                      <Button 
+                        variant="link" 
+                        className="p-0 h-auto text-foreground hover:text-healing-blue font-semibold"
+                        onClick={() => window.open("https://www.wilgaglobal.com/", "_blank", "noopener,noreferrer")}
+                      >
+                        Wisdom Institute for Leadership and Global Advancement™ (WILGA) <ExternalLink className="ml-1 h-3 w-3" />
+                      </Button>
                     </div>
-                    <p className="text-sm text-foreground/80 mb-2">Dedicated to conscious leadership and organizational transformation</p>
-                    <Button 
-                      variant="link" 
-                      className="p-0 h-auto text-healing-blue hover:text-healing-blue/80"
-                      onClick={() => window.open("https://www.wilgaglobal.com/", "_blank", "noopener,noreferrer")}
-                    >
-                      Visit WILGA Global <ExternalLink className="ml-1 h-3 w-3" />
-                    </Button>
+                    <p className="text-sm text-foreground/80">Dedicated to conscious leadership and organizational transformation</p>
                   </div>
                 </div>
               </div>
