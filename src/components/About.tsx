@@ -12,16 +12,18 @@ const About = () => {
             <span className="text-primary font-medium mb-2 block">My Journey</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Asli Selcuk</h2>
             <p className="text-lg text-foreground/80 mb-6">
-              I am an observer of life, of humans, of relationships, of families, of patterns, and challenges. 
-              With backgrounds as a CPA and MSc in Finance, I've supported multinational corporations before 
-              discovering my passion for energy healing through my own personal health journey.
+              I am a lifelong student of life—deeply attuned to the subtle rhythms of nature, the
+              intricacies of human connection, and the invisible threads that shape our bodies, minds,
+              and relationships. My personal journey has led me through many meaningful roles:
+              daughter, sister, wife, mother, student, and corporate leader. Each has given me insight into
+              the delicate balance between purpose, responsibility, and personal well-being.
             </p>
             
             <p className="text-lg text-foreground/80 mb-6">
-              After struggling with hormonal challenges, disturbed sleep, and emotional obstacles that wouldn't 
-              resolve through conventional means, I discovered the <span className="text-black font-bold">BeWell Science®</span> Energy Medicine Modality. 
-              The transformation in my own life led me to become a certified practitioner, dedicated to helping 
-              others find similar breakthroughs.
+              It was through my own quest for inner harmony and healing that I discovered <strong className="font-bold">Energy
+              Medicine</strong>—a powerful modality that goes far beyond treating surface-level symptoms. It
+              revealed a dynamic, interconnected approach to wellness, where the physical, emotional,
+              mental, and spiritual dimensions are all honored and addressed.
             </p>
             
             <div className="space-y-4 mb-8">

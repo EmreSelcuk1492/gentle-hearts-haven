@@ -190,15 +190,27 @@ const Hero = () => {
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="max-w-3xl">
-          <span className="text-primary font-medium mb-3 block">Energy Medicine Practitioner</span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Discover the Balance <br />
-            <span className="text-gradient-pastel">Beyond What We See</span>
+            Welcome to a Transformative <br />
+            <span className="text-gradient-pastel">Healing Space</span>
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl">
-            We are all in an ocean of energy, constantly interacting with each other and the world. 
-            I help you explore beyond the physically observable to address the root causes of your 
-            challenges - <strong className="font-bold">physical, energetic, emotional, mental, and spiritual</strong>.
+            Welcome to a transformative space where holistic healing meets energetic alignment. We
+            live in an interconnected ocean of energy, constantly interacting with the world around us.
+            My mission is to guide you beyond the physical and into deeper realms—addressing the
+            root causes of your challenges across five key dimensions: <strong className="font-bold">physical, energetic, emotional, mental, and spiritual</strong>.
+          </p>
+          <p className="text-lg md:text-xl text-foreground/80 mb-6 max-w-2xl">
+            Through personalized energy healing and integrative wellness practices, I help you release
+            blockages, restore balance, and awaken your full potential. Together, we'll uncover the path
+            to the vibrant, fulfilling life you truly deserve.
+          </p>
+          <p className="text-lg md:text-xl text-foreground/80 mb-6 max-w-2xl">
+            Whether you're seeking clarity, healing, or spiritual growth, this journey is designed to
+            empower you—mind, body, and soul.
+          </p>
+          <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl">
+            Together, we work on attaining <strong className="font-bold">your best life, the best life you deserve</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 

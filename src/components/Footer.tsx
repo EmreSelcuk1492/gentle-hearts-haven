@@ -1,14 +1,15 @@
 
 import React from 'react';
-import { Heart, Mail, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Heart, Mail, Instagram, Facebook, Twitter, Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import CalendlyButton from './CalendlyButton';
 
 const Footer = () => {
   return (
     <footer className="bg-white/50 backdrop-blur-sm pt-16 pb-8">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Heart className="text-healing-violet h-6 w-6" />
@@ -44,24 +45,16 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold text-lg mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-foreground/80 hover:text-primary transition-colors">Energy Healing</a></li>
-              <li><a href="#" className="text-foreground/80 hover:text-primary transition-colors">Trauma Resolution</a></li>
-              <li><a href="#" className="text-foreground/80 hover:text-primary transition-colors">Life Balance Coaching</a></li>
-              <li><a href="#" className="text-foreground/80 hover:text-primary transition-colors">Mindfulness Training</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Subscribe</h3>
-            <p className="text-foreground/70 mb-4">Stay updated with healing tips and event announcements</p>
-            <div className="flex gap-2">
-              <Input placeholder="Your email" className="border-healing-green/50 focus-visible:ring-healing-green" />
-              <Button className="bg-[#d8ebc3] text-black hover:bg-[#c5e1a5] rounded-full px-6">
-                Subscribe
-              </Button>
-            </div>
+            <h3 className="font-semibold text-lg mb-4">Get Started</h3>
+            <p className="text-foreground/70 mb-4">Ready to begin your healing journey? Book a free discovery call to discuss your needs.</p>
+            <CalendlyButton 
+              calendlyUrl="https://calendly.com/your-username/30min"
+              variant="default"
+              size="sm"
+              className="w-full bg-healing-violet hover:bg-healing-violet/90 text-white"
+            >
+              Book Discovery Call
+            </CalendlyButton>
           </div>
         </div>
         

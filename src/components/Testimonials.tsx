@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Star } from 'lucide-react';
-import { Button } from "@/components/ui/button";
 
 interface TestimonialProps {
   quote: string;
@@ -56,12 +54,6 @@ const Testimonials = () => {
             description="Parent"
             bgColor="bg-white/80"
           />
-        </div>
-        
-        <div className="mt-16 text-center">
-          <Button variant="outline" className="border-healing-violet text-foreground hover:bg-healing-violet/10 px-8 py-6 text-lg">
-            Read More Testimonials
-          </Button>
         </div>
       </div>
     </section>
