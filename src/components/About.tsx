@@ -7,7 +7,7 @@ import MyPhilosophy from './MyPhilosophy';
 const About = () => {
   return (
     <>
-      <section id="about" className="relative py-24 overflow-hidden">
+      <section id="about" className="relative py-24 pt-32 md:pt-24 overflow-hidden">
         {/* Enhanced background with healing gradient */}
         <div className="absolute inset-0 healing-gradient"></div>
         
