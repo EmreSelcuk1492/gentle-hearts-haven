@@ -11,84 +11,44 @@ const CertificationPractice = () => {
           {/* Left side - Icon components */}
           <div className="order-2 lg:order-1">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <Brain className="h-5 w-5 text-healing-blue" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-blue">Mental Health</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  Depression, Anxiety, OCD & ADHD
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <Brain className="h-5 w-5 text-healing-blue mb-1" />
+                <p className="text-xs font-medium text-healing-blue">Mental Health</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <Activity className="h-5 w-5 text-healing-orange" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-orange">Burnout & Stress</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  Burnout, Stress, Fatigue & Dizziness
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <Activity className="h-5 w-5 text-healing-orange mb-1" />
+                <p className="text-xs font-medium text-healing-orange">Burnout & Stress</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <Users2 className="h-5 w-5 text-healing-green" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-green">Life Challenges</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  Relationship and Financial Struggles
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <Users2 className="h-5 w-5 text-healing-green mb-1" />
+                <p className="text-xs font-medium text-healing-green">Life Challenges</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <Shield className="h-5 w-5 text-healing-violet" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-violet">Cancer Support</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  Cancer support & recovery
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <Shield className="h-5 w-5 text-healing-violet mb-1" />
+                <p className="text-xs font-medium text-healing-violet">Cancer Support</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <Heart className="h-5 w-5 text-healing-red" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-red">Physical Health</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  Heart Disease, Diabetes & Dementia
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <Heart className="h-5 w-5 text-healing-red mb-1" />
+                <p className="text-xs font-medium text-healing-red">Physical Health</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <Flower2 className="h-5 w-5 text-healing-pink" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-pink">Women's Health</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  Menopause, perimenopause
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <Flower2 className="h-5 w-5 text-healing-pink mb-1" />
+                <p className="text-xs font-medium text-healing-pink">Women's Health</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <Sparkles className="h-5 w-5 text-healing-indigo" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-indigo">Spiritual Support</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  End-of-Life Transition Support
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <Sparkles className="h-5 w-5 text-healing-indigo mb-1" />
+                <p className="text-xs font-medium text-healing-indigo">Spiritual Support</p>
               </div>
               
-              <div className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100">
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center mb-3">
-                  <LifeBuoy className="h-5 w-5 text-healing-teal" />
-                </div>
-                <h3 className="text-sm font-semibold mb-1 text-healing-teal">Family Care</h3>
-                <p className="text-foreground/70 text-xs leading-relaxed">
-                  Including family and loved ones
-                </p>
+              <div className="bg-gray-50 p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center border border-gray-100 w-24 h-24 justify-center">
+                <LifeBuoy className="h-5 w-5 text-healing-teal mb-1" />
+                <p className="text-xs font-medium text-healing-teal">Family Care</p>
               </div>
             </div>
           </div>
