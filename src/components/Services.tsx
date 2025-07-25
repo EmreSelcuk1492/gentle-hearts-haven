@@ -127,15 +127,15 @@ const Services = () => {
       gradientTo: "to-healing-green"
     },
     {
-      title: "HEAL Plan – Transforming Life at Its Most Critical Crossroads",
+      title: "HEAL Plan – Custom Made Plan",
       description: "For those facing profound challenges—incurable diseases, major surgeries, psychosomatic disorders, catastrophes, addiction, and deep life transitions—this plan provides an integrative path toward restoration, resilience, and rebalance.",
       details: [
-        "💠 Collaborative Expertise: Hand-selected team matched to your unique condition",
-        "🌐 Energetic Precision: Life cycle mapping to align timing, choices, and healing strategies",
-        "🧬 Multidimensional Insight: Addressing biological and psychosomatic layers of suffering",
-        "🔥 Crisis Support: Designed for urgent, heavy, or seemingly irreversible moments",
-        "🪷 Gentle Yet Potent Methods: Non-invasive, body-respecting techniques with energetic mastery",
-        "📖 Personalized Protocols: Integrative pathways informed by science, intuition, and lived wisdom"
+        "Collaborative Expertise: Hand-selected team matched to your unique condition",
+        "Energetic Precision: Life cycle mapping to align timing, choices, and healing strategies",
+        "Multidimensional Insight: Addressing biological and psychosomatic layers of suffering",
+        "Crisis Support: Designed for urgent, heavy, or seemingly irreversible moments",
+        "Gentle Yet Potent Methods: Non-invasive, body-respecting techniques with energetic mastery",
+        "Personalized Protocols: Integrative pathways informed by science, intuition, and lived wisdom"
       ],
       icon: Sparkles,
       gradientFrom: "from-healing-blue",
