@@ -33,8 +33,8 @@ const Navbar = () => {
   };
   
   return (
-    <nav className={`py-4 px-6 md:px-12 flex items-center justify-between fixed w-full top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-white/20 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none'
+    <nav className={`py-4 px-6 md:px-12 flex items-center justify-between w-full top-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'fixed bg-white/90 backdrop-blur-md shadow-sm' : 'relative bg-transparent'
     }`}>
       <div className="flex items-center gap-2">
         <img 
