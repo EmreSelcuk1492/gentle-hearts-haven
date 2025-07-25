@@ -92,13 +92,6 @@ const Navbar = () => {
             className="text-foreground/80 hover:text-primary transition-colors py-2"
             onClick={(e) => handleNavClick(e, 'certification-practice')}
           >
-            Practice
-          </a>
-          <a 
-            href="#certification-practice" 
-            className="text-foreground/80 hover:text-primary transition-colors py-2"
-            onClick={(e) => handleNavClick(e, 'certification-practice')}
-          >
             Certifications
           </a>
           <a 
@@ -140,13 +133,6 @@ const Navbar = () => {
           onClick={(e) => handleNavClick(e, 'philosophy')}
         >
           Philosophy
-        </a>
-        <a 
-          href="#certification-practice" 
-          className="text-foreground/80 hover:text-primary transition-colors"
-          onClick={(e) => handleNavClick(e, 'certification-practice')}
-        >
-          Practice
         </a>
         <a 
           href="#certification-practice" 
