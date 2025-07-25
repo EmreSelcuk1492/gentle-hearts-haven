@@ -31,10 +31,10 @@ const About = () => {
               <div className="hidden md:block absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-healing-violet/20 to-healing-green/20 rounded-full blur-lg"></div>
               
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-green/20 to-healing-blue/20 rounded-full mb-4 md:mb-6 backdrop-blur-sm border border-white/30">
-                <span className="text-gray-800 font-semibold text-xs sm:text-sm">My Journey</span>
+                <span className="text-gray-800 font-semibold text-sm md:text-base">My Journey</span>
               </div>
               
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-tight">
                 Meet
                 <br />
                 <span className="bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Asli Selcuk</span>
