@@ -58,14 +58,9 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-foreground/70 text-sm mb-4 md:mb-0">
+        <div className="border-t border-foreground/10 pt-8">
+          <div className="text-foreground/70 text-sm text-center">
             &copy; {new Date().getFullYear()} Attain Energy Healing Services. All rights reserved.
-          </div>
-          
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-foreground/70 hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="text-foreground/70 hover:text-primary transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
