@@ -188,7 +188,7 @@ const Hero = () => {
         aria-hidden="true"
       />
       
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 pb-16 relative z-10">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Discover the Balance <br />
