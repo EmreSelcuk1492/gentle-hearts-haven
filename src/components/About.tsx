@@ -9,7 +9,7 @@ const About = () => {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div id="my-journey">
-            <span className="text-primary font-medium mb-2 block">My Journey</span>
+            <span className="text-foreground/80 font-medium mb-2 block">My Journey</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Asli Selcuk</h2>
             <p className="text-lg text-foreground/80 mb-6">
               I am a lifelong student of life—deeply attuned to the subtle rhythms of nature, the
@@ -59,7 +59,7 @@ const About = () => {
       {/* Core Values Section */}
       <div className="container mx-auto px-6 md:px-12 mt-20">
         <div className="text-center mb-12">
-          <span className="text-primary font-medium mb-2 block">My Philosophy</span>
+          <span className="text-foreground/80 font-medium mb-2 block">My Philosophy</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Understanding Energy</h2>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto">
             We are energetic beings that have a physical form. What we do, what we think, and who we engage with 

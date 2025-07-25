@@ -25,7 +25,7 @@ const Certification = () => {
             </Button>
             
             <div className="text-center max-w-4xl mx-auto">
-              <span className="text-primary font-medium mb-4 block text-lg">My Certification</span>
+              <span className="text-foreground/80 font-medium mb-4 block text-lg">My Certification</span>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 Energy Medicine Specialist
               </h1>

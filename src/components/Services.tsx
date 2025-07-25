@@ -139,7 +139,7 @@ const Services = () => {
     <section id="services" className="py-20">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <span className="text-primary font-medium mb-2 block">My Offerings</span>
+          <span className="text-foreground/80 font-medium mb-2 block">My Offerings</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Beyond Conventional Approaches</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
             When conventional methods haven't provided relief, explore healing techniques that address the energy behind your challenges.

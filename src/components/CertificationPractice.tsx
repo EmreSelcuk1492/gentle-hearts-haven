@@ -7,7 +7,7 @@ const CertificationPractice = () => {
     <section id="certification-practice" className="py-20 healing-gradient">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-12">
-          <span className="text-primary font-medium mb-2 block">My Certification & Practice</span>
+          <span className="text-foreground/80 font-medium mb-2 block">My Certification & Practice</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Energy Medicine Specialist</h2>
           <p className="text-lg text-foreground/80 max-w-4xl mx-auto mb-8">
             I am a certified Energy Medicine Specialist with the{' '}
