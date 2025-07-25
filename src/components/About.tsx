@@ -41,7 +41,7 @@ const About = () => {
               </h2>
               
               <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
-                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
+                <p className="text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
                   I am a lifelong student of life—deeply attuned to the subtle rhythms of nature, the
                   intricacies of human connection, and the invisible threads that shape our bodies, minds,
                   and relationships. My personal journey has led me through many meaningful roles:
@@ -49,7 +49,7 @@ const About = () => {
                   the delicate balance between purpose, responsibility, and personal well-being.
                 </p>
                 
-                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
+                <p className="text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
                   It was through my own quest for inner harmony and healing that I discovered <strong className="font-bold bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Energy
                   Medicine</strong>—a powerful modality that goes far beyond treating surface-level symptoms. It
                   revealed a dynamic, interconnected approach to wellness, where the physical, emotional,
@@ -113,7 +113,7 @@ const About = () => {
           </div>
         </div>
         
-        <style jsx>{`
+        <style>{`
           @keyframes drift {
             0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
             25% { transform: translateX(10px) translateY(-15px) rotate(1deg); }
