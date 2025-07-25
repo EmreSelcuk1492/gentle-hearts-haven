@@ -213,20 +213,19 @@ const Hero = () => {
             Together, we work on attaining <strong className="font-bold">your best life, the best life you deserve</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button 
-              className="bg-healing-green hover:bg-healing-green/90 text-foreground px-8 py-6 text-lg group rounded-md"
+            <button
               onClick={() => scrollToSection('contact')}
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-healing-green to-healing-blue text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               Begin Your Healing Journey
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button 
-              variant="outline" 
-              className="border-healing-violet text-foreground hover:bg-healing-violet/10 px-8 py-6 text-lg rounded-md"
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
               onClick={() => scrollToSection('my-journey')}
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-healing-violet to-healing-orange text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Read My Story
-            </Button>
+            </button>
           </div>
         </div>
       </div>

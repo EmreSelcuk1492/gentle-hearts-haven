@@ -1,163 +1,197 @@
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Sparkles, Target, Star } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast";
+import React, { useState } from 'react';
+import { Sparkles, Zap, Heart, RefreshCw, ChevronDown, ChevronUp } from 'lucide-react';
 
-interface ServiceCardProps { 
-  title: string; 
-  description: string; 
-  icon: React.ElementType; 
-  color: string;
-  onInterestClick: (e: React.MouseEvent<HTMLDivElement>) => void;
-  isClicked: boolean;
+interface ServiceCardProps {
+  title: string;
+  description: string;
+  details: string[];
+  icon: React.ElementType;
+  gradientFrom: string;
+  gradientTo: string;
+  isExpanded: boolean;
+  onToggle: () => void;
 }
 
 const ServiceCard = ({ 
   title, 
   description, 
+  details,
   icon: Icon, 
-  color,
-  onInterestClick,
-  isClicked 
+  gradientFrom,
+  gradientTo,
+  isExpanded,
+  onToggle
 }: ServiceCardProps) => {
-  const { toast } = useToast();
-  
-  const handleInterestClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Log interest in this service
-    console.log(`User clicked on service: ${title}`);
-    
-    // Show toast notification
-    toast({
-      title: "Thank you for your interest!",
-      description: `We've noted your interest in ${title.replace("BeWell Science®", "BeWell Science")}`,
-    });
-    
-    onInterestClick(e);
-  };
-
-  // Add special styling for BeWell Science
-  const formattedTitle = title.includes("BeWell Science") ? (
-    <>
-      <span className="text-black font-bold">BeWell Science®</span>
-      {title.replace("BeWell Science®", "")}
-    </>
-  ) : (
-    title
-  );
-
   return (
-    <Card 
-      className={`border-t-4 h-full transition-all ${isClicked ? 'shadow-lg opacity-90 translate-y-2 bg-gradient-to-b from-white to-gray-100' : 'hover:shadow-lg hover:-translate-y-1'} cursor-pointer relative overflow-hidden`}
-      style={{ 
-        borderTopColor: color,
-        boxShadow: isClicked ? `0 4px 12px ${color}40` : ''
-      }}
-      onClick={handleInterestClick}
-    >
-      {isClicked && (
-        <div 
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{ backgroundColor: color }}
-        />
-      )}
-      <CardHeader className="pb-2">
-        <div className="w-12 h-12 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: `${color}30` }}>
-          <Icon className="w-6 h-6" style={{ color: color }} />
+    <div className="group relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 overflow-hidden">
+      {/* Glow effect on hover */}
+      <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${gradientFrom}/0 ${gradientTo}/0 group-hover:${gradientFrom}/5 group-hover:${gradientTo}/5 transition-all duration-300`}></div>
+      
+      {/* Header */}
+      <div className="relative p-8">
+        <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${gradientFrom}/20 ${gradientTo}/20 mb-6`}>
+          <Icon className={`h-8 w-8 text-gray-700`} />
         </div>
-        <CardTitle className="text-xl">{formattedTitle}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-foreground/70">
-          {description.includes("BeWell Science") ? (
-            <>
-              {description.split("BeWell Science").map((part, index) => {
-                return index === 0 ? (
-                  <React.Fragment key={index}>{part}</React.Fragment>
-                ) : (
-                  <React.Fragment key={index}>
-                    <span className="text-black font-bold">BeWell Science</span>
-                    {part}
-                  </React.Fragment>
-                );
-              })}
-            </>
-          ) : (
-            description
-          )}
+        
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          {title}
+        </h3>
+        
+        <p className="text-gray-600 leading-relaxed mb-6">
+          {description}
         </p>
-      </CardContent>
-    </Card>
+        
+        {/* Toggle button */}
+        <button
+          onClick={onToggle}
+          className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200`}
+        >
+          {isExpanded ? 'Show Less' : 'Learn More'}
+          {isExpanded ? (
+            <ChevronUp className="ml-2 h-4 w-4" />
+          ) : (
+            <ChevronDown className="ml-2 h-4 w-4" />
+          )}
+        </button>
+      </div>
+      
+      {/* Expandable details */}
+      <div className={`transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+        <div className="px-8 pb-8">
+          <div className="border-t border-gray-200/50 pt-6">
+            <ul className="space-y-4">
+              {details.map((detail, index) => (
+                <li key={index} className="flex items-start">
+                  <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradientFrom} ${gradientTo} mt-2 mr-4 flex-shrink-0`}></div>
+                  <span className="text-gray-600 leading-relaxed">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      {/* Subtle border glow */}
+      <div className={`absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r ${gradientFrom}/0 ${gradientTo}/0 group-hover:${gradientFrom}/10 group-hover:${gradientTo}/10 transition-all duration-300 -z-10`}></div>
+    </div>
   );
 };
 
 const Services = () => {
-  const [selectedService, setSelectedService] = useState<string | null>(null);
-  
-  // Load selected service from sessionStorage on component mount
-  useEffect(() => {
-    const storedService = sessionStorage.getItem('selectedService');
-    if (storedService) {
-      setSelectedService(storedService);
-    }
-  }, []);
-  
-  // Update sessionStorage when selection changes
-  useEffect(() => {
-    if (selectedService) {
-      sessionStorage.setItem('selectedService', selectedService);
-    } else {
-      sessionStorage.removeItem('selectedService');
-    }
-  }, [selectedService]);
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
 
-  const handleServiceClick = (title: string, e: React.MouseEvent<HTMLDivElement>) => {
-    setSelectedService(prev => prev === title ? null : title);
+  const handleToggle = (title: string) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [title]: !prev[title]
+    }));
   };
 
   const serviceItems = [
     {
-      title: "BeWell Science® Healing Sessions",
-      description: "Root-cause energy medicine that clears physical, emotional, and mental blockages. Ideal for pain that lingers despite treatment, chronic stress, hormonal shifts, or \"mystery\" symptoms that defy conventional tests.",
+      title: "Be In Shape Rescue Session",
+      description: "A focused online session designed to rescue your posture, breath, and both biomechanical and energetic flow.",
+      details: [
+        "Gently supports you through moments of physical fatigue, mental fog, and emotional heaviness",
+        "Anchored in Be Well Science protocols—non-invasive, science-informed methods for safe restoration",
+        "Encourages deep reconnection with your body's natural rhythm, vitality, and internal clarity",
+        "All you need: a chair, a quiet space, and a willingness to reset, breathe, and feel grounded",
+        "Ideal between routines, or anytime you need to realign body and mind for renewed focus and ease"
+      ],
+      icon: Zap,
+      gradientFrom: "from-healing-green",
+      gradientTo: "to-healing-blue"
+    },
+    {
+      title: "Mini Reset — 5 Sessions",
+      description: "Focused support for a single, acute challenge. Ideal for situations like post-surgery healing, temporary anxiety or OCD flare-ups, or minor musculoskeletal strain.",
+      details: [
+        "Combines breathwork, energy balancing, and daily micro-practices",
+        "Helps establish clarity, rhythm, and short-term relief",
+        "Non-invasive and science-informed care that respects body and mind"
+      ],
+      icon: RefreshCw,
+      gradientFrom: "from-healing-violet",
+      gradientTo: "to-healing-orange"
+    },
+    {
+      title: "Deep Dive — 10 Sessions",
+      description: "Designed for deeper, more layered issues or anticipated transitions. Best for relationship dynamics, long-term emotional patterns, chronic physical tension, or life-altering events.",
+      details: [
+        "Includes expanded guidance, integration strategies, and customized healing sequences",
+        "Rooted in Be Well Science protocols and supported by energetic insights",
+        "Offers time and space to truly shift, stabilize, and harmonize"
+      ],
+      icon: Heart,
+      gradientFrom: "from-healing-orange",
+      gradientTo: "to-healing-green"
+    },
+    {
+      title: "HEAL Plan – Transforming Life at Its Most Critical Crossroads",
+      description: "For those facing profound challenges—incurable diseases, major surgeries, psychosomatic disorders, catastrophes, addiction, and deep life transitions—this plan provides an integrative path toward restoration, resilience, and rebalance.",
+      details: [
+        "💠 Collaborative Expertise: Hand-selected team matched to your unique condition",
+        "🌐 Energetic Precision: Life cycle mapping to align timing, choices, and healing strategies",
+        "🧬 Multidimensional Insight: Addressing biological and psychosomatic layers of suffering",
+        "🔥 Crisis Support: Designed for urgent, heavy, or seemingly irreversible moments",
+        "🪷 Gentle Yet Potent Methods: Non-invasive, body-respecting techniques with energetic mastery",
+        "📖 Personalized Protocols: Integrative pathways informed by science, intuition, and lived wisdom"
+      ],
       icon: Sparkles,
-      color: "#C5E1A5" // healing-green
-    },
-    {
-      title: "Focused Recovery Tracks",
-      description: "Short, goal-oriented packages for a single challenge—e.g., post-surgery healing, anxiety & OCD relief, musculoskeletal issues, or relationship harmony. Combines breathwork, energy balancing, and simple daily practices.",
-      icon: Target,
-      color: "#D1C4E9" // healing-violet
-    },
-    {
-      title: "Whole-Life HealPlan",
-      description: "A comprehensive, team-supported roadmap that addresses body, energy, emotions, mind, and spirit. Includes customized protocols, guided meditations, and ongoing check-ins for deep, lasting transformation.",
-      icon: Star,
-      color: "#FFCC80" // healing-orange
+      gradientFrom: "from-healing-blue",
+      gradientTo: "to-healing-violet"
     },
   ];
   
   return (
-    <section id="services" className="py-20">
-      <div className="container mx-auto px-6 md:px-12">
+    <section id="services" className="relative py-12 overflow-hidden">
+      {/* Background with gradient and subtle pattern */}
+      <div className="absolute inset-0 healing-gradient"></div>
+      <div className="absolute inset-0 opacity-20" 
+           style={{
+             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(179, 229, 252, 0.3) 1px, transparent 0)`,
+             backgroundSize: '40px 40px'
+           }}>
+      </div>
+      
+      <div className="relative container mx-auto px-4 md:px-6 max-w-7xl">
+        {/* Header section */}
         <div className="text-center mb-16">
-          <span className="text-foreground/80 font-medium mb-2 block">My Offerings</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Beyond Conventional Approaches</h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-blue/20 to-healing-orange/20 rounded-full mb-6">
+            <span className="text-gray-800 font-medium text-sm">My Offerings</span>
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            Beyond Conventional
+            <br />
+            <span className="text-4xl md:text-5xl">Approaches</span>
+          </h2>
+          
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             When conventional methods haven't provided relief, explore healing techniques that address the energy behind your challenges.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Services grid */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {serviceItems.map((service) => (
             <ServiceCard 
               key={service.title}
               title={service.title} 
               description={service.description}
+              details={service.details}
               icon={service.icon}
-              color={service.color}
-              onInterestClick={(e) => handleServiceClick(service.title, e)}
-              isClicked={selectedService === service.title}
+              gradientFrom={service.gradientFrom}
+              gradientTo={service.gradientTo}
+              isExpanded={expandedCards[service.title] || false}
+              onToggle={() => handleToggle(service.title)}
             />
           ))}
+        </div>
+        
+        {/* Bottom decorative element */}
+        <div className="mt-16 flex justify-center">
+          <div className="w-24 h-1 bg-gradient-to-r from-healing-green via-healing-violet to-healing-orange rounded-full opacity-60"></div>
         </div>
       </div>
     </section>

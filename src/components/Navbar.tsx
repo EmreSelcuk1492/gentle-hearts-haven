@@ -6,8 +6,12 @@ import { Menu, X } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
   
   useEffect(() => {
+    // Check if we're on the home page
+    setIsHomePage(window.location.pathname === '/');
+    
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
@@ -22,6 +26,13 @@ const Navbar = () => {
   
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    
+    // If we're not on the home page, navigate to home first
+    if (!isHomePage) {
+      window.location.href = `/#${id}`;
+      return;
+    }
+    
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
@@ -34,9 +45,12 @@ const Navbar = () => {
   
   return (
     <nav className={`py-4 px-6 md:px-12 flex items-center justify-between w-full top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'fixed bg-white/90 backdrop-blur-md shadow-sm' : 'relative bg-transparent'
+      (isScrolled || !isHomePage) ? 'fixed bg-white/90 backdrop-blur-md shadow-sm' : 'relative bg-transparent'
     }`}>
-      <div className="flex items-center gap-2">
+      <div 
+        className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity duration-200"
+        onClick={() => window.location.href = '/'}
+      >
         <img 
           src="/lovable-uploads/43ef3823-8e8b-4c03-980a-3943dd150fd2.png" 
           alt="Attain Energy Healing logo" 
@@ -67,6 +81,27 @@ const Navbar = () => {
             About
           </a>
           <a 
+            href="#philosophy" 
+            className="text-foreground/80 hover:text-primary transition-colors py-2"
+            onClick={(e) => handleNavClick(e, 'philosophy')}
+          >
+            Philosophy
+          </a>
+          <a 
+            href="#certification-practice" 
+            className="text-foreground/80 hover:text-primary transition-colors py-2"
+            onClick={(e) => handleNavClick(e, 'certification-practice')}
+          >
+            Practice
+          </a>
+          <a 
+            href="#certification-practice" 
+            className="text-foreground/80 hover:text-primary transition-colors py-2"
+            onClick={(e) => handleNavClick(e, 'certification-practice')}
+          >
+            Certifications
+          </a>
+          <a 
             href="#services" 
             className="text-foreground/80 hover:text-primary transition-colors py-2"
             onClick={(e) => handleNavClick(e, 'services')}
@@ -85,14 +120,8 @@ const Navbar = () => {
             className="text-foreground/80 hover:text-primary transition-colors py-2"
             onClick={(e) => handleNavClick(e, 'contact')}
           >
-            Contact
+            Discover
           </a>
-          <Button 
-            className="bg-healing-green text-foreground hover:bg-healing-green/90 w-full mt-2"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Book a Session
-          </Button>
         </div>
       )}
       
@@ -104,6 +133,27 @@ const Navbar = () => {
           onClick={(e) => handleNavClick(e, 'about')}
         >
           About
+        </a>
+        <a 
+          href="#philosophy" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+          onClick={(e) => handleNavClick(e, 'philosophy')}
+        >
+          Philosophy
+        </a>
+        <a 
+          href="#certification-practice" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+          onClick={(e) => handleNavClick(e, 'certification-practice')}
+        >
+          Practice
+        </a>
+        <a 
+          href="#certification-practice" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+          onClick={(e) => handleNavClick(e, 'certification-practice')}
+        >
+          Certifications
         </a>
         <a 
           href="#services" 
@@ -124,13 +174,10 @@ const Navbar = () => {
           className="text-foreground/80 hover:text-primary transition-colors"
           onClick={(e) => handleNavClick(e, 'contact')}
         >
-          Contact
+          Discover
         </a>
       </div>
       
-      <Button className="hidden md:flex bg-healing-green text-foreground hover:bg-healing-green/90">
-        Book a Session
-      </Button>
     </nav>
   );
 };
