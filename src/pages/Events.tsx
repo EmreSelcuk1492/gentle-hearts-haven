@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CalendarDays, MapPin } from 'lucide-react';
+import { CalendarDays, MapPin, ExternalLink, Globe } from 'lucide-react';
 import { format } from 'date-fns';
 
 interface Event {
@@ -14,6 +14,8 @@ interface Event {
   description: string;
   date: string;
   location?: string;
+  event_type?: string;
+  online_link?: string;
   image_url?: string;
   created_at: string;
 }
@@ -301,12 +303,38 @@ const Events = () => {
                       <p className="text-muted-foreground mb-4 line-clamp-3">
                         {event.description}
                       </p>
-                      {event.location && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <MapPin className="h-4 w-4" />
-                          <span>{event.location}</span>
-                        </div>
-                      )}
+                      
+                      <div className="space-y-3">
+                        {event.location && (
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <MapPin className="h-4 w-4" />
+                            <span>{event.location}</span>
+                          </div>
+                        )}
+                        
+                        {event.online_link && (
+                          <div className="flex items-center gap-2">
+                            <Globe className="h-4 w-4 text-primary" />
+                            <a 
+                              href={event.online_link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                            >
+                              Join Online Event
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </div>
+                        )}
+                        
+                        {event.event_type && (
+                          <div className="pt-2">
+                            <Badge variant="outline" className="text-xs capitalize">
+                              {event.event_type} Event
+                            </Badge>
+                          </div>
+                        )}
+                      </div>
                     </CardContent>
                   </Card>
                 ))}
