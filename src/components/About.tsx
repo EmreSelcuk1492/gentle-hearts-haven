@@ -50,7 +50,7 @@ const About = () => {
                 </p>
                 
                 <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
-                  It was through my own quest for inner harmony and healing that I discovered <strong className="font-bold bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Energy
+                  It was through my own quest for inner harmony and healing that I discovered <strong className="font-bold text-black">Energy
                   Medicine</strong>—a powerful modality that goes far beyond treating surface-level symptoms. It
                   revealed a dynamic, interconnected approach to wellness, where the physical, emotional,
                   mental, and spiritual dimensions are all honored and addressed.

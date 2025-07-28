@@ -38,7 +38,7 @@ const CertificationPractice = () => {
               <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
                 Energy Medicine
                 <br />
-                <span className="text-4xl md:text-5xl">Specialist</span>
+                <span className="text-4xl md:text-5xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Specialist</span>
               </h2>
             </div>
 
@@ -54,7 +54,7 @@ const CertificationPractice = () => {
                   <ExternalLink className="h-3 w-3" />
                 </button>
                 , an organization that applies the transformative{' '}
-                <span className="font-semibold" style={{color: '#8E4EC6'}}>Be Well Science™</span> method.
+                <span className="font-semibold" style={{color: '#8E4EC6'}}>BeWell Science™</span> method.
               </p>
               
               <p>
