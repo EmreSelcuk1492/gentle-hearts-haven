@@ -259,7 +259,7 @@ const Events = () => {
                 Upcoming <span className="bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Events</span>
               </h1>
               <p className="text-lg text-muted-foreground">
-                Join us for transformative experiences in energy healing and wellness
+                Join us for transformative experiences and lectures
               </p>
             </div>
           </div>
