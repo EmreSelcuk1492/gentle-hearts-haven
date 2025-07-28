@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
+import AnimatedBackground from '@/components/ui/animated-background';
 
 interface Event {
   id: string;
@@ -62,11 +63,12 @@ const Events = () => {
   }
 
   return (
-    <div className="min-h-screen bg-healing-green/10">
+    <div className="min-h-screen bg-healing-green/10 relative">
+      <AnimatedBackground className="opacity-30" orbCount={8} />
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16">
+      <section className="pt-24 pb-16 relative z-10">
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -80,7 +82,7 @@ const Events = () => {
       </section>
 
       {/* Events Grid */}
-      <section className="pb-24">
+      <section className="pb-24 relative z-10">
         <div className="container mx-auto px-6 md:px-12">
           {events.length === 0 ? (
             <div className="text-center py-16">
