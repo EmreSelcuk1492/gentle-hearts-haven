@@ -7,7 +7,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { X, Upload, Calendar, MapPin, FileText, Image } from 'lucide-react';
+import { X, Upload, Calendar, MapPin, FileText, Image, Globe, Users } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Event {
   id: string;
@@ -15,6 +16,8 @@ interface Event {
   description: string;
   date: string;
   location?: string;
+  event_type?: string;
+  online_link?: string;
   image_url?: string;
   created_at: string;
 }
@@ -30,6 +33,8 @@ const EventForm: React.FC<EventFormProps> = ({ event, onClose }) => {
     description: event?.description || '',
     date: event?.date ? new Date(event.date).toISOString().split('T')[0] : '',
     location: event?.location || '',
+    event_type: event?.event_type || 'in-person',
+    online_link: event?.online_link || '',
     image_url: event?.image_url || ''
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -103,10 +108,29 @@ const EventForm: React.FC<EventFormProps> = ({ event, onClose }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.title || !formData.description || !formData.date) {
+    // Validation
+    if (!formData.title || !formData.description || !formData.date || !formData.event_type) {
       toast({
         title: "Validation Error",
         description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (formData.event_type === 'in-person' && !formData.location) {
+      toast({
+        title: "Validation Error",
+        description: "Location is required for in-person events.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (formData.event_type === 'online' && !formData.online_link) {
+      toast({
+        title: "Validation Error",
+        description: "Online meeting link is required for online events.",
         variant: "destructive",
       });
       return;
@@ -189,19 +213,57 @@ const EventForm: React.FC<EventFormProps> = ({ event, onClose }) => {
               />
             </div>
 
-            {/* Location */}
+            {/* Event Type */}
             <div className="space-y-2">
-              <Label htmlFor="location" className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                Location
+              <Label htmlFor="event_type" className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Event Type *
               </Label>
-              <Input
-                id="location"
-                value={formData.location}
-                onChange={(e) => handleInputChange('location', e.target.value)}
-                placeholder="Enter event location (optional)"
-              />
+              <Select value={formData.event_type} onValueChange={(value) => handleInputChange('event_type', value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select event type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="in-person">In-Person</SelectItem>
+                  <SelectItem value="online">Online</SelectItem>
+                  <SelectItem value="hybrid">Hybrid</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
+
+            {/* Location - show only for in-person and hybrid events */}
+            {(formData.event_type === 'in-person' || formData.event_type === 'hybrid') && (
+              <div className="space-y-2">
+                <Label htmlFor="location" className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  Location {formData.event_type === 'in-person' ? '*' : ''}
+                </Label>
+                <Input
+                  id="location"
+                  value={formData.location}
+                  onChange={(e) => handleInputChange('location', e.target.value)}
+                  placeholder="Enter event location"
+                  required={formData.event_type === 'in-person'}
+                />
+              </div>
+            )}
+
+            {/* Online Link - show only for online and hybrid events */}
+            {(formData.event_type === 'online' || formData.event_type === 'hybrid') && (
+              <div className="space-y-2">
+                <Label htmlFor="online_link" className="flex items-center gap-2">
+                  <Globe className="h-4 w-4" />
+                  Online Meeting Link {formData.event_type === 'online' ? '*' : ''}
+                </Label>
+                <Input
+                  id="online_link"
+                  value={formData.online_link}
+                  onChange={(e) => handleInputChange('online_link', e.target.value)}
+                  placeholder="Enter meeting link (Zoom, Teams, etc.)"
+                  required={formData.event_type === 'online'}
+                />
+              </div>
+            )}
 
             {/* Image Upload */}
             <div className="space-y-2">
