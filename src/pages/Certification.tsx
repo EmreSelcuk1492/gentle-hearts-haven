@@ -6,12 +6,12 @@ import { InstitutionCard } from '@/components/InstitutionCard';
 import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield, Instagram, Youtube, Twitter, Facebook } from 'lucide-react';
 import { Toaster } from "@/components/ui/toaster";
 
-const Origins = () => {
+const Certification = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-healing-green/10 to-healing-blue/10">
       <Navbar />
       
-      <main className="pt-24">
+      <main className="pt-20">
         {/* Hero Section */}
         <section className="relative py-12 overflow-hidden">
           {/* Background with gradient and subtle pattern */}
@@ -35,19 +35,36 @@ const Origins = () => {
             
             <div className="text-center max-w-5xl mx-auto">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-green/20 to-healing-violet/20 rounded-full mb-6">
+                <Award className="h-4 w-4 text-healing-green mr-2" />
                 <span className="text-gray-800 font-medium text-sm">Our Origins</span>
               </div>
               
               <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6">
                 Energy Medicine
                 <br />
-                <span className="text-4xl md:text-6xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Specialist</span>
+                <span className="text-4xl md:text-6xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Certification</span>
               </h1>
               
               <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
                 Certified by the <strong className="text-gray-900">World Institute For Incurable Diseases™</strong> in the transformative <strong style={{color: '#8E4EC6'}}>BeWell Science™</strong> method, pioneered by Master Del Pe
               </p>
               
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <button 
+                  className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-healing-green via-healing-violet to-healing-orange text-white font-semibold text-lg rounded-2xl shadow-2xl hover:shadow-healing-green/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                  onClick={() => window.location.href = '/#contact'}
+                >
+                  Book Your Session
+                  <ArrowLeft className="ml-2 h-5 w-5 rotate-180 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+                <button 
+                  className="group inline-flex items-center px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-800 font-semibold text-lg rounded-2xl shadow-xl hover:shadow-2xl hover:bg-white/90 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 border border-white/50"
+                  onClick={() => window.open("https://www.bihcglobal.com/", "_blank", "noopener,noreferrer")}
+                >
+                  Explore Programs
+                  <ExternalLink className="ml-2 h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                </button>
+              </div>
             </div>
             
             {/* Bottom decorative element */}
@@ -94,7 +111,7 @@ const Origins = () => {
                     <Globe className="h-6 w-6 text-white" />
                   </div>
                   <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                       onClick={() => window.open("https://www.instagram.com/masterdelpe_official/", "_blank", "noopener,noreferrer")}>
+                       onClick={() => window.open("#", "_blank", "noopener,noreferrer")}>
                     <Instagram className="h-6 w-6 text-white" />
                   </div>
                 </div>
@@ -112,6 +129,7 @@ const Origins = () => {
                 
                 <div className="relative text-center mb-8">
                   <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-violet/20 to-healing-blue/20 rounded-full mb-4">
+                    <Star className="h-4 w-4 text-healing-violet mr-2" />
                     <span className="text-gray-800 font-medium text-sm">Global Impact</span>
                   </div>
                   <h3 className="text-3xl font-bold text-gray-900 mb-2">Transforming Lives</h3>
@@ -161,6 +179,7 @@ const Origins = () => {
             <div className="mb-16">
               <div className="text-center mb-12">
                 <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-orange/20 to-healing-violet/20 rounded-full mb-6">
+                  <Building2 className="h-4 w-4 text-healing-orange mr-2" />
                   <span className="text-gray-800 font-medium text-sm">Institutions Founded</span>
                 </div>
                 
@@ -232,6 +251,7 @@ const Origins = () => {
               
               <div className="relative text-center mb-12">
                 <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-yellow/20 to-healing-green/20 rounded-full mb-6">
+                  <Sparkles className="h-4 w-4 text-healing-green mr-2" />
                   <span className="text-gray-800 font-medium text-sm">The Method</span>
                 </div>
                 
@@ -312,4 +332,4 @@ const Origins = () => {
   );
 };
 
-export default Origins; 
+export default Certification; 
