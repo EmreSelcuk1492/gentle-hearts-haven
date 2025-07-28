@@ -13,18 +13,6 @@ const EventsBanner = () => {
         <div className="absolute bottom-8 right-1/3 w-24 h-24 bg-healing-green/40 rounded-full blur-lg animate-pulse delay-700"></div>
       </div>
       
-      {/* Translucent background text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="text-white/5 font-bold text-8xl md:text-9xl transform -rotate-12 select-none">
-          HEALING
-        </div>
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="text-white/3 font-bold text-6xl md:text-7xl transform rotate-12 translate-x-32 translate-y-16 select-none">
-          WELLNESS
-        </div>
-      </div>
-      
       <div className="container mx-auto px-4 relative z-10">
         <div 
           onClick={() => navigate('/events')}
