@@ -109,6 +109,12 @@ const Navbar = () => {
             Testimonials
           </a>
           <a 
+            href="/events" 
+            className="text-foreground/80 hover:text-primary transition-colors py-2"
+          >
+            Events
+          </a>
+          <a 
             href="#contact" 
             className="text-foreground/80 hover:text-primary transition-colors py-2"
             onClick={(e) => handleNavClick(e, 'contact')}
@@ -154,6 +160,12 @@ const Navbar = () => {
           onClick={(e) => handleNavClick(e, 'testimonials')}
         >
           Testimonials
+        </a>
+        <a 
+          href="/events" 
+          className="text-foreground/80 hover:text-primary transition-colors"
+        >
+          Events
         </a>
         <a 
           href="#contact" 
