@@ -63,7 +63,7 @@ const Events = () => {
   }
 
   return (
-    <div className="min-h-screen bg-healing-green/10 relative">
+    <div className="min-h-screen bg-gradient-to-br from-healing-violet to-healing-orange relative">
       <AnimatedBackground className="opacity-30" orbCount={8} />
       <Navbar />
       
