@@ -64,8 +64,8 @@ const MyPhilosophy = () => {
       gradientTo: "to-healing-orange"
     },
     {
-      title: "Guided by Be Well Science, Respectful of Your Body",
-      description: "I do not diagnose or prescribe, and I never touch or invade the body. Every session is rooted in Be Well Science protocols—an approach that integrates biomechanical precision with evidence-informed healing. My work complements conventional medicine, drawing from its insights to create non-invasive practices tailored to your wellbeing. Through breathwork, movement, and mindfulness, I help you reconnect with your body, gently and respectfully, all from the comfort of your home.",
+      title: "Guided by BeWell Science™, Respectful of Your Body",
+      description: "I do not diagnose or prescribe, and I never touch or invade the body. Every session is rooted in BeWell Science™ protocols—an approach that integrates biomechanical precision with evidence-informed healing. My work complements conventional medicine, drawing from its insights to create non-invasive practices tailored to your wellbeing. Through breathwork, movement, and mindfulness, I help you reconnect with your body, gently and respectfully, all from the comfort of your home.",
       icon: Heart,
       gradientFrom: "from-healing-orange",
       gradientTo: "to-healing-green"
@@ -80,7 +80,7 @@ const MyPhilosophy = () => {
   ];
 
   return (
-    <section id="philosophy" className="relative py-20 overflow-hidden">
+    <section className="relative py-20 overflow-hidden">
       {/* Enhanced background with healing gradient */}
       <div className="absolute inset-0 healing-gradient"></div>
       
@@ -101,6 +101,7 @@ const MyPhilosophy = () => {
         {/* Enhanced header section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-5 py-3 bg-gradient-to-r from-healing-violet/25 to-healing-green/25 rounded-full mb-8 backdrop-blur-sm border border-white/30">
+            <Sparkles className="h-5 w-5 text-healing-violet mr-3 animate-pulse" />
             <span className="text-gray-800 font-semibold">My Philosophy</span>
           </div>
           
@@ -109,7 +110,6 @@ const MyPhilosophy = () => {
             <br />
             <span className="text-4xl md:text-5xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Healing</span>
           </h2>
-          
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
