@@ -93,7 +93,7 @@ const Services = () => {
       description: "A focused online session designed to rescue your posture, breath, and both biomechanical and energetic flow.",
       details: [
         "Gently supports you through moments of physical fatigue, mental fog, and emotional heaviness",
-        "Anchored in Be Well Science protocols—non-invasive, science-informed methods for safe restoration",
+        "Anchored in BeWell Science™ protocols—non-invasive, science-informed methods for safe restoration",
         "Encourages deep reconnection with your body's natural rhythm, vitality, and internal clarity",
         "All you need: a chair, a quiet space, and a willingness to reset, breathe, and feel grounded",
         "Ideal between routines, or anytime you need to realign body and mind for renewed focus and ease"
@@ -104,7 +104,7 @@ const Services = () => {
     },
     {
       title: "Mini Reset — 5 Sessions",
-      description: "Focused support for a single, acute challenge. Ideal for situations like post-surgery healing, temporary anxiety or OCD flare-ups, or minor musculoskeletal strain.",
+      description: "Focused support for a single, acute challenge. Ideal for situations like temporary anxiety or OCD flare-ups, or minor musculoskeletal strain.",
       details: [
         "Combines breathwork, energy balancing, and daily micro-practices",
         "Helps establish clarity, rhythm, and short-term relief",
@@ -116,10 +116,10 @@ const Services = () => {
     },
     {
       title: "Deep Dive — 10 Sessions",
-      description: "Designed for deeper, more layered issues or anticipated transitions. Best for relationship dynamics, long-term emotional patterns, chronic physical tension, or life-altering events.",
+      description: "Designed for deeper, more layered issues or anticipated transitions. Best for relationship dynamics, long-term emotional patterns, chronic physical tension, post-surgery healing, or life-altering events.",
       details: [
         "Includes expanded guidance, integration strategies, and customized healing sequences",
-        "Rooted in Be Well Science protocols and supported by energetic insights",
+        "Rooted in BeWell Science™ protocols and supported by energetic insights",
         "Offers time and space to truly shift, stabilize, and harmonize"
       ],
       icon: Heart,
@@ -162,9 +162,9 @@ const Services = () => {
           </div>
           
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-            Beyond Conventional
+            Energy Medicine
             <br />
-            <span className="text-4xl md:text-5xl">Approaches</span>
+            <span className="text-4xl md:text-5xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Healing</span>
           </h2>
           
           <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">

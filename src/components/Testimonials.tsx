@@ -25,7 +25,7 @@ const TestimonialCard = ({
   stars = 5 
 }: TestimonialProps) => {
   return (
-    <div className="group relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 overflow-hidden">
+    <div className="group relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 overflow-hidden touch-manipulation">
       {/* Glow effect on hover */}
       <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${gradientFrom}/0 ${gradientTo}/0 group-hover:${gradientFrom}/5 group-hover:${gradientTo}/5 transition-all duration-300`}></div>
       
@@ -52,7 +52,7 @@ const TestimonialCard = ({
         {/* Toggle button */}
         <button
           onClick={onToggle}
-          className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200`}
+          className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 min-h-[44px] touch-manipulation`}
         >
           {isExpanded ? 'Show Less' : 'Read More'}
           {isExpanded ? (
@@ -64,7 +64,7 @@ const TestimonialCard = ({
       </div>
       
       {/* Expandable full testimonial */}
-      <div className={`transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+      <div className={`transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
         <div className="px-8 pb-8">
           <div className="border-t border-gray-200/50 pt-6">
             <p className="text-gray-600 leading-relaxed italic whitespace-pre-line">
@@ -164,7 +164,7 @@ Today, I'm in a completely different place, both mentally and physically. Energy
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
             Healing
             <br />
-            <span className="text-4xl md:text-5xl">Stories</span>
+            <span className="text-4xl md:text-5xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Stories</span>
           </h2>
           
           <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -173,7 +173,7 @@ Today, I'm in a completely different place, both mentally and physically. Energy
         </div>
         
         {/* Testimonials grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
           {testimonialItems.map((testimonial) => (
             <TestimonialCard 
               key={testimonial.name}
