@@ -80,7 +80,7 @@ const MyPhilosophy = () => {
   ];
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section id="philosophy" className="relative py-20 overflow-hidden">
       {/* Enhanced background with healing gradient */}
       <div className="absolute inset-0 healing-gradient"></div>
       
