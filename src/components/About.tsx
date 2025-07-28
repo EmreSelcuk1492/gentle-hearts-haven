@@ -31,17 +31,17 @@ const About = () => {
               <div className="hidden md:block absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-healing-violet/20 to-healing-green/20 rounded-full blur-lg"></div>
               
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-green/20 to-healing-blue/20 rounded-full mb-4 md:mb-6 backdrop-blur-sm border border-white/30">
-                <span className="text-gray-800 font-semibold text-xs sm:text-sm">My Journey</span>
+                <span className="text-gray-800 font-semibold text-sm md:text-base">My Journey</span>
               </div>
               
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-tight">
                 Meet
                 <br />
                 <span className="bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Asli Selcuk</span>
               </h2>
               
               <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
-                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
+                <p className="text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
                   I am a lifelong student of life—deeply attuned to the subtle rhythms of nature, the
                   intricacies of human connection, and the invisible threads that shape our bodies, minds,
                   and relationships. My personal journey has led me through many meaningful roles:
@@ -49,8 +49,8 @@ const About = () => {
                   the delicate balance between purpose, responsibility, and personal well-being.
                 </p>
                 
-                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
-                  It was through my own quest for inner harmony and healing that I discovered <strong className="font-bold text-black">Energy
+                <p className="text-lg text-gray-700 leading-relaxed group hover:text-gray-800 transition-colors duration-300">
+                  It was through my own quest for inner harmony and healing that I discovered <strong className="font-bold bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Energy
                   Medicine</strong>—a powerful modality that goes far beyond treating surface-level symptoms. It
                   revealed a dynamic, interconnected approach to wellness, where the physical, emotional,
                   mental, and spiritual dimensions are all honored and addressed.
@@ -113,7 +113,7 @@ const About = () => {
           </div>
         </div>
         
-        <style jsx>{`
+        <style>{`
           @keyframes drift {
             0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
             25% { transform: translateX(10px) translateY(-15px) rotate(1deg); }
