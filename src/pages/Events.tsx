@@ -243,76 +243,78 @@ const Events = () => {
 
   return (
     <div className="min-h-screen bg-[#f9f9f0] relative flex flex-col">
-      <div 
-        ref={orbsContainer} 
-        className="absolute inset-0 pointer-events-none overflow-hidden" 
-        aria-hidden="true"
-      />
-      <Navbar />
-      
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 relative z-10">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Upcoming <span className="bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Events</span>
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Join us for transformative experiences in energy healing and wellness
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Events Grid */}
-      <section className="pb-24 relative z-10 flex-grow">
-        <div className="container mx-auto px-6 md:px-12">
-          {events.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-xl text-muted-foreground">No upcoming events at this time.</p>
-              <p className="text-muted-foreground mt-2">Check back soon for new workshops and sessions!</p>
+      <div className="flex-grow relative">
+        <div 
+          ref={orbsContainer} 
+          className="absolute inset-0 pointer-events-none overflow-hidden" 
+          aria-hidden="true"
+        />
+        <Navbar />
+        
+        {/* Hero Section */}
+        <section className="pt-24 pb-16 relative z-10">
+          <div className="container mx-auto px-6 md:px-12">
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Upcoming <span className="bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Events</span>
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                Join us for transformative experiences in energy healing and wellness
+              </p>
             </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {events.map((event) => (
-                <Card key={event.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm">
-                  {event.image_url && (
-                    <div className="relative overflow-hidden rounded-t-lg">
-                      <img 
-                        src={event.image_url} 
-                        alt={event.title}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <CardHeader>
-                    <div className="flex items-center gap-2 mb-2">
-                      <CalendarDays className="h-4 w-4 text-primary" />
-                      <Badge variant="secondary" className="text-xs">
-                        {format(new Date(event.date), 'PPP')}
-                      </Badge>
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {event.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4 line-clamp-3">
-                      {event.description}
-                    </p>
-                    {event.location && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
-                        <span>{event.location}</span>
+          </div>
+        </section>
+
+        {/* Events Grid */}
+        <section className="pb-24 relative z-10">
+          <div className="container mx-auto px-6 md:px-12">
+            {events.length === 0 ? (
+              <div className="text-center py-16">
+                <p className="text-xl text-muted-foreground">No upcoming events at this time.</p>
+                <p className="text-muted-foreground mt-2">Check back soon for new workshops and sessions!</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {events.map((event) => (
+                  <Card key={event.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm">
+                    {event.image_url && (
+                      <div className="relative overflow-hidden rounded-t-lg">
+                        <img 
+                          src={event.image_url} 
+                          alt={event.title}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
                     )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+                    <CardHeader>
+                      <div className="flex items-center gap-2 mb-2">
+                        <CalendarDays className="h-4 w-4 text-primary" />
+                        <Badge variant="secondary" className="text-xs">
+                          {format(new Date(event.date), 'PPP')}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                        {event.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground mb-4 line-clamp-3">
+                        {event.description}
+                      </p>
+                      {event.location && (
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <MapPin className="h-4 w-4" />
+                          <span>{event.location}</span>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
 
       <Footer />
     </div>
