@@ -254,13 +254,13 @@ const Events = () => {
         <Navbar />
         
         {/* Hero Section */}
-        <section className="pt-24 pb-16 relative z-10">
-          <div className="container mx-auto px-6 md:px-12">
-            <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        <section className="pt-20 sm:pt-24 pb-12 sm:pb-16 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
                 Upcoming <span className="bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Events</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
                 Join us for transformative experiences and lectures
               </p>
             </div>
@@ -268,15 +268,15 @@ const Events = () => {
         </section>
 
         {/* Events Grid */}
-        <section className="pb-24 relative z-10">
-          <div className="container mx-auto px-6 md:px-12">
+        <section className="pb-20 sm:pb-24 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
             {events.length === 0 ? (
-              <div className="text-center py-16">
-                <p className="text-xl text-muted-foreground">No upcoming events at this time.</p>
-                <p className="text-muted-foreground mt-2">Check back soon for new workshops and sessions!</p>
+              <div className="text-center py-12 sm:py-16">
+                <p className="text-lg sm:text-xl text-muted-foreground">No upcoming events at this time.</p>
+                <p className="text-sm sm:text-base text-muted-foreground mt-2">Check back soon for new workshops and sessions!</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {events.map((event) => (
                   <Card key={event.id} className="group hover:shadow-lg transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm">
                     {event.image_url && (
@@ -284,45 +284,45 @@ const Events = () => {
                         <img 
                           src={event.image_url} 
                           alt={event.title}
-                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                     )}
-                    <CardHeader>
+                    <CardHeader className="p-4 sm:p-6">
                       <div className="flex items-center gap-2 mb-2">
                         <CalendarDays className="h-4 w-4 text-primary" />
                         <Badge variant="secondary" className="text-xs">
                           {format(new Date(event.date), 'PPP')}
                         </Badge>
                       </div>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                      <CardTitle className="text-lg sm:text-xl group-hover:text-primary transition-colors">
                         {event.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground mb-4 line-clamp-3">
+                    <CardContent className="p-4 sm:p-6 pt-0">
+                      <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-3">
                         {event.description}
                       </p>
                       
                       <div className="space-y-3">
                         {event.location && (
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <MapPin className="h-4 w-4" />
-                            <span>{event.location}</span>
+                          <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                            <MapPin className="h-4 w-4 flex-shrink-0" />
+                            <span className="truncate">{event.location}</span>
                           </div>
                         )}
                         
                         {event.online_link && (
                           <div className="flex items-center gap-2">
-                            <Globe className="h-4 w-4 text-primary" />
+                            <Globe className="h-4 w-4 text-primary flex-shrink-0" />
                             <a 
                               href={event.online_link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                              className="inline-flex items-center gap-1 text-xs sm:text-sm text-primary hover:text-primary/80 font-medium transition-colors truncate"
                             >
                               Join Online Event
-                              <ExternalLink className="h-3 w-3" />
+                              <ExternalLink className="h-3 w-3 flex-shrink-0" />
                             </a>
                           </div>
                         )}

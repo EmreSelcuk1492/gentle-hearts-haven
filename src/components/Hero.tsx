@@ -188,41 +188,42 @@ const Hero = () => {
         aria-hidden="true"
       />
       
-      <div className="container mx-auto px-6 md:px-12 pb-16 relative z-10">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 pb-16 relative z-10">
+        <div className="max-w-4xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Discover the Balance <br />
             <span className="text-gradient-pastel">Beyond What We See</span>
           </h1>
-          <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 mb-8 md:mb-10 max-w-3xl">
             Welcome to a transformative space where holistic healing meets energetic alignment. We
             live in an interconnected ocean of energy, constantly interacting with the world around us.
             My mission is to guide you beyond the physical and into deeper realms—addressing the
             root causes of your challenges across five key dimensions: <strong className="font-bold">physical, energetic, emotional, mental, and spiritual</strong>.
           </p>
-          <p className="text-lg md:text-xl text-foreground/80 mb-6 max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 mb-6 max-w-3xl">
             Through personalized energy healing and integrative wellness practices, I help you release
             blockages, restore balance, and awaken your full potential. Together, we'll uncover the path
             to the vibrant, fulfilling life you truly deserve.
           </p>
-          <p className="text-lg md:text-xl text-foreground/80 mb-6 max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 mb-6 max-w-3xl">
             Whether you're seeking clarity, healing, or spiritual growth, this journey is designed to
             empower you—mind, body, and soul.
           </p>
-          <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 mb-8 md:mb-10 max-w-3xl">
             Together, we work on attaining <strong className="font-bold">your best life, the best life you deserve</strong>.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
             <button
               onClick={() => scrollToSection('contact')}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-healing-green to-healing-blue text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-healing-green to-healing-blue text-white font-semibold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[48px] animate-fade-in"
             >
               Begin Your Healing Journey
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
               onClick={() => scrollToSection('my-journey')}
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-healing-violet to-healing-orange text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-healing-violet to-healing-orange text-white font-semibold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px] animate-fade-in"
+              style={{animationDelay: '0.2s'}}
             >
               Read My Story
             </button>

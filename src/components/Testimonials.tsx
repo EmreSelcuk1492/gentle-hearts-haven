@@ -30,29 +30,29 @@ const TestimonialCard = ({
       <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${gradientFrom}/0 ${gradientTo}/0 group-hover:${gradientFrom}/5 group-hover:${gradientTo}/5 transition-all duration-300`}></div>
       
       {/* Header */}
-      <div className="relative p-8">
-        <div className="flex mb-4">
+      <div className="relative p-6 sm:p-8">
+        <div className="flex mb-3 sm:mb-4">
           {[...Array(stars)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 fill-current text-healing-yellow" />
+            <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-current text-healing-yellow" />
           ))}
         </div>
         
-        <h3 className="text-xl font-bold text-gray-900 mb-2">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
           {name}
         </h3>
         
-        <p className="text-sm text-gray-600 font-medium mb-4">
+        <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3 sm:mb-4">
           {title}
         </p>
         
-        <p className="text-gray-600 leading-relaxed mb-6 italic">
+        <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6 italic">
           "{summary}"
         </p>
         
         {/* Toggle button */}
         <button
           onClick={onToggle}
-          className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 min-h-[44px] touch-manipulation`}
+          className={`inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white font-semibold text-sm sm:text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 min-h-[40px] sm:min-h-[44px] touch-manipulation`}
         >
           {isExpanded ? 'Show Less' : 'Read More'}
           {isExpanded ? (
@@ -65,9 +65,9 @@ const TestimonialCard = ({
       
       {/* Expandable full testimonial */}
       <div className={`transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-        <div className="px-8 pb-8">
-          <div className="border-t border-gray-200/50 pt-6">
-            <p className="text-gray-600 leading-relaxed italic whitespace-pre-line">
+        <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+          <div className="border-t border-gray-200/50 pt-4 sm:pt-6">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed italic whitespace-pre-line">
               "{fullTestimonial}"
             </p>
           </div>
@@ -154,26 +154,26 @@ Today, I'm in a completely different place, both mentally and physically. Energy
            }}>
       </div>
       
-      <div className="relative container mx-auto px-4 md:px-6 max-w-7xl">
+      <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl">
         {/* Header section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-green/20 to-healing-violet/20 rounded-full mb-6">
             <span className="text-gray-800 font-medium text-sm">Client Experiences</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
             Healing
             <br />
-            <span className="text-4xl md:text-5xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Stories</span>
+            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Stories</span>
           </h2>
           
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
             Real transformations from clients who have experienced the power of energy healing and holistic wellness practices.
           </p>
         </div>
         
         {/* Testimonials grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {testimonialItems.map((testimonial) => (
             <TestimonialCard 
               key={testimonial.name}
@@ -190,7 +190,7 @@ Today, I'm in a completely different place, both mentally and physically. Energy
         </div>
         
         {/* Bottom decorative element */}
-        <div className="mt-16 flex justify-center">
+        <div className="mt-12 md:mt-16 flex justify-center">
           <div className="w-24 h-1 bg-gradient-to-r from-healing-green via-healing-violet to-healing-orange rounded-full opacity-60"></div>
         </div>
       </div>

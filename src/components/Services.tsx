@@ -28,23 +28,23 @@ const ServiceCard = ({
       <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${gradientFrom}/0 ${gradientTo}/0 group-hover:${gradientFrom}/5 group-hover:${gradientTo}/5 transition-all duration-300`}></div>
       
       {/* Header */}
-      <div className="relative p-8">
-        <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${gradientFrom}/20 ${gradientTo}/20 mb-6`}>
-          <Icon className={`h-8 w-8 text-gray-700`} />
+      <div className="relative p-6 sm:p-8">
+        <div className={`inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${gradientFrom}/20 ${gradientTo}/20 mb-4 sm:mb-6`}>
+          <Icon className={`h-6 w-6 sm:h-8 sm:w-8 text-gray-700`} />
         </div>
         
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
           {title}
         </h3>
         
-        <p className="text-gray-600 leading-relaxed mb-6">
+        <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6">
           {description}
         </p>
         
         {/* Toggle button */}
         <button
           onClick={onToggle}
-          className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200`}
+          className={`inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white font-semibold text-sm sm:text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 min-h-[40px] sm:min-h-[44px] touch-manipulation`}
         >
           {isExpanded ? 'Show Less' : 'Learn More'}
           {isExpanded ? (
@@ -57,13 +57,13 @@ const ServiceCard = ({
       
       {/* Expandable details */}
       <div className={`transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-        <div className="px-8 pb-8">
-          <div className="border-t border-gray-200/50 pt-6">
-            <ul className="space-y-4">
+        <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+          <div className="border-t border-gray-200/50 pt-4 sm:pt-6">
+            <ul className="space-y-3 sm:space-y-4">
               {details.map((detail, index) => (
                 <li key={index} className="flex items-start">
-                  <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradientFrom} ${gradientTo} mt-2 mr-4 flex-shrink-0`}></div>
-                  <span className="text-gray-600 leading-relaxed">{detail}</span>
+                  <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradientFrom} ${gradientTo} mt-2 mr-3 sm:mr-4 flex-shrink-0`}></div>
+                  <span className="text-sm sm:text-base text-gray-600 leading-relaxed">{detail}</span>
                 </li>
               ))}
             </ul>
@@ -154,26 +154,26 @@ const Services = () => {
            }}>
       </div>
       
-      <div className="relative container mx-auto px-4 md:px-6 max-w-7xl">
+      <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl">
         {/* Header section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-healing-blue/20 to-healing-orange/20 rounded-full mb-6">
             <span className="text-gray-800 font-medium text-sm">My Offerings</span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
             Energy Medicine
             <br />
-            <span className="text-4xl md:text-5xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Healing</span>
+            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-healing-violet to-healing-green bg-clip-text text-transparent">Healing</span>
           </h2>
           
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
             When conventional methods haven't provided relief, explore healing techniques that address the energy behind your challenges.
           </p>
         </div>
         
         {/* Services grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {serviceItems.map((service) => (
             <ServiceCard 
               key={service.title}
@@ -190,7 +190,7 @@ const Services = () => {
         </div>
         
         {/* Bottom decorative element */}
-        <div className="mt-16 flex justify-center">
+        <div className="mt-12 md:mt-16 flex justify-center">
           <div className="w-24 h-1 bg-gradient-to-r from-healing-green via-healing-violet to-healing-orange rounded-full opacity-60"></div>
         </div>
       </div>
