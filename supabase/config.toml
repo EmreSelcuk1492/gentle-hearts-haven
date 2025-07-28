@@ -1,1 +1,4 @@
 project_id = "avetqtvldflfcbitkwyp"
+
+[functions.get-posthog-key]
+verify_jwt = false
