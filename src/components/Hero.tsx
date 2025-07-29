@@ -209,9 +209,32 @@ const Hero = () => {
             Whether you're seeking clarity, healing, or spiritual growth, this journey is designed to
             empower you—mind, body, and soul.
           </p>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 mb-8 md:mb-10 max-w-3xl">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/80 mb-6 max-w-3xl">
             Together, we work on attaining <strong className="font-bold">your best life, the best life you deserve</strong>.
           </p>
+          
+          {/* Internal navigation links */}
+          <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
+            <a href="/events" className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40">
+              Healing Events
+            </a>
+            <a href="/origins" className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40">
+              My Origins
+            </a>
+            <button
+              onClick={() => scrollToSection('services')}
+              className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40"
+            >
+              Healing Services
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40"
+            >
+              About Me
+            </button>
+          </div>
+          
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
             <button
               onClick={() => scrollToSection('contact')}
