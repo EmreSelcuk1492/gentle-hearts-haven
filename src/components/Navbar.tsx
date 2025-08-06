@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
+import posthog from 'posthog-js';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,6 +28,14 @@ const Navbar = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     
+    // Track navigation click
+    posthog.capture('navbar_link_clicked', {
+      page: window.location.pathname,
+      section_id: id,
+      is_home_page: isHomePage,
+      device_type: window.innerWidth >= 768 ? 'desktop' : 'mobile'
+    });
+    
     // If we're not on the home page, navigate to home first
     if (!isHomePage) {
       window.location.href = `/#${id}`;
@@ -42,6 +51,22 @@ const Navbar = () => {
       setIsMobileMenuOpen(false);
     }
   };
+
+  const handleLogoClick = () => {
+    posthog.capture('logo_clicked', {
+      page: window.location.pathname,
+      destination: 'home'
+    });
+  };
+
+  const handleEventsClick = () => {
+    posthog.capture('navbar_link_clicked', {
+      page: window.location.pathname,
+      section_id: 'events',
+      link_type: 'page_navigation',
+      device_type: window.innerWidth >= 768 ? 'desktop' : 'mobile'
+    });
+  };
   
   return (
     <nav className={`py-4 px-6 md:px-12 flex items-center justify-between w-full top-0 z-50 transition-all duration-300 ${
@@ -49,7 +74,10 @@ const Navbar = () => {
     }`}>
       <div 
         className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity duration-200"
-        onClick={() => window.location.href = '/'}
+        onClick={() => {
+          handleLogoClick();
+          window.location.href = '/';
+        }}
       >
         <img 
           src="/lovable-uploads/43ef3823-8e8b-4c03-980a-3943dd150fd2.png" 
@@ -110,6 +138,7 @@ const Navbar = () => {
           </a>
           <a 
             href="/events" 
+            onClick={handleEventsClick}
             className="text-foreground/80 hover:text-primary transition-colors py-2"
           >
             Events
@@ -163,6 +192,7 @@ const Navbar = () => {
         </a>
         <a 
           href="/events" 
+          onClick={handleEventsClick}
           className="text-foreground/80 hover:text-primary transition-colors"
         >
           Events

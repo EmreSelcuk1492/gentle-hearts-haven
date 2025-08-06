@@ -3,6 +3,7 @@ import { PopupWidget } from 'react-calendly';
 import { Button } from "@/components/ui/button";
 import { Calendar } from 'lucide-react';
 import { getCalendlyUrl } from '@/lib/calendly';
+import posthog from 'posthog-js';
 
 interface CalendlyButtonProps {
   calendlyUrl?: string;
@@ -24,6 +25,16 @@ const CalendlyButton: React.FC<CalendlyButtonProps> = ({
   color = "#8B5CF6" // healing-violet
 }) => {
   const url = calendlyUrl || getCalendlyUrl();
+  
+  const handleCalendlyClick = () => {
+    posthog.capture('calendly_popup_opened', {
+      page: window.location.pathname,
+      button_text: children,
+      calendly_url: url,
+      variant: variant,
+      size: size
+    });
+  };
   return (
     <div>
       <PopupWidget
@@ -55,6 +66,7 @@ const CalendlyButton: React.FC<CalendlyButtonProps> = ({
         variant={variant}
         size={size}
         className={`${className}`}
+        onClick={handleCalendlyClick}
       >
         <Calendar className="h-4 w-4 mr-2" />
         {children}

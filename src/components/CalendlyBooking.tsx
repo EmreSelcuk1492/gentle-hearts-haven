@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { InlineWidget } from 'react-calendly';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock } from 'lucide-react';
 import { getCalendlyUrl } from '@/lib/calendly';
 import AnimatedBackground from '@/components/ui/animated-background';
+import posthog from 'posthog-js';
 
 interface CalendlyBookingProps {
   calendlyUrl?: string;
@@ -21,6 +22,16 @@ const CalendlyBooking: React.FC<CalendlyBookingProps> = ({
   height = 600
 }) => {
   const url = calendlyUrl || getCalendlyUrl();
+
+  useEffect(() => {
+    // Track when calendly booking widget is displayed
+    posthog.capture('calendly_widget_displayed', {
+      page: window.location.pathname,
+      widget_type: 'inline_widget',
+      calendly_url: url,
+      title: title
+    });
+  }, [url, title]);
   return (
     <Card className={`bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 w-full max-w-7xl mx-auto ${className}`}>
       <CardContent className="p-0">

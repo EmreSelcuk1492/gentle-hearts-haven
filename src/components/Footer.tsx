@@ -2,10 +2,27 @@
 import React from 'react';
 import { Heart, Mail, Instagram, Facebook, Twitter, Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import posthog from 'posthog-js';
 import { Input } from "@/components/ui/input";
 import CalendlyButton from './CalendlyButton';
 
 const Footer = () => {
+  const handleSocialClick = (platform: string, url: string) => {
+    posthog.capture('footer_social_clicked', {
+      page: window.location.pathname,
+      platform: platform,
+      destination_url: url
+    });
+  };
+
+  const handleFooterLinkClick = (linkText: string, destination: string) => {
+    posthog.capture('footer_link_clicked', {
+      page: window.location.pathname,
+      link_text: linkText,
+      destination: destination
+    });
+  };
+
   return (
     <footer className="bg-white/50 backdrop-blur-sm pt-16 pb-8">
       <div className="container mx-auto px-6 md:px-12">
@@ -23,10 +40,20 @@ const Footer = () => {
               Transformative energy healing and holistic wellness services. Discover balance and healing across physical, energetic, emotional, mental, and spiritual dimensions.
             </p>
             <div className="flex gap-4">
-              <a href="https://www.instagram.com/attainyourbestlife/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-healing-orange/20 flex items-center justify-center text-healing-orange hover:bg-healing-orange/30 transition-colors">
+              <a 
+                href="https://www.instagram.com/attainyourbestlife/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                onClick={() => handleSocialClick('instagram', 'https://www.instagram.com/attainyourbestlife/')}
+                className="w-8 h-8 rounded-full bg-healing-orange/20 flex items-center justify-center text-healing-orange hover:bg-healing-orange/30 transition-colors"
+              >
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href="mailto:threeclairs@outlook.com" className="w-8 h-8 rounded-full bg-healing-violet/20 flex items-center justify-center text-healing-violet hover:bg-healing-violet/30 transition-colors">
+              <a 
+                href="mailto:threeclairs@outlook.com" 
+                onClick={() => handleSocialClick('email', 'mailto:threeclairs@outlook.com')}
+                className="w-8 h-8 rounded-full bg-healing-violet/20 flex items-center justify-center text-healing-violet hover:bg-healing-violet/30 transition-colors"
+              >
                 <Mail className="h-4 w-4" />
               </a>
             </div>
@@ -35,14 +62,62 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              <a href="/events" className="text-foreground/80 hover:text-primary transition-colors">Events</a>
-              <a href="#about" className="text-foreground/80 hover:text-primary transition-colors">About</a>
-              <a href="#philosophy" className="text-foreground/80 hover:text-primary transition-colors">Philosophy</a>
-              <a href="#certification-practice" className="text-foreground/80 hover:text-primary transition-colors">Certifications</a>
-              <a href="#services" className="text-foreground/80 hover:text-primary transition-colors">Services</a>
-              <a href="#testimonials" className="text-foreground/80 hover:text-primary transition-colors">Testimonials</a>
-              <a href="/origins" className="text-foreground/80 hover:text-primary transition-colors">Origins</a>
-              <a href="#contact" className="text-foreground/80 hover:text-primary transition-colors">Discover</a>
+              <a 
+                href="/events" 
+                onClick={() => handleFooterLinkClick('Events', '/events')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                Events
+              </a>
+              <a 
+                href="#about" 
+                onClick={() => handleFooterLinkClick('About', '#about')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                About
+              </a>
+              <a 
+                href="#philosophy" 
+                onClick={() => handleFooterLinkClick('Philosophy', '#philosophy')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                Philosophy
+              </a>
+              <a 
+                href="#certification-practice" 
+                onClick={() => handleFooterLinkClick('Certifications', '#certification-practice')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                Certifications
+              </a>
+              <a 
+                href="#services" 
+                onClick={() => handleFooterLinkClick('Services', '#services')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                Services
+              </a>
+              <a 
+                href="#testimonials" 
+                onClick={() => handleFooterLinkClick('Testimonials', '#testimonials')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                Testimonials
+              </a>
+              <a 
+                href="/origins" 
+                onClick={() => handleFooterLinkClick('Origins', '/origins')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                Origins
+              </a>
+              <a 
+                href="#contact" 
+                onClick={() => handleFooterLinkClick('Discover', '#contact')}
+                className="text-foreground/80 hover:text-primary transition-colors"
+              >
+                Discover
+              </a>
             </div>
           </div>
           

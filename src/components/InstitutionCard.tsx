@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
 import { ExternalLink } from "lucide-react";
+import posthog from 'posthog-js';
 
 interface InstitutionCardProps {
   logoSrc: string;
@@ -16,6 +17,14 @@ export const InstitutionCard = ({
   description, 
   websiteUrl 
 }: InstitutionCardProps) => {
+  const handleInstitutionClick = () => {
+    posthog.capture('institution_link_clicked', {
+      page: window.location.pathname,
+      institution_title: title,
+      website_url: websiteUrl
+    });
+    window.open(websiteUrl, "_blank", "noopener,noreferrer");
+  };
   return (
     <div className="bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-healing-violet/10 h-full flex flex-col">
       <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 gap-4">
@@ -24,7 +33,7 @@ export const InstitutionCard = ({
           <Button 
             variant="link" 
             className="p-0 h-auto text-foreground hover:text-healing-blue font-bold text-base sm:text-lg text-left leading-tight break-words whitespace-normal"
-            onClick={() => window.open(websiteUrl, "_blank", "noopener,noreferrer")}
+            onClick={handleInstitutionClick}
           >
             <span className="break-words">{title}</span> <ExternalLink className="ml-2 h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0 inline" />
           </Button>

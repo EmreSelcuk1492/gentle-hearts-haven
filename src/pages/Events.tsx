@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CalendarDays, MapPin, ExternalLink, Globe } from 'lucide-react';
 import { format } from 'date-fns';
+import posthog from 'posthog-js';
 
 interface Event {
   id: string;
@@ -46,6 +47,27 @@ const Events = () => {
       return (data || []) as Event[];
     }
   });
+
+  useEffect(() => {
+    // Track page view
+    posthog.capture('$pageview', {
+      page: 'events',
+      page_title: 'Upcoming Events | Asli Selcuk',
+      path: '/events',
+      user_journey_stage: 'exploring_events'
+    });
+  }, []);
+
+  const handleEventLinkClick = (event: Event, linkType: string) => {
+    posthog.capture('event_link_clicked', {
+      page: 'events',
+      event_id: event.id,
+      event_title: event.title,
+      link_type: linkType,
+      event_type: event.event_type,
+      event_date: event.date
+    });
+  };
 
   useEffect(() => {
     const createOrb = (isInitial = false) => {
@@ -319,6 +341,7 @@ const Events = () => {
                               href={event.online_link}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={() => handleEventLinkClick(event, 'online_link')}
                               className="inline-flex items-center gap-1 text-xs sm:text-sm text-primary hover:text-primary/80 font-medium transition-colors truncate"
                             >
                               Join Online Event

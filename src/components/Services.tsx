@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Zap, Heart, RefreshCw, ChevronDown, ChevronUp } from 'lucide-react';
+import posthog from 'posthog-js';
 
 interface ServiceCardProps {
   title: string;
@@ -81,6 +82,15 @@ const Services = () => {
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
 
   const handleToggle = (title: string) => {
+    const isExpanding = !expandedCards[title];
+    
+    posthog.capture('service_card_toggled', {
+      page: 'home',
+      section: 'services',
+      service_title: title,
+      action: isExpanding ? 'expanded' : 'collapsed'
+    });
+    
     setExpandedCards(prev => ({
       ...prev,
       [title]: !prev[title]

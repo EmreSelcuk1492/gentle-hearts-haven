@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
+import posthog from 'posthog-js';
 
 const Hero = () => {
   const orbsContainer = useRef<HTMLDivElement>(null);
@@ -180,6 +181,33 @@ const Hero = () => {
     }
   };
 
+  const handleBeginJourneyClick = () => {
+    posthog.capture('begin_journey_button_clicked', {
+      page: 'home',
+      section: 'hero',
+      button_text: 'Begin Your Healing Journey'
+    });
+    scrollToSection('contact');
+  };
+
+  const handleReadStoryClick = () => {
+    posthog.capture('read_story_button_clicked', {
+      page: 'home',
+      section: 'hero',
+      button_text: 'Read My Story'
+    });
+    scrollToSection('my-journey');
+  };
+
+  const handleNavigationClick = (linkType: string, destination: string) => {
+    posthog.capture('hero_navigation_clicked', {
+      page: 'home',
+      section: 'hero',
+      link_type: linkType,
+      destination: destination
+    });
+  };
+
   return (
     <section className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-[#f9f9f0]">
       <div 
@@ -215,20 +243,34 @@ const Hero = () => {
           
           {/* Internal navigation links */}
           <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
-            <a href="/events" className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40">
+            <a 
+              href="/events" 
+              onClick={() => handleNavigationClick('page_link', 'events')}
+              className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40"
+            >
               Healing Events
             </a>
-            <a href="/origins" className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40">
+            <a 
+              href="/origins" 
+              onClick={() => handleNavigationClick('page_link', 'origins')}
+              className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40"
+            >
               My Origins
             </a>
             <button
-              onClick={() => scrollToSection('services')}
+              onClick={() => {
+                handleNavigationClick('section_scroll', 'services');
+                scrollToSection('services');
+              }}
               className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40"
             >
               Healing Services
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => {
+                handleNavigationClick('section_scroll', 'about');
+                scrollToSection('about');
+              }}
               className="inline-flex items-center px-3 py-2 bg-white/80 backdrop-blur-sm text-sm text-gray-700 rounded-lg hover:bg-white/90 transition-colors border border-white/40"
             >
               About Me
@@ -237,14 +279,14 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
             <button
-              onClick={() => scrollToSection('contact')}
+              onClick={handleBeginJourneyClick}
               className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-healing-green to-healing-blue text-white font-semibold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group min-h-[48px] animate-fade-in"
             >
               Begin Your Healing Journey
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
-              onClick={() => scrollToSection('my-journey')}
+              onClick={handleReadStoryClick}
               className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-healing-violet to-healing-orange text-white font-semibold text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px] animate-fade-in"
               style={{animationDelay: '0.2s'}}
             >

@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from "@/components/ui/button";
 import { InstitutionCard } from '@/components/InstitutionCard';
 import { ArrowLeft, Award, BookOpen, Users, Star, ExternalLink, CheckCircle, Globe, Heart, Brain, Zap, Sparkles, Building2, GraduationCap, Shield, Instagram, Youtube, Twitter, Facebook } from 'lucide-react';
 import { Toaster } from "@/components/ui/toaster";
+import posthog from 'posthog-js';
 
 const Origins = () => {
+  useEffect(() => {
+    // Track page view
+    posthog.capture('$pageview', {
+      page: 'origins',
+      page_title: 'My Origins | Asli Selcuk',
+      path: '/origins',
+      user_journey_stage: 'learning_about_origins'
+    });
+  }, []);
+
+  const handleMasterDelPeClick = (linkType: string) => {
+    posthog.capture('master_del_pe_link_clicked', {
+      page: 'origins',
+      link_type: linkType,
+      destination: linkType === 'website' ? 'masterdelpe.com' : 'instagram'
+    });
+  };
+
+  const handleInstitutionClick = (institutionName: string, websiteUrl: string) => {
+    posthog.capture('institution_link_clicked', {
+      page: 'origins',
+      institution_name: institutionName,
+      website_url: websiteUrl
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-healing-green/10 to-healing-blue/10">
       <Navbar />
@@ -88,14 +115,20 @@ const Origins = () => {
                 </div>
                 
                 {/* Social Links */}
-                <div className="flex justify-center lg:justify-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                       onClick={() => window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer")}>
-                    <Globe className="h-6 w-6 text-white" />
-                  </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
-                       onClick={() => window.open("https://www.instagram.com/masterdelpe_official/", "_blank", "noopener,noreferrer")}>
-                    <Instagram className="h-6 w-6 text-white" />
+                 <div className="flex justify-center lg:justify-start gap-4 mb-6">
+                   <div className="w-12 h-12 bg-healing-blue rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                        onClick={() => {
+                          handleMasterDelPeClick('website');
+                          window.open("https://www.masterdelpe.com/", "_blank", "noopener,noreferrer");
+                        }}>
+                     <Globe className="h-6 w-6 text-white" />
+                   </div>
+                   <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:scale-110 transition-transform"
+                        onClick={() => {
+                          handleMasterDelPeClick('instagram');
+                          window.open("https://www.instagram.com/masterdelpe_official/", "_blank", "noopener,noreferrer");
+                        }}>
+                     <Instagram className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 
