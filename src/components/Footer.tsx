@@ -20,7 +20,7 @@ const Footer = () => {
               <span className="font-semibold text-xl">Attain Energy Healing</span>
             </div>
             <p className="text-foreground/70 mb-6">
-              Specialized healing services for professional career mothers dealing with stress, anxiety, and trauma.
+              Transformative energy healing and holistic wellness services. Discover balance and healing across physical, energetic, emotional, mental, and spiritual dimensions.
             </p>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/attainyourbestlife/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-healing-orange/20 flex items-center justify-center text-healing-orange hover:bg-healing-orange/30 transition-colors">
