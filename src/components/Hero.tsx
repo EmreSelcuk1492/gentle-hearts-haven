@@ -1,29 +1,43 @@
 const Hero = () => (
   <section className="hero" aria-label="Introduction">
-    {/* Animated background orbs */}
+    {/* Background breathing rings */}
     <div className="hero-bg" aria-hidden="true">
-      <div className="hero-orb hero-orb-1" />
-      <div className="hero-orb hero-orb-2" />
-      <div className="hero-orb hero-orb-3" />
-      <div className="hero-orb hero-orb-4" />
-      <div className="hero-orb hero-orb-gold" />
+      <div className="hero-ring hero-ring-1" />
+      <div className="hero-ring hero-ring-2" />
+      <div className="hero-ring hero-ring-3" />
+      <div className="hero-glow" />
+      <div className="hero-center-dot" />
     </div>
 
+    {/* Centered content */}
     <div className="hero-content">
-      <p className="hero-eyebrow animate-in">Lorem ipsum · Dolor sit amet</p>
+      <p className="hero-eyebrow animate-in">Holistic healing &middot; Body, mind &amp; spirit</p>
       <h1 className="hero-headline animate-in delay-1">
-        Sed ut perspiciatis<br />
-        unde <em>omnis.</em><br />
-        Natus error sit<br />
-        voluptatem.
+        Your body has been<br />
+        asking for <em>this.</em><br />
+        So has your soul.
       </h1>
       <p className="hero-body animate-in delay-2">
-        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+        Begin with <strong>gentle movement</strong> to release what the body holds.
+        Then <strong>breathing techniques</strong> to open and centre.
+        Then <strong>guided meditation</strong> to let it go — deeply.
       </p>
-      <div className="hero-actions animate-in delay-3">
-        <a href="#book" className="btn-primary">Lorem ipsum dolor sit</a>
-        <a href="#approach" className="btn-ghost">Amet consectetur</a>
+      <div className="hero-seq animate-in delay-3">
+        <span className="seq-step">Movement</span>
+        <span className="seq-arrow">&rarr;</span>
+        <span className="seq-step">Breathwork</span>
+        <span className="seq-arrow">&rarr;</span>
+        <span className="seq-step">Meditation</span>
       </div>
+      <div className="hero-actions animate-in delay-4">
+        <a href="#book" className="btn-primary">Begin your journey</a>
+        <a href="#approach" className="btn-ghost">How it works</a>
+      </div>
+    </div>
+
+    {/* Scroll indicator */}
+    <div className="hero-scroll animate-in delay-5" aria-hidden="true">
+      <div className="hero-scroll-line" />
     </div>
   </section>
 );

@@ -6,6 +6,7 @@ import ForYou from "@/components/ForYou";
 import Method from "@/components/Method";
 import Testimonial from "@/components/Testimonials";
 import AboutStrip from "@/components/AboutStrip";
+import Events from "@/components/Events";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -37,6 +38,7 @@ const Index = () => {
         <Method />
         <Testimonial />
         <AboutStrip />
+        <Events />
         <FAQ />
         <CTA />
       </main>

@@ -14,30 +14,31 @@ const Footer = () => (
             <span className="logo-tagline">Energy Healing</span>
           </div>
         </div>
-        <p className="footer-tagline">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p className="footer-tagline">Heal what you're carrying. Move forward whole.</p>
       </div>
       <div>
         <p className="footer-nav-title">Navigate</p>
         <ul className="footer-nav-links">
-          <li><a href="#about">Lorem Ipsum</a></li>
-          <li><a href="#services">Dolor Sit</a></li>
-          <li><a href="#approach">Amet Consectetur</a></li>
-          <li><a href="#faq">Adipiscing</a></li>
-          <li><a href="#book">Elit Sed</a></li>
+          <li><a href="#about">About Asli</a></li>
+          <li><a href="#services">Who this is for</a></li>
+          <li><a href="#approach">The approach</a></li>
+          <li><a href="#events">Events &amp; gatherings</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#book">Book a call</a></li>
         </ul>
       </div>
       <div>
         <p className="footer-nav-title">Connect</p>
         <ul className="footer-nav-links">
-          <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+          <li><a href="mailto:hello@attainenergyhealing.com">hello@attainenergyhealing.com</a></li>
           <li><a href="#">Instagram</a></li>
-          <li><a href="#">Lorem Ipsum, USA</a></li>
-          <li><a href="#">Dolor sit amet remotely</a></li>
+          <li><a href="#">Washington State, USA</a></li>
+          <li><a href="#">Sessions available remotely</a></li>
         </ul>
       </div>
     </div>
     <div className="footer-bottom">
-      <span className="footer-copy">&copy; 2026 Attain Energy Healing &middot; Lorem Ipsum. All rights reserved.</span>
+      <span className="footer-copy">&copy; 2026 Attain Energy Healing &middot; Asli Selcuk. All rights reserved.</span>
       <ul className="footer-social">
         <li><a href="#">Privacy</a></li>
         <li><a href="#">Terms</a></li>

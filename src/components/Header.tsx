@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header>
+    <header className={scrolled ? "scrolled" : ""}>
       <nav>
         <a href="#" className="logo" aria-label="Attain Energy Healing — Home">
           <svg className="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -24,7 +31,7 @@ const Header = () => {
           <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
           <li><a href="#services" onClick={() => setMenuOpen(false)}>Services</a></li>
           <li><a href="#approach" onClick={() => setMenuOpen(false)}>Approach</a></li>
-          <li><a href="#retreats" onClick={() => setMenuOpen(false)}>Retreats</a></li>
+          <li><a href="#events" onClick={() => setMenuOpen(false)}>Events</a></li>
           <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
         </ul>
 
