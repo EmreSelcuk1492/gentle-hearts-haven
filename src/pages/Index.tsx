@@ -1,41 +1,47 @@
-
-import React, { useEffect } from 'react';
-import posthog from 'posthog-js';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import EventsBanner from '@/components/EventsBanner';
-import About from '@/components/About';
-import CertificationPractice from '@/components/CertificationPractice';
-import Services from '@/components/Services';
-import Testimonials from '@/components/Testimonials';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import { Toaster } from "@/components/ui/toaster";
+import { useEffect } from "react";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import MantraBand from "@/components/MantraBand";
+import ForYou from "@/components/ForYou";
+import Method from "@/components/Method";
+import Testimonial from "@/components/Testimonials";
+import AboutStrip from "@/components/AboutStrip";
+import FAQ from "@/components/FAQ";
+import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   useEffect(() => {
-    // Track page view with detailed context
-    posthog.capture('$pageview', {
-      page: 'home',
-      page_title: 'Discover Energy Balance & Holistic Healing | Asli Selcuk',
-      path: '/',
-      user_journey_stage: 'landing'
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="min-h-screen bg-healing-green/10">
-      <Navbar />
-      <Hero />
-      <EventsBanner />
-      <About />
-      <CertificationPractice />
-      <Services />
-      <Testimonials />
-      <Contact />
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <MantraBand />
+        <ForYou />
+        <Method />
+        <Testimonial />
+        <AboutStrip />
+        <FAQ />
+        <CTA />
+      </main>
       <Footer />
-      <Toaster />
-    </div>
+    </>
   );
 };
 
