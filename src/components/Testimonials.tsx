@@ -6,7 +6,7 @@ const testimonials = [
     attr: "Small Business Owner · Washington State",
   },
   {
-    quote: "After an incredible energy healing session with Asli, I felt lighter, more centred, and deeply uplifted. She has such a calming and intuitive presence that made it easy to fully open up to the experience.",
+    quote: "After an incredible energy healing session with Asli, I felt lighter, more centred, and deeply uplifted. She has such a calming and intuitive presence that made it easy to fully open up.",
     attr: "Real Estate Professional",
   },
   {
@@ -21,7 +21,7 @@ const Testimonial = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
@@ -29,11 +29,13 @@ const Testimonial = () => {
     <section className="testimonial-section" aria-label="Client testimonials">
       <div className="testimonial-inner reveal">
         <span className="quote-mark" aria-hidden="true">&ldquo;</span>
-        <div className="testimonial-body" key={active}>
-          <blockquote className="testimonial-quote">
-            {testimonials[active].quote}
-          </blockquote>
-          <p className="testimonial-attr">{testimonials[active].attr}</p>
+        <div className="testimonial-body-wrap">
+          <div className="testimonial-body" key={active}>
+            <blockquote className="testimonial-quote">
+              {testimonials[active].quote}
+            </blockquote>
+            <p className="testimonial-attr">{testimonials[active].attr}</p>
+          </div>
         </div>
         <nav className="testimonial-nav" aria-label="Testimonial navigation">
           {testimonials.map((_, i) => (

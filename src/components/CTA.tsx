@@ -12,7 +12,7 @@ const CTA = () => (
       </h2>
 
       <p className="cta-body">
-        You don't need to have it figured out. You don't need to know exactly what you're carrying or what you need. The discovery call is simply a conversation — a chance for Asli to understand where you are, and for you to get a sense of whether this feels right.
+        You don't need to have it figured out. You don't need to know exactly what you're carrying or what you need. The discovery call is simply a conversation — a chance for Asli to understand where you are.
       </p>
 
       <p className="cta-reassure">
@@ -24,7 +24,7 @@ const CTA = () => (
       </a>
 
       <p className="cta-below">
-        Prefer to reach out another way?{" "}
+        Prefer another way?{" "}
         <a href="mailto:hello@attainenergyhealing.com">Send Asli a message directly.</a>
       </p>
     </div>
@@ -48,7 +48,7 @@ const CTA = () => (
         <div className="thing-num">1</div>
         <div className="thing-title">Small step</div>
         <div className="thing-body">
-          Most people say the hardest part was deciding to reach out. Everything after that felt surprisingly easy.
+          Most people say the hardest part was deciding to reach out. Everything after felt easier.
         </div>
       </div>
     </div>

@@ -1,34 +1,34 @@
 const events = [
   {
-    type: "Group healing sessions",
+    type: "Retreats",
+    title: "Healing & Longevity Retreat",
+    body: "An immersive multi-day experience designed to give you the time and space your healing deserves. Deeply restorative, beautifully held, structured to create lasting shifts.",
+    details: ["Multi-day", "Location TBC"],
+    featured: true,
+  },
+  {
+    type: "Group sessions",
     title: "Guided group movement, breathwork & meditation",
-    body: "The same three-step session sequence — biomechanical movement, breathing techniques, and guided meditation — held in an intimate group setting. A shared experience of release, vitality, and inner stillness.",
+    body: "The same three-step session sequence — held in an intimate group setting. A shared experience of release, vitality, and inner stillness.",
     details: ["In person & online", "Small groups"],
   },
   {
     type: "Classes",
     title: "Learn the techniques for yourself",
-    body: "Asli teaches the tools she uses in every session — so you can build a daily practice of your own. Gentle movement, breathing sequences, and guided meditation, taught step by step with the guidance to make them yours.",
+    body: "Asli teaches the tools she uses in every session — so you can build a daily practice of your own. Taught step by step, with the guidance to make them yours.",
     details: ["Beginners welcome", "In person & online"],
   },
   {
-    type: "Retreats",
-    title: "Healing & Longevity Retreat",
-    body: "An immersive multi-day experience designed to give you the time and space your healing deserves. Deeply restorative, beautifully held, and structured to create lasting shifts — in how you feel, how you move, and how you meet your life.",
-    details: ["Multi-day immersive", "Location TBC"],
-    featured: true,
-  },
-  {
-    type: "Corporate & workplace",
-    title: "Wellness workshops for teams & organisations",
-    body: "Asli brings her work into the workplace — supporting teams navigating high pressure, burnout, and the emotional weight of demanding environments. Practical, grounded, and immediately applicable. Drawing on her own background in Fortune 500 corporate environments, she speaks the language of the people in the room.",
-    details: ["On-site or virtual", "Customised to your team"],
+    type: "Corporate",
+    title: "Wellness workshops for teams",
+    body: "Asli brings her work into the workplace — supporting teams navigating high pressure, burnout, and the emotional weight of demanding environments.",
+    details: ["On-site or virtual", "Customised"],
   },
   {
     type: "Online events",
-    title: "Virtual group sessions — from anywhere in the world",
-    body: "All of the depth of a live session, held online. Virtual group experiences make Asli's work accessible wherever you are — in English or Turkish, for clients around the world who are ready to begin.",
-    details: ["English & Turkish", "Global access"],
+    title: "Virtual group sessions — from anywhere",
+    body: "All of the depth of a live session, held online. Virtual group experiences make Asli's work accessible wherever you are — in English or Turkish.",
+    details: ["EN & TR", "Global access"],
   },
 ];
 
@@ -82,11 +82,11 @@ const Events = () => (
         </div>
         <div>
           <p className="events-intro">
-            Asli is expanding her work beyond one-to-one sessions — into group experiences, retreats, and teaching. Each event follows the same intentional sequence: movement, breathwork, and guided meditation — held in community.
+            Asli is expanding her work beyond one-to-one sessions — into group experiences, retreats, and teaching.
           </p>
           <div className="notify-form">
             <input className="notify-input" type="email" placeholder="Your email address" />
-            <button className="notify-btn">Notify me when events launch</button>
+            <button className="notify-btn">Notify me</button>
           </div>
         </div>
       </div>

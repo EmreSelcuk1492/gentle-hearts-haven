@@ -1,6 +1,5 @@
 const Hero = () => (
   <section className="hero" aria-label="Introduction">
-    {/* Background breathing rings */}
     <div className="hero-bg" aria-hidden="true">
       <div className="hero-ring hero-ring-1" />
       <div className="hero-ring hero-ring-2" />
@@ -9,7 +8,6 @@ const Hero = () => (
       <div className="hero-center-dot" />
     </div>
 
-    {/* Centered content */}
     <div className="hero-content">
       <p className="hero-eyebrow animate-in">Holistic healing &middot; Body, mind &amp; spirit</p>
       <h1 className="hero-headline animate-in delay-1">
@@ -35,7 +33,6 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Scroll indicator */}
     <div className="hero-scroll animate-in delay-5" aria-hidden="true">
       <div className="hero-scroll-line" />
     </div>

@@ -15,11 +15,10 @@ const Header = () => {
       <nav>
         <a href="#" className="logo" aria-label="Attain Energy Healing — Home">
           <svg className="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="20" cy="20" r="18.5" stroke="#7C9A8A" strokeWidth="0.9" />
-            <ellipse cx="20" cy="20" rx="8" ry="14.5" stroke="#7C9A8A" strokeWidth="0.9" />
-            <line x1="4" y1="20" x2="36" y2="20" stroke="#7C9A8A" strokeWidth="0.9" />
-            <circle cx="20" cy="20" r="2.5" fill="#B49450" />
-            <circle cx="20" cy="20" r="6" stroke="#B49450" strokeWidth="0.5" opacity="0.3" />
+            <circle cx="20" cy="20" r="18.5" stroke="#5E7866" strokeWidth="0.9" />
+            <ellipse cx="20" cy="20" rx="8" ry="14.5" stroke="#5E7866" strokeWidth="0.9" />
+            <line x1="4" y1="20" x2="36" y2="20" stroke="#5E7866" strokeWidth="0.9" />
+            <circle cx="20" cy="20" r="2.5" fill="#C45F3C" />
           </svg>
           <div className="logo-text">
             <span className="logo-name">Attain</span>
