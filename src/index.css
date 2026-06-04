@@ -500,10 +500,10 @@ input:focus-visible {
   pointer-events: none;
 }
 
-/* Hero glow behind logo */
+/* Hero glow — lower-third soft blush, well below the CTA */
 .hero-glow {
   position: absolute;
-  top: 50%;
+  top: 78%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 700px;
@@ -513,12 +513,13 @@ input:focus-visible {
   filter: blur(30px);
 }
 
-/* Hero logo mark — large, centered, breathing */
+/* Hero logo mark — anchored to bottom, pushed down so the dot sits below the fold
+   (so it doesn't compete with the centered headline + CTA group). */
 .hero-logo-mark {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(36.5%);
+  transform: translateX(-50%) translateY(54%);
   width: min(160vw, 1400px);
   height: min(160vw, 1400px);
   opacity: 0.55;
