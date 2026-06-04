@@ -1147,23 +1147,14 @@ input:focus-visible {
   text-align: center;
   min-height: 280px;
 }
-.testimonial-v2-feature-stage {
-  transition: opacity 240ms var(--ease-out), transform 360ms var(--ease-out);
-  opacity: 1;
-  transform: translateY(0);
-}
-.testimonial-v2-feature-stage--out {
-  opacity: 0;
-  transform: translateY(-6px);
-}
-.testimonial-v2-feature-stage--in {
-  opacity: 1;
-  transform: translateY(0);
-  animation: testimonialFadeIn 420ms var(--ease-out) both;
-}
-@keyframes testimonialFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Subtle crossfade when the quote content changes inside an already-mounted
+   slot. Plain transition on the leaf elements so visibility never drops below
+   the parent's .reveal opacity. */
+.testimonial-v2-feature-quote,
+.testimonial-v2-feature-attr,
+.testimonial-v2-small-quote,
+.testimonial-v2-small-attr {
+  transition: opacity 220ms var(--ease-out);
 }
 .testimonial-v2-kicker {
   font-family: var(--font-body);
@@ -1208,79 +1199,58 @@ input:focus-visible {
 .testimonial-v2-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 20px;
   border-top: 1px solid var(--line-onDark);
-  padding-top: 56px;
+  padding-top: 48px;
 }
-.testimonial-v2-small {
-  margin: 0;
-  padding: 0;
-}
+.testimonial-v2-small { margin: 0; padding: 0; }
 .testimonial-v2-small--button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  background: transparent;
+  background: rgba(247, 239, 227, 0.03);
   border: 1px solid var(--line-onDark);
   border-radius: 14px;
-  padding: 22px 22px 20px;
+  padding: 26px 24px 22px;
   color: inherit;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: background var(--t-base) var(--ease-out), border-color var(--t-base) var(--ease-out), transform var(--t-base) var(--ease-out);
+  min-height: 200px;
+  transition: background var(--t-base) var(--ease-out),
+              border-color var(--t-base) var(--ease-out),
+              transform var(--t-base) var(--ease-out),
+              box-shadow var(--t-base) var(--ease-out);
 }
-.testimonial-v2-small--button:hover,
-.testimonial-v2-small--button:focus-visible {
-  background: rgba(247, 239, 227, 0.04);
+.testimonial-v2-small--button:hover {
+  background: rgba(247, 239, 227, 0.06);
   border-color: rgba(224, 139, 107, 0.45);
   transform: translateY(-2px);
+  box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.35);
 }
 .testimonial-v2-small--button:focus-visible {
   outline: 2px solid var(--terracotta-soft);
   outline-offset: 3px;
 }
-.testimonial-v2-small-spotlight {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--terracotta-soft);
-  opacity: 0;
-  transform: translateY(-2px);
-  transition: opacity var(--t-base) var(--ease-out), transform var(--t-base) var(--ease-out);
-  pointer-events: none;
-}
-.testimonial-v2-small-spotlight svg { width: 12px; height: 12px; }
-.testimonial-v2-small--button:hover .testimonial-v2-small-spotlight,
-.testimonial-v2-small--button:focus-visible .testimonial-v2-small-spotlight {
-  opacity: 1;
-  transform: translateY(0);
-}
+
 .testimonial-v2-small-quote {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.55;
   color: var(--on-dark);
-  margin: 0 0 16px;
+  margin: 0 0 14px;
 }
 .testimonial-v2-small-attr {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--terracotta-soft);
+  margin: auto 0 0;
 }
 .testimonial-v2-small-attr span {
   color: var(--on-dark-soft);
@@ -2157,9 +2127,6 @@ input:focus-visible {
 @media (max-width: 960px) {
   /* Testimonials feature loses height lock when narrow */
   .testimonial-v2-feature { min-height: 0; }
-  /* Spotlight hint visible by default on touch */
-  .testimonial-v2-small-spotlight { opacity: 0.7; transform: translateY(0); }
-  .testimonial-v2-small--button:hover .testimonial-v2-small-spotlight { opacity: 1; }
 }
 
 /* PHONE (≤ 640px) */
@@ -2247,12 +2214,10 @@ input:focus-visible {
   .testimonial-v2-feature { margin-bottom: 40px; min-height: 0; }
   .testimonial-v2-feature-quote { font-size: clamp(20px, 5.6vw, 26px); line-height: 1.4; }
   .testimonial-v2-feature-attr { font-size: 10px; letter-spacing: 0.18em; gap: 8px; }
-  .testimonial-v2-row { grid-template-columns: 1fr; gap: 16px; padding-top: 32px; }
-  .testimonial-v2-small--button { padding: 18px 18px 16px; border-radius: 12px; }
-  .testimonial-v2-small-quote { font-size: 15.5px; line-height: 1.55; }
+  .testimonial-v2-row { grid-template-columns: 1fr; gap: 12px; padding-top: 32px; }
+  .testimonial-v2-small--button { padding: 22px 20px 20px; border-radius: 12px; min-height: 0; }
+  .testimonial-v2-small-quote { font-size: 15px; line-height: 1.55; }
   .testimonial-v2-small-attr { font-size: 10px; letter-spacing: 0.14em; }
-  .testimonial-v2-small-spotlight { top: 10px; right: 12px; font-size: 9px; }
-  .testimonial-v2-small-spotlight svg { width: 10px; height: 10px; }
 
   /* About */
   .about-v2 { padding: var(--space-xl) 0; }

@@ -14,20 +14,41 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    // Track which elements we've already promoted to .visible. We re-apply the
+    // class if React strips it on a re-render (e.g., a parent's useState).
+    const promoted = new WeakSet<Element>();
+
+    const intersectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            promoted.add(entry.target);
           }
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
-    document.querySelectorAll(".reveal:not(.visible)").forEach((el) => observer.observe(el));
+    const mutationObserver = new MutationObserver((mutations) => {
+      for (const m of mutations) {
+        if (m.type !== "attributes" || m.attributeName !== "class") continue;
+        const el = m.target as Element;
+        if (promoted.has(el) && !el.classList.contains("visible")) {
+          el.classList.add("visible");
+        }
+      }
+    });
 
-    return () => observer.disconnect();
+    document.querySelectorAll(".reveal:not(.visible)").forEach((el) => {
+      intersectionObserver.observe(el);
+      mutationObserver.observe(el, { attributes: true, attributeFilter: ["class"] });
+    });
+
+    return () => {
+      intersectionObserver.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
 
   return (

@@ -17,14 +17,14 @@ const ForYouV2 = () => {
 
   return (
     <section className="for-you-section for-you-v2" id="services" aria-labelledby="for-you-title-v2">
-      <div className="for-you-header reveal">
+      <div className="for-you-header">
         <p className="section-label centered">Who this is for</p>
         <h2 className="section-title" id="for-you-title-v2" style={{ textAlign: "center" }}>
           Life brought you here.<br />That's <em>enough.</em>
         </h2>
       </div>
 
-      <div className="for-you-intro reveal">
+      <div className="for-you-intro">
         <p>
           There is no prerequisite. You don't need a diagnosis, a label, or the right words for what you're carrying. Asli's clients arrive with all kinds of weight: a health journey that has taken an emotional toll, a grief that won't lift, a body that won't rest.
         </p>
@@ -33,7 +33,7 @@ const ForYouV2 = () => {
         </p>
       </div>
 
-      <div className="signal-list reveal">
+      <div className="signal-list">
         {signals.map((text, i) => (
           <div key={i} className="signal-row">
             <span className="signal-mark" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
@@ -42,7 +42,7 @@ const ForYouV2 = () => {
         ))}
       </div>
 
-      <div className="for-you-closing for-you-v2-closing reveal">
+      <div className="for-you-closing for-you-v2-closing">
         <p className="for-you-closing-body">
           These sessions are a personal wellbeing practice: natural, non-invasive, and deeply personalized. You will leave each session feeling lighter and more centred, equipped with tools to support your own balance between sessions.
           {" "}

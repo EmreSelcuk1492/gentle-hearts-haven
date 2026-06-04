@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 const testimonials = [
   {
@@ -19,70 +19,52 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const [featuredIndex, setFeaturedIndex] = useState(0);
-  const [displayIndex, setDisplayIndex] = useState(0);
-  const [phase, setPhase] = useState<"idle" | "out" | "in">("idle");
-  const timers = useRef<number[]>([]);
+  // order = [spotlight, leftSlot, rightSlot]. Slots are stable; clicking a slot
+  // just swaps its testimonial with the spotlight's. Nothing unmounts.
+  const [order, setOrder] = useState<[number, number, number]>([0, 1, 2]);
 
-  useEffect(() => () => { timers.current.forEach(clearTimeout); }, []);
-
-  const swap = (next: number) => {
-    if (next === featuredIndex || phase !== "idle") return;
-    setFeaturedIndex(next);
-    setPhase("out");
-    timers.current.push(window.setTimeout(() => {
-      setDisplayIndex(next);
-      setPhase("in");
-      timers.current.push(window.setTimeout(() => setPhase("idle"), 360));
-    }, 220));
+  const swapWithSpotlight = (slot: 1 | 2) => {
+    setOrder((prev) => {
+      const next = [...prev] as [number, number, number];
+      [next[0], next[slot]] = [next[slot], next[0]];
+      return next;
+    });
   };
 
-  const featured = testimonials[displayIndex];
-  const others = testimonials
-    .map((t, i) => ({ t, i }))
-    .filter(({ i }) => i !== featuredIndex);
+  const spotlight = testimonials[order[0]];
 
   return (
     <section className="testimonial-v2 testimonial-v2-editorial" aria-label="Client testimonials">
       <div className="testimonial-v2-inner">
-        <article className="testimonial-v2-feature reveal">
+        <article className="testimonial-v2-feature" aria-label="Featured testimonial">
           <p className="testimonial-v2-kicker">In their words</p>
-          <div
-            className={`testimonial-v2-feature-stage testimonial-v2-feature-stage--${phase}`}
-            aria-live="polite"
-          >
-            <blockquote className="testimonial-v2-feature-quote">
-              {featured.quote}
-            </blockquote>
-            <footer className="testimonial-v2-feature-attr">
-              <span className="testimonial-v2-name">{featured.attr}</span>
-              <span className="testimonial-v2-place">{featured.place}</span>
-            </footer>
-          </div>
+          <blockquote className="testimonial-v2-feature-quote">
+            {spotlight.quote}
+          </blockquote>
+          <footer className="testimonial-v2-feature-attr">
+            <span className="testimonial-v2-name">{spotlight.attr}</span>
+            <span className="testimonial-v2-place">{spotlight.place}</span>
+          </footer>
         </article>
 
-        <div className="testimonial-v2-row" role="tablist" aria-label="Other client stories">
-          {others.map(({ t, i }) => (
-            <button
-              key={i}
-              type="button"
-              role="tab"
-              className="testimonial-v2-small testimonial-v2-small--button reveal"
-              onClick={() => swap(i)}
-              aria-label={`Spotlight testimonial from ${t.attr}, ${t.place}`}
-            >
-              <span className="testimonial-v2-small-spotlight" aria-hidden="true">
-                <svg viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                Spotlight
-              </span>
-              <blockquote className="testimonial-v2-small-quote">{t.quote}</blockquote>
-              <p className="testimonial-v2-small-attr">
-                {t.attr} <span>· {t.place}</span>
-              </p>
-            </button>
-          ))}
+        <div className="testimonial-v2-row" aria-label="Other client stories">
+          {([1, 2] as const).map((slot) => {
+            const t = testimonials[order[slot]];
+            return (
+              <button
+                key={slot}
+                type="button"
+                className="testimonial-v2-small testimonial-v2-small--button"
+                onClick={() => swapWithSpotlight(slot)}
+                aria-label={`Spotlight testimonial from ${t.attr}, ${t.place}`}
+              >
+                <blockquote className="testimonial-v2-small-quote">{t.quote}</blockquote>
+                <p className="testimonial-v2-small-attr">
+                  {t.attr} <span>· {t.place}</span>
+                </p>
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>

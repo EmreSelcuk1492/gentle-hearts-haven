@@ -34,7 +34,7 @@ const FAQV2 = () => {
   return (
     <section className="faq-v2" id="faq" aria-labelledby="faq-title-v2">
       <div className="faq-v2-inner">
-        <header className="faq-v2-header reveal">
+        <header className="faq-v2-header">
           <p className="section-label centered">Questions</p>
           <h2 className="section-title" id="faq-title-v2" style={{ textAlign: "center" }}>
             What you might be wondering
@@ -44,7 +44,7 @@ const FAQV2 = () => {
           </p>
         </header>
 
-        <div className="faq-v2-list reveal reveal-delay-1">
+        <div className="faq-v2-list">
           {faqs.map((faq, i) => (
             <div key={i} className={`faq-v2-item${openIndex === i ? " open" : ""}`}>
               <button
