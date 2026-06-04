@@ -1923,6 +1923,13 @@ input:focus-visible {
   }
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
+
+  /* Right-align the CTA group when nav-links collapse — keeps it next to the
+     hamburger instead of floating in the middle of the bar. */
+  .nav-cta-group { margin-left: auto; gap: 6px; }
+  .nav-email { display: none; } /* email lives in mobile drawer at this width */
+  .nav-cta { font-size: 12.5px; padding: 8px 16px; min-height: 38px; }
+
   .hero-content { max-width: 600px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
