@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import BookButton from "@/components/BookButton";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,9 +12,9 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={scrolled ? "scrolled" : ""}>
+    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
       <nav>
-        <a href="#" className="logo" aria-label="Attain Energy Healing — Home">
+        <a href="#" className="logo" aria-label="Attain Energy Healing, Home">
           <svg className="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <circle cx="20" cy="20" r="18.5" stroke="#5E7866" strokeWidth="0.9" />
             <ellipse cx="20" cy="20" rx="8" ry="14.5" stroke="#5E7866" strokeWidth="0.9" />
@@ -34,7 +35,20 @@ const Header = () => {
           <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
         </ul>
 
-        <a href="#book" className="nav-cta">Begin your journey</a>
+        <div className="nav-cta-group">
+          <BookButton className="nav-cta">Begin your journey</BookButton>
+          <a
+            href="mailto:threeclairs@outlook.com"
+            className="nav-email"
+            aria-label="Email Asli directly"
+            title="Email Asli"
+          >
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <rect x="2.5" y="4" width="15" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
+              <path d="M3 5.5L10 11L17 5.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
 
         <button
           className="nav-toggle"

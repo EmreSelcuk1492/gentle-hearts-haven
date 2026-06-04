@@ -1,58 +1,39 @@
-const CTA = () => (
-  <section className="cta-section" id="book" aria-labelledby="cta-title">
-    <div className="cta-inner reveal">
-      <p className="cta-eyebrow">
-        <span className="cta-rule" aria-hidden="true"></span>
-        Your next step
-        <span className="cta-rule" aria-hidden="true"></span>
-      </p>
+import BookButton from "@/components/BookButton";
 
-      <h2 className="cta-title" id="cta-title">
-        Wherever you are right now — <em>that's where we begin.</em>
+const CTAV2 = () => (
+  <section className="cta-v2" id="book" aria-labelledby="cta-title-v2">
+    <div className="cta-v2-inner reveal">
+      <p className="section-label centered">Your next step</p>
+
+      <h2 className="section-title cta-v2-title" id="cta-title-v2">
+        Wherever you are right now, <em>that's where we begin.</em>
       </h2>
 
-      <p className="cta-body">
-        You don't need to have it figured out. You don't need to know exactly what you're carrying or what you need. The discovery call is simply a conversation — a chance for Asli to understand where you are.
+      <p className="cta-v2-body">
+        You don't need to have it figured out. The discovery call is simply a conversation, a chance for Asli to understand where you are. No pressure. No commitment. Just 30 minutes.
       </p>
 
-      <p className="cta-reassure">
-        No pressure. No commitment. Just 30 minutes, and a genuine conversation.
-      </p>
-
-      <a href="mailto:hello@attainenergyhealing.com" className="btn-gold">
+      <BookButton className="btn-primary cta-v2-btn">
         Book your free discovery call
-      </a>
+      </BookButton>
 
-      <p className="cta-below">
+      <p className="cta-v2-below">
         Prefer another way?{" "}
-        <a href="mailto:hello@attainenergyhealing.com">Send Asli a message directly.</a>
+        <a href="mailto:threeclairs@outlook.com">Send Asli a message directly.</a>
       </p>
-    </div>
 
-    <div className="three-things reveal reveal-delay-1">
-      <div className="thing">
-        <div className="thing-num">30</div>
-        <div className="thing-title">Minutes</div>
-        <div className="thing-body">
-          A relaxed conversation — no forms, no intake process, no pressure to decide anything.
+      <dl className="cta-v2-meta">
+        <div className="cta-v2-meta-item">
+          <dt>30 min</dt>
+          <dd>A relaxed conversation</dd>
         </div>
-      </div>
-      <div className="thing">
-        <div className="thing-num">0</div>
-        <div className="thing-title">Commitment required</div>
-        <div className="thing-body">
-          The call is simply to see if this feels like the right fit for where you are right now.
+        <div className="cta-v2-meta-item">
+          <dt>0</dt>
+          <dd>Commitment required</dd>
         </div>
-      </div>
-      <div className="thing">
-        <div className="thing-num">1</div>
-        <div className="thing-title">Small step</div>
-        <div className="thing-body">
-          Most people say the hardest part was deciding to reach out. Everything after felt easier.
-        </div>
-      </div>
+      </dl>
     </div>
   </section>
 );
 
-export default CTA;
+export default CTAV2;

@@ -3,7 +3,7 @@ import { useState } from "react";
 const faqs = [
   {
     q: "I've tried other things. Why would this be any different?",
-    a: "Most approaches to wellbeing work primarily at the level of thought — talking, analysing, reframing. This work goes a step further. It addresses what the body is still holding: the emotional and energetic residue of experiences that the mind has processed but the body hasn't fully released.",
+    a: "Most approaches to wellbeing work primarily at the level of thought: talking, analysing, reframing. This work goes a step further. It addresses what the body is still holding: the emotional and energetic residue of experiences that the mind has processed but the body hasn't fully released.",
     em: "The work meets you at a level that words alone often can't reach.",
   },
   {
@@ -14,50 +14,50 @@ const faqs = [
   },
   {
     q: "Will I have to talk about my past or relive difficult things?",
-    a: "No. This is not talk-based work. The session works through movement, breath, and guided meditation — not through conversation.",
+    a: "No. This is not talk-based work. The session works through movement, breath, and guided meditation, not through conversation.",
     em: "You can begin to release something without having to explain it first.",
   },
   {
     q: "How many sessions will I need?",
-    a: "Many clients notice a meaningful shift after their very first session. Deeper change typically unfolds over a series of sessions. Asli will co-create a personal plan with you. There is no fixed programme — the pace is always yours.",
+    a: "Many clients notice a meaningful shift after their very first session. Deeper change typically unfolds over a series of sessions. Asli will co-create a personal plan with you. There is no fixed programme. The pace is always yours.",
   },
   {
     q: "Is this available online, or do I need to be in person?",
-    a: "Sessions are available both in person and remotely — and the work is equally effective either way. Asli works with clients across the world, in English and Turkish.",
+    a: "Sessions are available both in person and remotely, and the work is equally effective either way. Asli works with clients across the world, in English and Turkish.",
   },
 ];
 
-const FAQ = () => {
+const FAQV2 = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (i: number) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="faq-section" id="faq" aria-labelledby="faq-title">
-      <div className="faq-inner">
-        <div className="reveal faq-sidebar">
-          <p className="section-label">Questions</p>
-          <h2 className="section-title" id="faq-title">What you might be wondering</h2>
-          <p className="faq-sub">
-            Many people arrive here with questions — and with healthy skepticism. Both are welcome.
+    <section className="faq-v2" id="faq" aria-labelledby="faq-title-v2">
+      <div className="faq-v2-inner">
+        <header className="faq-v2-header reveal">
+          <p className="section-label centered">Questions</p>
+          <h2 className="section-title" id="faq-title-v2" style={{ textAlign: "center" }}>
+            What you might be wondering
+          </h2>
+          <p className="faq-v2-sub">
+            Many people arrive here with questions, and with healthy skepticism. Both are welcome.
           </p>
-        </div>
-        <div className="faq-list reveal reveal-delay-1">
+        </header>
+
+        <div className="faq-v2-list reveal reveal-delay-1">
           {faqs.map((faq, i) => (
-            <div key={i} className={`faq-item${openIndex === i ? " open" : ""}`}>
+            <div key={i} className={`faq-v2-item${openIndex === i ? " open" : ""}`}>
               <button
-                className="faq-trigger"
+                className="faq-v2-trigger"
                 onClick={() => toggle(i)}
                 aria-expanded={openIndex === i}
               >
-                <h3 className="faq-question">{faq.q}</h3>
-                <span className="faq-icon" aria-hidden="true">+</span>
+                <h3 className="faq-v2-question">{faq.q}</h3>
+                <span className="faq-v2-chev" aria-hidden="true">↓</span>
               </button>
-              <div className="faq-answer-wrap">
-                <div className="faq-answer-inner">
-                  <p className="faq-answer">
+              <div className="faq-v2-answer-wrap">
+                <div className="faq-v2-answer-inner">
+                  <p className="faq-v2-answer">
                     {faq.a}
                     {faq.em && <> <em>{faq.em}</em></>}
                     {faq.after && <>{faq.after}</>}
@@ -72,4 +72,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default FAQV2;

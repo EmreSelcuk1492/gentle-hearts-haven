@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
+import BookingModal from "@/components/BookingModal";
 import Hero from "@/components/Hero";
 import MantraBand from "@/components/MantraBand";
 import ForYou from "@/components/ForYou";
 import Method from "@/components/Method";
-import Testimonial from "@/components/Testimonials";
+import Testimonials from "@/components/Testimonials";
 import AboutStrip from "@/components/AboutStrip";
 import Events from "@/components/Events";
 import FAQ from "@/components/FAQ";
@@ -24,7 +25,8 @@ const Index = () => {
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    document.querySelectorAll(".reveal:not(.visible)").forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
@@ -36,13 +38,14 @@ const Index = () => {
         <MantraBand />
         <ForYou />
         <Method />
-        <Testimonial />
+        <Testimonials />
         <AboutStrip />
         <Events />
         <FAQ />
         <CTA />
       </main>
       <Footer />
+      <BookingModal />
     </>
   );
 };

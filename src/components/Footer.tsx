@@ -1,5 +1,7 @@
+import { dispatchBookingOpen, dispatchBookingPreload } from "@/lib/calendly";
+
 const Footer = () => (
-  <footer>
+  <footer className="site-footer">
     <div className="footer-inner">
       <div className="footer-brand">
         <div className="logo">
@@ -24,26 +26,62 @@ const Footer = () => (
           <li><a href="#approach">The approach</a></li>
           <li><a href="#events">Events &amp; gatherings</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#book">Book a call</a></li>
+          <li>
+            <button
+              type="button"
+              className="footer-nav-btn"
+              onClick={(e) => { e.preventDefault(); dispatchBookingOpen(); }}
+              onMouseEnter={dispatchBookingPreload}
+              onFocus={dispatchBookingPreload}
+              aria-haspopup="dialog"
+            >
+              Book a call
+            </button>
+          </li>
         </ul>
       </div>
       <div>
         <p className="footer-nav-title">Connect</p>
         <ul className="footer-nav-links">
-          <li><a href="mailto:hello@attainenergyhealing.com">hello@attainenergyhealing.com</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Washington State, USA</a></li>
-          <li><a href="#">Sessions available remotely</a></li>
+          <li>
+            <a href="mailto:threeclairs@outlook.com" className="footer-social-link">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="footer-social-icon">
+                <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M4 7L12 13L20 7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>threeclairs@outlook.com</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/attainyourbestlife/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+            >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="footer-social-icon">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.4" />
+                <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.4" />
+                <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" />
+              </svg>
+              <span>Instagram</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
     <div className="footer-bottom">
-      <span className="footer-copy">&copy; 2026 Attain Energy Healing &middot; Asli Selcuk. All rights reserved.</span>
-      <ul className="footer-social">
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Terms</a></li>
-        <li><a href="#">Instagram</a></li>
-      </ul>
+      <span className="footer-copy">&copy; 2026 Attain Energy Healing</span>
+      <span className="footer-made">
+        Made with
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="footer-heart">
+          <path
+            d="M12 20.5s-7.2-4.35-9.4-9.05C1 7.7 3.3 4.5 6.6 4.5c2 0 3.5 1.1 4.4 2.6.9-1.5 2.4-2.6 4.4-2.6 3.3 0 5.6 3.2 4 6.95C19.2 16.15 12 20.5 12 20.5Z"
+            fill="currentColor"
+          />
+        </svg>
+        love
+      </span>
     </div>
   </footer>
 );
