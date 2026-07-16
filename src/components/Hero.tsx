@@ -37,6 +37,14 @@ const HeroV2 = () => (
           </a>
         </div>
       </div>
+      <p className="hero-meta-tag animate-in delay-4">
+        <span className="hero-meta-dot" aria-hidden="true" />
+        <span className="hero-meta-item">Free discovery call</span>
+        <span className="hero-meta-sep" aria-hidden="true">·</span>
+        <span className="hero-meta-item">In person &amp; online</span>
+        <span className="hero-meta-sep" aria-hidden="true">·</span>
+        <span className="hero-meta-item">English &amp; Turkish</span>
+      </p>
     </div>
   </section>
 );

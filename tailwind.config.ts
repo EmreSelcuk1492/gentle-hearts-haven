@@ -4,8 +4,8 @@ export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     fontFamily: {
-      sans: ["'Jost'", "system-ui", "sans-serif"],
-      display: ["'Cormorant Garamond'", "Georgia", "serif"],
+      sans: ["'Inter Tight'", "system-ui", "sans-serif"],
+      display: ["'Fraunces'", "Georgia", "serif"],
     },
   },
   plugins: [],

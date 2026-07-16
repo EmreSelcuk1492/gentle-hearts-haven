@@ -36,8 +36,9 @@ const Testimonials = () => {
   return (
     <section className="testimonial-v2 testimonial-v2-editorial" aria-label="Client testimonials">
       <div className="testimonial-v2-inner">
-        <article className="testimonial-v2-feature" aria-label="Featured testimonial">
+        <article className="testimonial-v2-feature" aria-label="Featured testimonial" aria-live="polite">
           <p className="testimonial-v2-kicker">In their words</p>
+          <span className="testimonial-v2-quote-mark" aria-hidden="true">&ldquo;</span>
           <blockquote className="testimonial-v2-feature-quote">
             {spotlight.quote}
           </blockquote>
@@ -62,6 +63,12 @@ const Testimonials = () => {
                 <p className="testimonial-v2-small-attr">
                   {t.attr} <span>· {t.place}</span>
                 </p>
+                <span className="testimonial-v2-small-cue" aria-hidden="true">
+                  Read featured
+                  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 6h8M7 3l3 3-3 3" />
+                  </svg>
+                </span>
               </button>
             );
           })}

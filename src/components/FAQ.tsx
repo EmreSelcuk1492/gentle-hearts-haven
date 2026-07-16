@@ -49,13 +49,24 @@ const FAQV2 = () => {
             <div key={i} className={`faq-v2-item${openIndex === i ? " open" : ""}`}>
               <button
                 className="faq-v2-trigger"
+                id={`faq-trigger-${i}`}
                 onClick={() => toggle(i)}
                 aria-expanded={openIndex === i}
+                aria-controls={`faq-answer-${i}`}
               >
                 <h3 className="faq-v2-question">{faq.q}</h3>
-                <span className="faq-v2-chev" aria-hidden="true">↓</span>
+                <span className="faq-v2-chev" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3.5 6L8 10.5L12.5 6" />
+                  </svg>
+                </span>
               </button>
-              <div className="faq-v2-answer-wrap">
+              <div
+                className="faq-v2-answer-wrap"
+                id={`faq-answer-${i}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${i}`}
+              >
                 <div className="faq-v2-answer-inner">
                   <p className="faq-v2-answer">
                     {faq.a}

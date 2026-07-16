@@ -6,6 +6,7 @@ const BookingModal = () => {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
   const url = getCalendlyEmbedUrl();
 
   useEffect(() => {
@@ -42,19 +43,43 @@ const BookingModal = () => {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      // Trap Tab inside the dialog while it is open.
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], iframe, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || !dialogRef.current.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !dialogRef.current.contains(active))) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+    // Capture the trigger before focus moves into the dialog, so we can
+    // return focus to it on close.
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKey);
     closeBtnRef.current?.focus();
     return () => {
       document.body.style.overflow = "";
       document.removeEventListener("keydown", onKey);
+      trigger?.focus();
     };
   }, [open]);
 
   return (
     <div
+      ref={dialogRef}
       className={`booking-modal${open ? " booking-modal--open" : ""}`}
       role="dialog"
       aria-modal="true"

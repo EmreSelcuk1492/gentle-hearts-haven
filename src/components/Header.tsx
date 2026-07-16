@@ -1,14 +1,51 @@
 import { useState, useEffect } from "react";
 import BookButton from "@/components/BookButton";
 
+const navItems = [
+  { id: "about", label: "About" },
+  { id: "services", label: "Services" },
+  { id: "approach", label: "Approach" },
+  { id: "events", label: "Events" },
+  { id: "faq", label: "FAQ" },
+] as const;
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    // Accent-underline the nav link of the section currently in view.
+    const visible = new Map<string, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.set(entry.target.id, entry.intersectionRatio);
+          else visible.delete(entry.target.id);
+        });
+        let best: string | null = null;
+        let bestRatio = 0;
+        visible.forEach((ratio, id) => {
+          if (ratio > bestRatio) {
+            best = id;
+            bestRatio = ratio;
+          }
+        });
+        setActiveSection(best);
+      },
+      { rootMargin: "-25% 0px -45% 0px", threshold: [0, 0.15, 0.4, 0.8] }
+    );
+    navItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -28,11 +65,24 @@ const Header = () => {
         </a>
 
         <ul className={`nav-links${menuOpen ? " open" : ""}`} role="list">
-          <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-          <li><a href="#services" onClick={() => setMenuOpen(false)}>Services</a></li>
-          <li><a href="#approach" onClick={() => setMenuOpen(false)}>Approach</a></li>
-          <li><a href="#events" onClick={() => setMenuOpen(false)}>Events</a></li>
-          <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
+          {navItems.map(({ id, label }) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className={activeSection === id ? "active" : undefined}
+                aria-current={activeSection === id ? "true" : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+          <li className="nav-drawer-actions">
+            <BookButton className="btn-primary nav-drawer-cta">Begin your journey</BookButton>
+            <a href="mailto:threeclairs@outlook.com" className="nav-drawer-email" onClick={() => setMenuOpen(false)}>
+              Email Asli directly
+            </a>
+          </li>
         </ul>
 
         <div className="nav-cta-group">

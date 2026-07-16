@@ -79,26 +79,23 @@ const Events = () => (
         ))}
       </ul>
 
-      <form className="events-notify-card reveal" onSubmit={(e) => e.preventDefault()}>
+      <aside className="events-notify-card reveal" aria-label="Get notified about upcoming events">
         <div className="events-notify-text">
           <p className="section-label">Stay in the loop</p>
           <h3 className="events-notify-headline">
             Be the first to know when <em>dates open.</em>
           </h3>
         </div>
-        <div className="events-notify-field">
-          <label htmlFor="events-notify" className="visually-hidden">Email address</label>
-          <input
-            id="events-notify"
-            type="email"
-            placeholder="your@email.com"
-            className="events-notify-input"
-            aria-label="Email for notifications"
-            required
-          />
-          <button type="submit" className="btn-primary events-notify-btn">Notify me</button>
+        <div className="events-notify-action">
+          <a
+            href="mailto:threeclairs@outlook.com?subject=Keep%20me%20posted%20about%20upcoming%20events"
+            className="btn-primary events-notify-btn"
+          >
+            Email to be notified
+          </a>
+          <p className="events-notify-note">Asli will reply personally when dates are announced.</p>
         </div>
-      </form>
+      </aside>
     </div>
   </section>
 );

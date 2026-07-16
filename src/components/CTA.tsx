@@ -28,8 +28,8 @@ const CTAV2 = () => (
           <dd>A relaxed conversation</dd>
         </div>
         <div className="cta-v2-meta-item">
-          <dt>0</dt>
-          <dd>Commitment required</dd>
+          <dt>Free</dt>
+          <dd>No commitment required</dd>
         </div>
       </dl>
     </div>
