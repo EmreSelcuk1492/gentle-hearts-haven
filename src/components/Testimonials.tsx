@@ -4,17 +4,14 @@ const testimonials = [
   {
     quote: "As an engineer grounded in science, I was skeptical. But after losing my job, my mom, and facing life's hardest moments, Asli's guidance helped me rediscover my worth and transform my outlook on life entirely.",
     attr: "Small Business Owner",
-    place: "Washington State",
   },
   {
     quote: "After an incredible energy healing session with Asli, I felt lighter, more centred, and deeply uplifted. She has such a calming and intuitive presence that made it easy to fully open up.",
     attr: "Real Estate Professional",
-    place: "Remote",
   },
   {
     quote: "Despite initial doubts, working with Asli helped me break out of a personal loop. Learning to focus and breathe properly showed me how effective these practices were for my personal growth.",
     attr: "Retired Corporate Professional",
-    place: "Turkey",
   },
 ];
 
@@ -44,7 +41,6 @@ const Testimonials = () => {
           </blockquote>
           <footer className="testimonial-v2-feature-attr">
             <span className="testimonial-v2-name">{spotlight.attr}</span>
-            <span className="testimonial-v2-place">{spotlight.place}</span>
           </footer>
         </article>
 
@@ -57,12 +53,10 @@ const Testimonials = () => {
                 type="button"
                 className="testimonial-v2-small testimonial-v2-small--button"
                 onClick={() => swapWithSpotlight(slot)}
-                aria-label={`Spotlight testimonial from ${t.attr}, ${t.place}`}
+                aria-label={`Spotlight testimonial from ${t.attr}`}
               >
                 <blockquote className="testimonial-v2-small-quote">{t.quote}</blockquote>
-                <p className="testimonial-v2-small-attr">
-                  {t.attr} <span>· {t.place}</span>
-                </p>
+                <p className="testimonial-v2-small-attr">{t.attr}</p>
                 <span className="testimonial-v2-small-cue" aria-hidden="true">
                   Read featured
                   <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">

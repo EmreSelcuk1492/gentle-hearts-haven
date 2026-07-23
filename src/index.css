@@ -1267,14 +1267,6 @@ input:focus-visible {
   text-transform: uppercase;
 }
 .testimonial-v2-name { color: var(--terracotta-soft); }
-.testimonial-v2-place {
-  color: var(--on-dark-faint);
-}
-.testimonial-v2-feature-attr .testimonial-v2-place::before {
-  content: '·';
-  margin-right: 10px;
-  opacity: 0.6;
-}
 .testimonial-v2-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

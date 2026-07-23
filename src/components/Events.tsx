@@ -19,7 +19,7 @@ const offerings = [
   {
     type: "Classes",
     title: "Learn the techniques for yourself",
-    body: "Asli teaches the tools she uses in every session. Taught step by step, so you can build a daily practice of your own.",
+    body: "Asli facilitates classes teaching the tools she uses in every session. Taught step by step, so you can build a daily practice of your own.",
     meta: "Beginners welcome · In person & online",
   },
   {
@@ -32,7 +32,7 @@ const offerings = [
     type: "Online events",
     title: "Virtual group sessions from anywhere",
     body: "All of the depth of a live session, held online. Available wherever you are, in English or Turkish.",
-    meta: "EN & TR · Global access",
+    meta: "English & Turkish · Global access",
   },
 ];
 
