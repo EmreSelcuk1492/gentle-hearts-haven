@@ -1887,7 +1887,13 @@ input:focus-visible {
   font-size: 13px;
   color: var(--terracotta-deep);
   margin: 0;
-  min-height: 1.2em;
+  /* Out of flow so the field alone is vertically centered against the heading;
+     the message still fades in below with zero layout shift. */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 6px;
   opacity: 0;
   transform: translateY(-3px);
   transition: opacity var(--t-base) var(--ease-out), transform var(--t-base) var(--ease-out);
@@ -2614,7 +2620,7 @@ input:focus-visible {
   }
   .events-notify-input:focus { border-color: var(--terracotta); }
   .events-notify-field.is-invalid .events-notify-input { border-color: var(--terracotta-deep); }
-  .events-notify-msg { text-align: center; }
+  .events-notify-msg { position: static; width: auto; margin-top: 0; text-align: center; }
 
   /* FAQ */
   .faq-v2 { padding: var(--space-xl) 0; }
