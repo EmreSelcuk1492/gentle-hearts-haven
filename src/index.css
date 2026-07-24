@@ -1790,6 +1790,8 @@ input:focus-visible {
   border-radius: 999px;
   padding: 12px 26px;
   min-height: 44px;
+  /* Fixed footprint so the label ↔ spinner swap never resizes the button. */
+  min-width: 148px;
   gap: 9px;
 }
 .events-notify-note {
