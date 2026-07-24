@@ -7,7 +7,7 @@ const AboutStripV2 = () => (
   <section className="about-v2" id="about" aria-labelledby="about-title-v2">
     <div className="about-v2-inner">
       <div className="about-v2-image">
-        <img src="/asli-portrait.png" alt="Asli Selcuk, smiling warmly" loading="lazy" decoding="async" />
+        <img src="/asli-portrait.webp" alt="Asli Selcuk, smiling warmly" loading="lazy" decoding="async" />
       </div>
       <div className="about-v2-content reveal">
         <p className="section-label">About Asli</p>
