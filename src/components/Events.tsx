@@ -1,3 +1,5 @@
+import EventsNotify from "@/components/EventsNotify";
+
 const featured = {
   type: "Retreats",
   title: "Healing & Longevity Retreat",
@@ -79,23 +81,7 @@ const Events = () => (
         ))}
       </ul>
 
-      <aside className="events-notify-card reveal" aria-label="Get notified about upcoming events">
-        <div className="events-notify-text">
-          <p className="section-label">Stay in the loop</p>
-          <h3 className="events-notify-headline">
-            Be the first to know when <em>dates open.</em>
-          </h3>
-        </div>
-        <div className="events-notify-action">
-          <a
-            href="mailto:threeclairs@outlook.com?subject=Keep%20me%20posted%20about%20upcoming%20events"
-            className="btn-primary events-notify-btn"
-          >
-            Email to be notified
-          </a>
-          <p className="events-notify-note">Asli will reply personally when dates are announced.</p>
-        </div>
-      </aside>
+      <EventsNotify />
     </div>
   </section>
 );
